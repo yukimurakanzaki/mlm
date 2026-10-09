@@ -21,7 +21,7 @@ Do the steps in order. Keep a note of every key you copy; never paste keys into 
 
 ## 4. The app (Vercel)
 1. Sign up at https://vercel.com with GitHub, then Add New > Project > import `yukimurakanzaki/mlm`.
-2. Production branch: the branch you want live (merge `claude/affectionate-bell-ht89aj` into `main` first, then use `main`).
+2. Production branch: the repo's default branch (currently `claude/affectionate-bell-ht89aj`; no `main` exists yet).
 3. Build command: `npm run build` (it applies database migrations, then builds).
 4. Environment variables:
 
