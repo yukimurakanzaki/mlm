@@ -5,6 +5,7 @@ import { AdminOrderActions } from '@/features/orders/AdminOrderActions';
 import { OrderDetails } from '@/features/orders/OrderDetails';
 import { getAdminStats, listAllOrders } from '@/features/orders/queries';
 import { isAdmin } from '@/libs/Auth';
+import { Link } from '@/libs/I18nNavigation';
 import { formatIDR } from '@/utils/Orders';
 
 const Stat = (props: { label: string; value: string }) => (
@@ -31,6 +32,13 @@ export default async function AdminPage(props: {
   return (
     <>
       <TitleBar title={t('title')} description={t('description')} />
+
+      <Link
+        href="/dashboard/admin/products"
+        className="mb-4 inline-block text-sm underline"
+      >
+        {t('manage_products')}
+      </Link>
 
       <div className="
         mb-6 grid gap-4

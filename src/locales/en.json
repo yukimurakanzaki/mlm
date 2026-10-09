@@ -171,10 +171,24 @@
     "stat_orders": "Total orders",
     "stat_pending": "Awaiting confirmation",
     "stat_collected": "Payments received",
-    "mark_paid": "Mark installment {n} paid"
+    "mark_paid": "Mark installment {n} paid",
+    "manage_products": "Manage products"
   },
   "UserProfilePage": {
     "title_bar": "User profile",
     "title_bar_description": "View and manage your profile"
+  },
+  "AdminProducts": {
+    "title": "Product management",
+    "new_product": "Add a product",
+    "name": "Name",
+    "price": "Price (Rp)",
+    "stock": "Stock",
+    "active": "Show in catalog",
+    "save": "Save changes",
+    "add": "Add product",
+    "hidden": "(hidden)",
+    "page_description": "Add products and update prices and stock",
+    "description": "Description"
   }
 }

@@ -84,3 +84,13 @@ export const NEXT_STATUSES: Record<OrderStatus, OrderStatus[]> = {
   [ORDER_STATUS.DELIVERED]: [],
   [ORDER_STATUS.CANCELLED]: [],
 };
+
+/** URL-safe product slug, e.g. "Paket Keluarga!" -> "paket-keluarga". */
+export const slugify = (name: string) =>
+  name
+    .normalize('NFKD')
+    .replace(/\p{M}/gu, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 60);

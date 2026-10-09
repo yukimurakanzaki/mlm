@@ -171,10 +171,24 @@
     "stat_orders": "Total pesanan",
     "stat_pending": "Menunggu konfirmasi",
     "stat_collected": "Pembayaran diterima",
-    "mark_paid": "Tandai cicilan {n} lunas"
+    "mark_paid": "Tandai cicilan {n} lunas",
+    "manage_products": "Kelola produk"
   },
   "UserProfilePage": {
     "title_bar": "Profil pengguna",
     "title_bar_description": "Lihat dan kelola profil Anda"
+  },
+  "AdminProducts": {
+    "title": "Kelola produk",
+    "new_product": "Tambah produk",
+    "name": "Nama",
+    "price": "Harga (Rp)",
+    "stock": "Stok",
+    "active": "Tampilkan di katalog",
+    "save": "Simpan perubahan",
+    "add": "Tambah produk",
+    "hidden": "(disembunyikan)",
+    "page_description": "Tambah produk serta ubah harga dan stok",
+    "description": "Deskripsi"
   }
 }

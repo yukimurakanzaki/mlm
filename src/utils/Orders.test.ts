@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildInstallmentPlan, formatIDR, generateOrderCode, NEXT_STATUSES, normalizePhone } from './Orders';
+import { buildInstallmentPlan, formatIDR, generateOrderCode, NEXT_STATUSES, normalizePhone, slugify } from './Orders';
 
 describe('Orders utils', () => {
   describe('formatIDR', () => {
@@ -68,5 +68,13 @@ describe('Orders utils', () => {
       expect(NEXT_STATUSES.delivered).toEqual([]);
       expect(NEXT_STATUSES.cancelled).toEqual([]);
     });
+  });
+});
+
+describe('slugify', () => {
+  it('makes url-safe slugs', () => {
+    expect(slugify('Paket Keluarga!')).toBe('paket-keluarga');
+    expect(slugify('  Café --  Lait ')).toBe('cafe-lait');
+    expect(slugify('***')).toBe('');
   });
 });
