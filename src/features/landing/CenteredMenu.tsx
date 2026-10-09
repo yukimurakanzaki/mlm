@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { MenuToggle } from '@/components/MenuToggle';
 import { useMenu } from '@/hooks/UseMenu';
 import { Link } from '@/libs/I18nNavigation';
@@ -10,6 +11,7 @@ export const CenteredMenu = (props: {
   children: React.ReactNode;
   rightMenu: React.ReactNode;
 }) => {
+  const t = useTranslations('Navbar');
   const { isMenuOpen, toggleMenu } = useMenu();
 
   const navClass = cn('max-lg:w-full max-lg:bg-secondary max-lg:p-5', {
@@ -21,7 +23,7 @@ export const CenteredMenu = (props: {
       <Link href="/">{props.logo}</Link>
 
       <div className="lg:hidden">
-        <MenuToggle onClick={toggleMenu} />
+        <MenuToggle onClick={toggleMenu} label={t('menu_label')} expanded={isMenuOpen} />
       </div>
 
       <nav className={cn(`

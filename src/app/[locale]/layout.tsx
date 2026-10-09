@@ -3,9 +3,11 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/libs/I18nRouting';
+import { AppConfig } from '@/utils/AppConfig';
 import '@/styles/global.css';
 
 export const metadata: Metadata = {
+  title: { default: AppConfig.name, template: `%s | ${AppConfig.name}` },
   icons: [
     {
       rel: 'apple-touch-icon',

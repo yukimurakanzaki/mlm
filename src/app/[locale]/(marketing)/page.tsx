@@ -20,7 +20,7 @@ export async function generateMetadata(props: IndexProps): Promise<Metadata> {
   });
 
   return {
-    title: t('meta_title'),
+    title: { absolute: t('meta_title') },
     description: t('meta_description'),
   };
 }

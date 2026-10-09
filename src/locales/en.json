@@ -8,7 +8,8 @@
     "my_orders": "My orders",
     "catalog": "Catalog",
     "track": "Track order",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "menu_label": "Open menu"
   },
   "LocaleSwitcher": {
     "button_label": "Change language"
@@ -23,7 +24,7 @@
   "HowItWorks": {
     "subtitle": "How it works",
     "title": "Three simple steps",
-    "description": "From choosing a product to receiving it at your door.",
+    "description": "From choosing a product to receiving it where you are.",
     "step1_title": "Choose a product",
     "step1_description": "Browse the catalog and pick what you need.",
     "step2_title": "Place your order",
@@ -190,5 +191,12 @@
     "hidden": "(hidden)",
     "page_description": "Add products and update prices and stock",
     "description": "Description"
+  },
+  "ErrorPage": {
+    "title": "Something went wrong",
+    "description": "Sorry, this page cannot be opened right now. Please try again.",
+    "retry": "Try again",
+    "home": "Back to home",
+    "contact": "Need help? Contact us on WhatsApp"
   }
 }

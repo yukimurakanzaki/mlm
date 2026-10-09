@@ -8,7 +8,8 @@
     "my_orders": "Pesanan saya",
     "catalog": "Katalog",
     "track": "Lacak pesanan",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "menu_label": "Buka menu"
   },
   "LocaleSwitcher": {
     "button_label": "Ganti bahasa"
@@ -23,7 +24,7 @@
   "HowItWorks": {
     "subtitle": "Cara kerja",
     "title": "Tiga langkah mudah",
-    "description": "Dari memilih produk sampai diterima di rumah.",
+    "description": "Dari memilih produk sampai diterima di lokasi Anda.",
     "step1_title": "Pilih produk",
     "step1_description": "Lihat katalog dan pilih yang Anda butuhkan.",
     "step2_title": "Buat pesanan",
@@ -190,5 +191,12 @@
     "hidden": "(disembunyikan)",
     "page_description": "Tambah produk serta ubah harga dan stok",
     "description": "Deskripsi"
+  },
+  "ErrorPage": {
+    "title": "Terjadi kendala",
+    "description": "Mohon maaf, halaman ini belum bisa dibuka. Silakan coba lagi.",
+    "retry": "Coba lagi",
+    "home": "Kembali ke beranda",
+    "contact": "Butuh bantuan? Hubungi kami lewat WhatsApp"
   }
 }

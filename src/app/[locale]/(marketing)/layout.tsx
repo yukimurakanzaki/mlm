@@ -12,7 +12,7 @@ export default async function MarketingLayout(props: {
 
   return (
     <>
-      <Navbar />
+      <Navbar locale={locale} />
       {props.children}
       <Footer />
       <ChatWidget />

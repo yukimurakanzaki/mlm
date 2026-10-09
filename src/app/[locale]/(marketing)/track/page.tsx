@@ -2,13 +2,15 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { buttonVariants } from '@/components/ui/buttonVariants';
 import { Section } from '@/features/landing/Section';
+import { lookupOrder } from '@/features/orders/actions';
 import { OrderDetails } from '@/features/orders/OrderDetails';
 import { findOrderByCodeAndPhone } from '@/features/orders/queries';
+import { getTrackSession } from '@/features/orders/TrackSession';
 import { normalizePhone } from '@/utils/Orders';
 
 type Props = {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ code?: string; phone?: string }>;
+  searchParams: Promise<{ code?: string }>;
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
@@ -21,7 +23,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function TrackPage(props: Props) {
   const { locale } = await props.params;
   setRequestLocale(locale);
-  const { code, phone } = await props.searchParams;
+  const { code: codeParam } = await props.searchParams;
+  const session = await getTrackSession();
+  // The phone number lives in a short-lived cookie, never in the URL. A `?code=` link (e.g. returning
+  // from the payment page) reuses it only when it belongs to the same order.
+  const code = codeParam ?? session?.code;
+  const phone = session && (!codeParam || session.code === codeParam.toUpperCase()) ? session.phone : undefined;
   const t = await getTranslations({ locale, namespace: 'Track' });
 
   const normalizedPhone = phone ? normalizePhone(phone) : null;
@@ -32,12 +39,13 @@ export default async function TrackPage(props: Props) {
   return (
     <Section title={t('title')} description={t('description')}>
       <form
-        method="get"
+        action={lookupOrder}
         className="
           mx-auto flex max-w-xl flex-col gap-3
           sm:flex-row
         "
       >
+        <input type="hidden" name="locale" value={locale} />
         <input
           name="code"
           required

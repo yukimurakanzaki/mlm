@@ -15,6 +15,7 @@ import { AppConfig } from '@/utils/AppConfig';
 import { getBaseUrl } from '@/utils/Helpers';
 import { buildInstallmentPlan, generateOrderCode, NEXT_STATUSES, normalizePhone } from '@/utils/Orders';
 import { buildGatewayOrderId } from '@/utils/Payments';
+import { setTrackSession } from './TrackSession';
 
 export type OrderFormState = {
   // Keys of the `OrderForm.errors` messages
@@ -125,7 +126,23 @@ export async function createOrder(_prev: OrderFormState, formData: FormData): Pr
   }
 
   const prefix = input.locale === AppConfig.i18n.defaultLocale ? '' : `/${input.locale}`;
-  redirect(`${prefix}/track?code=${orderCode}&phone=${phone}`);
+  await setTrackSession(orderCode, phone);
+  redirect(`${prefix}/track`);
+}
+
+const lookupInput = z.object({
+  code: z.string().trim().min(1).max(40),
+  phone: z.string().trim().min(1).max(30),
+  locale: z.string().max(5).default('id'),
+});
+
+/** Order tracking form (POST): keeps the code and phone out of the URL, then shows the tracking page. */
+export async function lookupOrder(formData: FormData) {
+  const parsed = lookupInput.parse(Object.fromEntries(formData));
+  const prefix = parsed.locale === AppConfig.i18n.defaultLocale ? '' : `/${parsed.locale}`;
+
+  await setTrackSession(parsed.code.toUpperCase(), parsed.phone);
+  redirect(`${prefix}/track`);
 }
 
 /** Admin only: moves an order along its lifecycle. Cancelling returns the stock. */
@@ -216,7 +233,7 @@ export async function payInstallment(formData: FormData) {
     amountIdr: row.payment.amountIdr,
     itemName: `${row.order.code} (${row.payment.installmentNo}/${row.order.installmentCount})`,
     customer: { name: row.order.customerName, phone: row.order.customerPhone, email: row.order.customerEmail },
-    finishUrl: `${getBaseUrl()}${prefix}/track?code=${row.order.code}&phone=${row.order.customerPhone}`,
+    finishUrl: `${getBaseUrl()}${prefix}/track?code=${row.order.code}`,
   });
 
   redirect(redirectUrl);

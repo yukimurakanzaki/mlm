@@ -13,7 +13,8 @@ test.describe('Ordering', () => {
     await page.getByRole('button', { name: 'Buat pesanan' }).click();
 
     // Redirected to the tracking page with the new order
-    await expect(page).toHaveURL(/\/track\?code=MLM-\d{6}-[A-Z2-9]{6}&phone=6281234567890/);
+    await expect(page).toHaveURL(/\/track$/);
+    expect(page.url()).not.toContain('6281234567890');
     await expect(page.getByText('Menunggu konfirmasi')).toBeVisible();
     await expect(page.getByText('Cicilan 1 dari 3')).toBeVisible();
     await expect(page.getByText('Cicilan 3 dari 3')).toBeVisible();
@@ -21,7 +22,10 @@ test.describe('Ordering', () => {
   });
 
   test('tracking requires the matching phone number', async ({ page }) => {
-    await page.goto('/track?code=MLM-000000-AAAAAA&phone=081234567890');
+    await page.goto('/track');
+    await page.getByLabel('Kode pesanan').fill('MLM-000000-AAAAAA');
+    await page.getByLabel('Nomor HP').fill('081234567890');
+    await page.getByRole('button', { name: 'Cari' }).click();
 
     await expect(page.getByText('Pesanan tidak ditemukan')).toBeVisible();
   });
