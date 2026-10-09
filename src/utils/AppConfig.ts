@@ -1,0 +1,47 @@
+import type { LocalizationResource } from '@clerk/shared/types';
+import type { LocalePrefixMode } from 'next-intl/routing';
+import type { AppLocale } from '@/types/I18n';
+import { enUS, idID } from '@clerk/localizations';
+
+/** Locale prefix strategy for next-intl routing. */
+const localePrefix: LocalePrefixMode = 'as-needed';
+const locales = [
+  {
+    id: 'id',
+    name: 'Bahasa Indonesia',
+  },
+  {
+    id: 'en',
+    name: 'English',
+  },
+] satisfies AppLocale[];
+
+/** Centralized application configuration */
+export const AppConfig = {
+  name: 'PT MLM',
+  i18n: {
+    locales,
+    defaultLocale: 'id',
+    localePrefix,
+  },
+  // FIXME: Replace with the real company contact details before launch
+  contact: {
+    email: 'support@example.com',
+    whatsapp: '6281234567890', // International format, digits only
+  },
+  currency: 'IDR',
+  // Number of monthly installments a customer can choose when ordering
+  installmentOptions: [1, 3, 6],
+} as const;
+
+const supportedLocales: Record<string, LocalizationResource> = {
+  id: idID,
+  en: enUS,
+};
+
+export const ClerkLocalizations = {
+  defaultLocale: idID,
+  supportedLocales,
+};
+
+export const AllLocales = AppConfig.i18n.locales.map(locale => locale.id);

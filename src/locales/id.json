@@ -1,0 +1,179 @@
+{
+  "Index": {
+    "meta_title": "PT MLM - Pesan produk, pantau pembayaran dan pengiriman",
+    "meta_description": "Lihat katalog PT MLM, pesan online, bayar dengan cicilan, dan lacak status pesanan Anda."
+  },
+  "Navbar": {
+    "sign_in": "Masuk",
+    "my_orders": "Pesanan saya",
+    "catalog": "Katalog",
+    "track": "Lacak pesanan",
+    "faq": "FAQ"
+  },
+  "LocaleSwitcher": {
+    "button_label": "Ganti bahasa"
+  },
+  "Hero": {
+    "banner": "Toko online resmi PT MLM",
+    "title": "Pesan produk Anda dengan <important>mudah</important>, bayar fleksibel, pantau setiap langkah.",
+    "description": "Lihat katalog, pesan dalam hitungan menit tanpa perlu akun, bayar lunas atau cicilan bulanan, dan pantau pengiriman secara online.",
+    "primary_button": "Lihat katalog",
+    "secondary_button": "Lacak pesanan saya"
+  },
+  "HowItWorks": {
+    "subtitle": "Cara kerja",
+    "title": "Tiga langkah mudah",
+    "description": "Dari memilih produk sampai diterima di rumah.",
+    "step1_title": "Pilih produk",
+    "step1_description": "Lihat katalog dan pilih yang Anda butuhkan.",
+    "step2_title": "Buat pesanan",
+    "step2_description": "Isi data Anda dan pilih bayar lunas atau cicilan.",
+    "step3_title": "Lacak online",
+    "step3_description": "Gunakan kode pesanan dan nomor HP untuk memantau pembayaran dan pengiriman."
+  },
+  "Catalog": {
+    "meta_title": "Katalog produk",
+    "meta_description": "Semua produk yang tersedia dari PT MLM.",
+    "title": "Katalog produk",
+    "description": "Pilih produk lalu pesan secara online.",
+    "empty": "Belum ada produk. Silakan cek kembali nanti.",
+    "featured_title": "Produk unggulan",
+    "featured_description": "Produk terbaru kami, siap dipesan.",
+    "order_now": "Pesan sekarang",
+    "out_of_stock": "Stok habis"
+  },
+  "Product": {
+    "stock": "Stok {count} item",
+    "order_title": "Buat pesanan",
+    "sold_out": "Produk ini sedang kosong."
+  },
+  "OrderForm": {
+    "name": "Nama lengkap",
+    "phone": "Nomor HP / WhatsApp",
+    "email": "Email (opsional)",
+    "address": "Alamat pengiriman",
+    "quantity": "Jumlah",
+    "payment_plan": "Skema pembayaran",
+    "pay_in_full": "Bayar lunas",
+    "installments": "Cicilan {count}x per bulan",
+    "notes": "Catatan (opsional)",
+    "unit_price": "Harga satuan: {price}",
+    "submit": "Buat pesanan",
+    "submitting": "Memproses pesanan...",
+    "errors": {
+      "invalid": "Periksa kembali kolom yang ditandai lalu coba lagi.",
+      "phone": "Masukkan nomor HP Indonesia yang valid, contoh 0812 3456 7890.",
+      "out_of_stock": "Maaf, stok tidak cukup untuk jumlah ini.",
+      "unknown": "Terjadi kesalahan. Silakan coba lagi atau hubungi kami."
+    }
+  },
+  "Track": {
+    "meta_title": "Lacak pesanan",
+    "meta_description": "Cek status, pembayaran, dan pengiriman pesanan Anda.",
+    "title": "Lacak pesanan",
+    "description": "Masukkan kode pesanan dan nomor HP yang dipakai saat memesan.",
+    "code_label": "Kode pesanan",
+    "code_placeholder": "MLM-251009-ABC123",
+    "phone_label": "Nomor HP",
+    "phone_placeholder": "0812 3456 7890",
+    "search": "Cari",
+    "not_found": "Pesanan tidak ditemukan. Periksa kode pesanan dan nomor HP."
+  },
+  "OrderDetails": {
+    "order_code": "Kode pesanan",
+    "item": "Barang",
+    "qty": "Jml",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "payments": "Pembayaran",
+    "installment_n": "Cicilan {n} dari {total}",
+    "full_payment": "Pembayaran lunas",
+    "due": "jatuh tempo {date}",
+    "payment_pending": "Belum dibayar",
+    "payment_paid": "Lunas",
+    "payment_failed": "Gagal",
+    "paid_so_far": "Terbayar {paid} dari {total}"
+  },
+  "Status": {
+    "pending": "Menunggu konfirmasi",
+    "confirmed": "Dikonfirmasi",
+    "packed": "Dikemas",
+    "shipped": "Dikirim",
+    "delivered": "Diterima",
+    "cancelled": "Dibatalkan"
+  },
+  "Chat": {
+    "open": "Chat",
+    "close": "Tutup",
+    "title": "Asisten PT MLM",
+    "greeting": "Halo! Tanyakan seputar cara pesan, pembayaran, cicilan, pengiriman, atau pelacakan pesanan.",
+    "placeholder": "Tulis pertanyaan...",
+    "input_label": "Pesan Anda",
+    "send": "Kirim",
+    "error": "Maaf, terjadi kesalahan. Silakan coba lagi.",
+    "answer_order": "Buka Katalog, pilih produk, lalu isi formulir pesanan. Tidak perlu akun.",
+    "answer_track": "Buka Lacak pesanan, lalu masukkan kode pesanan dan nomor HP yang dipakai saat memesan.",
+    "answer_payment": "Setelah memesan, tim kami akan konfirmasi dan mengirim instruksi pembayaran. Status pembayaran tampil di halaman Lacak pesanan.",
+    "answer_installment": "Saat memesan Anda bisa memilih bayar lunas atau cicilan bulanan. Setiap cicilan dan jatuh temponya tampil di halaman pesanan.",
+    "answer_shipping": "Pesanan dikirim setelah pembayaran dikonfirmasi. Pantau status (dikemas, dikirim, diterima) di halaman Lacak pesanan.",
+    "answer_catalog": "Lihat semua produk dan harga di halaman Katalog.",
+    "answer_contact": "Hubungi tim kami lewat WhatsApp: {whatsapp} atau email {email}.",
+    "answer_fallback": "Maaf, saya belum menemukan jawabannya. Silakan hubungi tim kami lewat WhatsApp: {whatsapp}"
+  },
+  "FAQ": {
+    "title": "Pertanyaan yang sering diajukan",
+    "question1": "Apakah perlu akun untuk memesan?",
+    "answer1": "Tidak. Anda bisa memesan sebagai tamu dengan nama dan nomor HP. Dengan masuk akun, Anda bisa melihat semua pesanan di satu tempat.",
+    "question2": "Bisakah membayar dengan cicilan?",
+    "answer2": "Bisa. Saat memesan, pilih bayar lunas atau bagi total menjadi cicilan bulanan.",
+    "question3": "Bagaimana melacak pesanan?",
+    "answer3": "Gunakan halaman Lacak pesanan dengan kode pesanan dan nomor HP untuk melihat status pembayaran dan pengiriman.",
+    "question4": "Bagaimana menghubungi PT MLM?",
+    "answer4": "Gunakan asisten chat, WhatsApp, atau email di bagian bawah halaman."
+  },
+  "CTA": {
+    "title": "Siap memesan?",
+    "description": "Lihat katalog dan buat pesanan pertama Anda hari ini.",
+    "button_text": "Lihat katalog"
+  },
+  "Footer": {
+    "catalog": "Katalog",
+    "track": "Lacak pesanan",
+    "faq": "FAQ",
+    "email": "Email",
+    "footer_text": "© {year} {name}. Hak cipta dilindungi."
+  },
+  "SignIn": {
+    "meta_title": "Masuk",
+    "meta_description": "Masuk untuk melihat pesanan dan pembayaran Anda."
+  },
+  "SignUp": {
+    "meta_title": "Daftar",
+    "meta_description": "Buat akun agar semua pesanan Anda tersimpan di satu tempat."
+  },
+  "DashboardLayout": {
+    "meta_title": "Dasbor PT MLM",
+    "meta_description": "Pesanan, pembayaran, dan riwayat pembelian Anda.",
+    "home": "Pesanan saya",
+    "catalog": "Katalog",
+    "admin": "Admin"
+  },
+  "DashboardIndexPage": {
+    "title_bar": "Pesanan saya",
+    "title_bar_description": "Riwayat pembelian, pembayaran, dan status pesanan Anda",
+    "empty": "Anda belum memiliki pesanan.",
+    "browse_catalog": "Lihat katalog"
+  },
+  "Admin": {
+    "title": "Manajemen pesanan",
+    "description": "Pesanan, pembayaran, dan pemenuhan",
+    "stat_orders": "Total pesanan",
+    "stat_pending": "Menunggu konfirmasi",
+    "stat_collected": "Pembayaran diterima",
+    "mark_paid": "Tandai cicilan {n} lunas"
+  },
+  "UserProfilePage": {
+    "title_bar": "Profil pengguna",
+    "title_bar_description": "Lihat dan kelola profil Anda"
+  }
+}

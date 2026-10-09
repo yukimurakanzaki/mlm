@@ -1,0 +1,179 @@
+{
+  "Index": {
+    "meta_title": "PT MLM - Order products, track payments and deliveries",
+    "meta_description": "Browse the PT MLM catalog, place an order, pay in installments and track your order status online."
+  },
+  "Navbar": {
+    "sign_in": "Sign in",
+    "my_orders": "My orders",
+    "catalog": "Catalog",
+    "track": "Track order",
+    "faq": "FAQ"
+  },
+  "LocaleSwitcher": {
+    "button_label": "Change language"
+  },
+  "Hero": {
+    "banner": "Official online store of PT MLM",
+    "title": "Order your products <important>easily</important>, pay flexibly, track every step.",
+    "description": "Browse the catalog, order in minutes without creating an account, pay in full or in monthly installments, and follow your delivery online.",
+    "primary_button": "Browse catalog",
+    "secondary_button": "Track my order"
+  },
+  "HowItWorks": {
+    "subtitle": "How it works",
+    "title": "Three simple steps",
+    "description": "From choosing a product to receiving it at your door.",
+    "step1_title": "Choose a product",
+    "step1_description": "Browse the catalog and pick what you need.",
+    "step2_title": "Place your order",
+    "step2_description": "Fill in your details and choose to pay in full or in installments.",
+    "step3_title": "Track it online",
+    "step3_description": "Use your order code and phone number to follow payment and delivery."
+  },
+  "Catalog": {
+    "meta_title": "Product catalog",
+    "meta_description": "All products available from PT MLM.",
+    "title": "Product catalog",
+    "description": "Choose a product and order online.",
+    "empty": "No products available yet. Please check back soon.",
+    "featured_title": "Featured products",
+    "featured_description": "Our latest products, ready to order.",
+    "order_now": "Order now",
+    "out_of_stock": "Out of stock"
+  },
+  "Product": {
+    "stock": "{count, plural, one {# item} other {# items}} in stock",
+    "order_title": "Place your order",
+    "sold_out": "This product is currently out of stock."
+  },
+  "OrderForm": {
+    "name": "Full name",
+    "phone": "Mobile / WhatsApp number",
+    "email": "Email (optional)",
+    "address": "Shipping address",
+    "quantity": "Quantity",
+    "payment_plan": "Payment plan",
+    "pay_in_full": "Pay in full",
+    "installments": "{count} monthly installments",
+    "notes": "Notes (optional)",
+    "unit_price": "Unit price: {price}",
+    "submit": "Place order",
+    "submitting": "Placing order...",
+    "errors": {
+      "invalid": "Please check the highlighted fields and try again.",
+      "phone": "Please enter a valid Indonesian mobile number, e.g. 0812 3456 7890.",
+      "out_of_stock": "Sorry, there is not enough stock for this quantity.",
+      "unknown": "Something went wrong. Please try again or contact us."
+    }
+  },
+  "Track": {
+    "meta_title": "Track your order",
+    "meta_description": "Check the status, payment and delivery of your order.",
+    "title": "Track your order",
+    "description": "Enter your order code and the phone number used when ordering.",
+    "code_label": "Order code",
+    "code_placeholder": "MLM-251009-ABC123",
+    "phone_label": "Phone number",
+    "phone_placeholder": "0812 3456 7890",
+    "search": "Search",
+    "not_found": "Order not found. Check the order code and phone number."
+  },
+  "OrderDetails": {
+    "order_code": "Order code",
+    "item": "Item",
+    "qty": "Qty",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "payments": "Payments",
+    "installment_n": "Installment {n} of {total}",
+    "full_payment": "Full payment",
+    "due": "due {date}",
+    "payment_pending": "Unpaid",
+    "payment_paid": "Paid",
+    "payment_failed": "Failed",
+    "paid_so_far": "Paid {paid} of {total}"
+  },
+  "Status": {
+    "pending": "Awaiting confirmation",
+    "confirmed": "Confirmed",
+    "packed": "Packed",
+    "shipped": "Shipped",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled"
+  },
+  "Chat": {
+    "open": "Chat",
+    "close": "Close",
+    "title": "PT MLM assistant",
+    "greeting": "Hi! Ask me about ordering, payment, installments, delivery or order tracking.",
+    "placeholder": "Type your question...",
+    "input_label": "Your message",
+    "send": "Send",
+    "error": "Sorry, something went wrong. Please try again.",
+    "answer_order": "Open the Catalog, pick a product and fill in the order form. No account is needed.",
+    "answer_track": "Open Track order and enter your order code and the phone number you used when ordering.",
+    "answer_payment": "After you order, our team confirms and sends payment instructions. Your payment status shows on the Track order page.",
+    "answer_installment": "At checkout you can choose to pay in full or in monthly installments. Each installment and its due date is shown on your order page.",
+    "answer_shipping": "Orders are shipped after payment is confirmed. Follow the status (packed, shipped, delivered) on the Track order page.",
+    "answer_catalog": "See all products and prices in the Catalog page.",
+    "answer_contact": "Contact our team on WhatsApp: {whatsapp} or email {email}.",
+    "answer_fallback": "I could not find an answer to that. Please contact our team on WhatsApp: {whatsapp}"
+  },
+  "FAQ": {
+    "title": "Frequently asked questions",
+    "question1": "Do I need an account to order?",
+    "answer1": "No. You can order as a guest using your name and phone number. Signing in lets you see all your orders in one place.",
+    "question2": "Can I pay in installments?",
+    "answer2": "Yes. When ordering you can choose to pay in full or split the total into monthly installments.",
+    "question3": "How do I track my order?",
+    "answer3": "Use the Track order page with your order code and phone number to see payment and delivery status.",
+    "question4": "How can I contact PT MLM?",
+    "answer4": "Use the chat assistant, WhatsApp or email at the bottom of the page."
+  },
+  "CTA": {
+    "title": "Ready to order?",
+    "description": "Browse the catalog and place your first order today.",
+    "button_text": "Browse catalog"
+  },
+  "Footer": {
+    "catalog": "Catalog",
+    "track": "Track order",
+    "faq": "FAQ",
+    "email": "Email",
+    "footer_text": "© {year} {name}. All rights reserved."
+  },
+  "SignIn": {
+    "meta_title": "Sign in",
+    "meta_description": "Sign in to see your orders and payments."
+  },
+  "SignUp": {
+    "meta_title": "Sign up",
+    "meta_description": "Create an account to keep all your orders in one place."
+  },
+  "DashboardLayout": {
+    "meta_title": "PT MLM Dashboard",
+    "meta_description": "Your orders, payments and purchase history.",
+    "home": "My orders",
+    "catalog": "Catalog",
+    "admin": "Admin"
+  },
+  "DashboardIndexPage": {
+    "title_bar": "My orders",
+    "title_bar_description": "Your purchase history, payments and order status",
+    "empty": "You have no orders yet.",
+    "browse_catalog": "Browse the catalog"
+  },
+  "Admin": {
+    "title": "Order management",
+    "description": "Orders, payments and fulfilment",
+    "stat_orders": "Total orders",
+    "stat_pending": "Awaiting confirmation",
+    "stat_collected": "Payments received",
+    "mark_paid": "Mark installment {n} paid"
+  },
+  "UserProfilePage": {
+    "title_bar": "User profile",
+    "title_bar_description": "View and manage your profile"
+  }
+}
