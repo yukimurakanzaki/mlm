@@ -37,7 +37,6 @@ Clerk dashboard → Users → your user → Metadata → Public: `{ "role": "adm
 1. Create a Postgres database (e.g. Neon/Supabase) and a Clerk production instance.
 2. Set `DATABASE_URL`, `CLERK_SECRET_KEY`, `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `NEXT_PUBLIC_APP_URL` in your host (Vercel, or the included `Dockerfile`).
 3. Build command `npm run build` (applies migrations, then builds). Do **not** run `db:seed` in production.
-4. Before launch, replace the placeholders marked `FIXME` in `src/utils/AppConfig.ts` (contact email, WhatsApp number).
 
 ## Known limitations / next steps
 - Payments are recorded manually by admins; no payment gateway yet.

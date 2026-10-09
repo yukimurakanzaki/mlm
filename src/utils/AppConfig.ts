@@ -24,10 +24,9 @@ export const AppConfig = {
     defaultLocale: 'id',
     localePrefix,
   },
-  // FIXME: Replace with the real company contact details before launch
   contact: {
-    email: 'support@example.com',
-    whatsapp: '6281234567890', // International format, digits only
+    email: 'admin@mitralaboramedika.com',
+    whatsapp: '6281266854415', // International format, digits only
   },
   currency: 'IDR',
   // Number of monthly installments a customer can choose when ordering
