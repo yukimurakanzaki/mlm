@@ -18,7 +18,7 @@ const locales = [
 
 /** Centralized application configuration */
 export const AppConfig = {
-  name: 'PT MLM',
+  name: 'PT Mitra Labora Medika',
   i18n: {
     locales,
     defaultLocale: 'id',

@@ -1,6 +1,6 @@
-# PT MLM – Web App
+# PT Mitra Labora Medika – Web App
 
-Online ordering for PT MLM: customers browse the catalog, order without needing an account, pay in full or in monthly installments, and track order status and payments. Signed-in customers see their full purchase history. Staff manage orders and payments in an admin dashboard. A FAQ chatbot answers common questions.
+Online ordering for PT Mitra Labora Medika: customers browse the catalog, order without needing an account, pay in full or in monthly installments, and track order status and payments. Signed-in customers see their full purchase history. Staff manage orders and payments in an admin dashboard. A FAQ chatbot answers common questions.
 
 Built on Next.js 16, TypeScript, Tailwind, Drizzle/Postgres, Clerk and next-intl (Indonesian default, English at `/en`). Bootstrapped from [ixartz/SaaS-Boilerplate](https://github.com/ixartz/SaaS-Boilerplate) (MIT).
 
@@ -45,4 +45,4 @@ Full step-by-step: see [DEPLOY.md](DEPLOY.md).
 - Products are managed in the database (no admin UI yet).
 - No MLM-specific features (downline tree, commissions) – out of scope for this version.
 
-Licence: app code © PT MLM; the starter template is MIT (see `LICENSE`).
+Licence: app code © PT Mitra Labora Medika; the starter template is MIT (see `LICENSE`).

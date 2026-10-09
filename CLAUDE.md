@@ -1,6 +1,6 @@
-# PT MLM web app
+# PT Mitra Labora Medika web app
 
-Customer-facing web app for PT MLM: landing page, product catalog, ordering (guest or signed-in), installment payments, order tracking, a rule-based FAQ chatbot, and an admin dashboard.
+Customer-facing web app for PT Mitra Labora Medika: landing page, product catalog, ordering (guest or signed-in), installment payments, order tracking, a rule-based FAQ chatbot, and an admin dashboard.
 
 ## Stack
 Next.js 16 (App Router) · React 19 · TypeScript · Tailwind 4 · Drizzle ORM + Postgres (PGLite locally) · Clerk auth · next-intl (`id` default, `en` at `/en`) · Vitest + Playwright.

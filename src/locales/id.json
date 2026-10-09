@@ -1,7 +1,7 @@
 {
   "Index": {
-    "meta_title": "PT MLM - Pesan produk, pantau pembayaran dan pengiriman",
-    "meta_description": "Lihat katalog PT MLM, pesan online, bayar dengan cicilan, dan lacak status pesanan Anda."
+    "meta_title": "PT Mitra Labora Medika - Pesan produk, pantau pembayaran dan pengiriman",
+    "meta_description": "Lihat katalog PT Mitra Labora Medika, pesan online, bayar dengan cicilan, dan lacak status pesanan Anda."
   },
   "Navbar": {
     "sign_in": "Masuk",
@@ -15,7 +15,7 @@
     "button_label": "Ganti bahasa"
   },
   "Hero": {
-    "banner": "Toko online resmi PT MLM",
+    "banner": "Toko online resmi PT Mitra Labora Medika",
     "title": "Pesan produk Anda dengan <important>mudah</important>, bayar fleksibel, pantau setiap langkah.",
     "description": "Lihat katalog, pesan dalam hitungan menit tanpa perlu akun, bayar lunas atau cicilan bulanan, dan pantau pengiriman secara online.",
     "primary_button": "Lihat katalog",
@@ -34,7 +34,7 @@
   },
   "Catalog": {
     "meta_title": "Katalog produk",
-    "meta_description": "Semua produk yang tersedia dari PT MLM.",
+    "meta_description": "Semua produk yang tersedia dari PT Mitra Labora Medika.",
     "title": "Katalog produk",
     "description": "Pilih produk lalu pesan secara online.",
     "empty": "Belum ada produk. Silakan cek kembali nanti.",
@@ -115,7 +115,7 @@
   "Chat": {
     "open": "Chat",
     "close": "Tutup",
-    "title": "Asisten PT MLM",
+    "title": "Asisten PT Mitra Labora Medika",
     "greeting": "Halo! Tanyakan seputar cara pesan, pembayaran, cicilan, pengiriman, atau pelacakan pesanan.",
     "placeholder": "Tulis pertanyaan...",
     "input_label": "Pesan Anda",
@@ -138,7 +138,7 @@
     "answer2": "Bisa. Saat memesan, pilih bayar lunas atau bagi total menjadi cicilan bulanan.",
     "question3": "Bagaimana melacak pesanan?",
     "answer3": "Gunakan halaman Lacak pesanan dengan kode pesanan dan nomor HP untuk melihat status pembayaran dan pengiriman.",
-    "question4": "Bagaimana menghubungi PT MLM?",
+    "question4": "Bagaimana menghubungi PT Mitra Labora Medika?",
     "answer4": "Gunakan asisten chat, WhatsApp, atau email di bagian bawah halaman."
   },
   "CTA": {
@@ -162,7 +162,7 @@
     "meta_description": "Buat akun agar semua pesanan Anda tersimpan di satu tempat."
   },
   "DashboardLayout": {
-    "meta_title": "Dasbor PT MLM",
+    "meta_title": "Dasbor PT Mitra Labora Medika",
     "meta_description": "Pesanan, pembayaran, dan riwayat pembelian Anda.",
     "home": "Pesanan saya",
     "catalog": "Katalog",

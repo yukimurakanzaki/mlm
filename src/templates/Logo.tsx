@@ -3,7 +3,11 @@ import { AppConfig } from '@/utils/AppConfig';
 export const Logo = (props: {
   isTextHidden?: boolean;
 }) => (
-  <div className="flex items-center text-xl font-semibold">
+  <div className="
+    flex items-center text-lg font-semibold
+    sm:text-xl
+  "
+  >
     <svg
       className="mr-1 size-8 stroke-current stroke-2"
       xmlns="http://www.w3.org/2000/svg"

@@ -1,7 +1,7 @@
 {
   "Index": {
-    "meta_title": "PT MLM - Order products, track payments and deliveries",
-    "meta_description": "Browse the PT MLM catalog, place an order, pay in installments and track your order status online."
+    "meta_title": "PT Mitra Labora Medika - Order products, track payments and deliveries",
+    "meta_description": "Browse the PT Mitra Labora Medika catalog, place an order, pay in installments and track your order status online."
   },
   "Navbar": {
     "sign_in": "Sign in",
@@ -15,7 +15,7 @@
     "button_label": "Change language"
   },
   "Hero": {
-    "banner": "Official online store of PT MLM",
+    "banner": "Official online store of PT Mitra Labora Medika",
     "title": "Order your products <important>easily</important>, pay flexibly, track every step.",
     "description": "Browse the catalog, order in minutes without creating an account, pay in full or in monthly installments, and follow your delivery online.",
     "primary_button": "Browse catalog",
@@ -34,7 +34,7 @@
   },
   "Catalog": {
     "meta_title": "Product catalog",
-    "meta_description": "All products available from PT MLM.",
+    "meta_description": "All products available from PT Mitra Labora Medika.",
     "title": "Product catalog",
     "description": "Choose a product and order online.",
     "empty": "No products available yet. Please check back soon.",
@@ -115,7 +115,7 @@
   "Chat": {
     "open": "Chat",
     "close": "Close",
-    "title": "PT MLM assistant",
+    "title": "PT Mitra Labora Medika assistant",
     "greeting": "Hi! Ask me about ordering, payment, installments, delivery or order tracking.",
     "placeholder": "Type your question...",
     "input_label": "Your message",
@@ -138,7 +138,7 @@
     "answer2": "Yes. When ordering you can choose to pay in full or split the total into monthly installments.",
     "question3": "How do I track my order?",
     "answer3": "Use the Track order page with your order code and phone number to see payment and delivery status.",
-    "question4": "How can I contact PT MLM?",
+    "question4": "How can I contact PT Mitra Labora Medika?",
     "answer4": "Use the chat assistant, WhatsApp or email at the bottom of the page."
   },
   "CTA": {
@@ -162,7 +162,7 @@
     "meta_description": "Create an account to keep all your orders in one place."
   },
   "DashboardLayout": {
-    "meta_title": "PT MLM Dashboard",
+    "meta_title": "PT Mitra Labora Medika Dashboard",
     "meta_description": "Your orders, payments and purchase history.",
     "home": "My orders",
     "catalog": "Catalog",
