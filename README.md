@@ -34,6 +34,7 @@ Clerk dashboard → Users → your user → Metadata → Public: `{ "role": "adm
 `npm run lint && npm run check:types && npm run check:deps && npm run check:i18n && npm test && npm run test:e2e` (also run in GitHub Actions on every PR).
 
 ## Deploying
+Full step-by-step: see [DEPLOY.md](DEPLOY.md).
 1. Create a Postgres database (e.g. Neon/Supabase) and a Clerk production instance.
 2. Set `DATABASE_URL`, `CLERK_SECRET_KEY`, `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `NEXT_PUBLIC_APP_URL` in your host (Vercel, or the included `Dockerfile`).
 3. Build command `npm run build` (applies migrations, then builds). Do **not** run `db:seed` in production.
