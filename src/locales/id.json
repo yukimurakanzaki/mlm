@@ -92,6 +92,7 @@
     "payment_pending": "Belum dibayar",
     "payment_paid": "Lunas",
     "payment_failed": "Gagal",
+    "pay_online": "Bayar online",
     "paid_so_far": "Terbayar {paid} dari {total}"
   },
   "Status": {
@@ -113,7 +114,7 @@
     "error": "Maaf, terjadi kesalahan. Silakan coba lagi.",
     "answer_order": "Buka Katalog, pilih produk, lalu isi formulir pesanan. Tidak perlu akun.",
     "answer_track": "Buka Lacak pesanan, lalu masukkan kode pesanan dan nomor HP yang dipakai saat memesan.",
-    "answer_payment": "Setelah memesan, tim kami akan konfirmasi dan mengirim instruksi pembayaran. Status pembayaran tampil di halaman Lacak pesanan.",
+    "answer_payment": "Setelah memesan, bayar online lewat halaman Lacak pesanan (transfer bank, e-wallet, QRIS) atau tunggu instruksi pembayaran dari tim kami. Status pembayaran tampil di halaman Lacak pesanan.",
     "answer_installment": "Saat memesan Anda bisa memilih bayar lunas atau cicilan bulanan. Setiap cicilan dan jatuh temponya tampil di halaman pesanan.",
     "answer_shipping": "Pesanan dikirim setelah pembayaran dikonfirmasi. Pantau status (dikemas, dikirim, diterima) di halaman Lacak pesanan.",
     "answer_catalog": "Lihat semua produk dan harga di halaman Katalog.",

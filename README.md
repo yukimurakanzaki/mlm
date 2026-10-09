@@ -14,7 +14,8 @@ Built on Next.js 16, TypeScript, Tailwind, Drizzle/Postgres, Clerk and next-intl
 | Customer dashboard (history, payments) | Done |
 | Admin: order status, mark installment paid, stats | Done |
 | FAQ chatbot (rule-based, no AI key needed) | Done |
-| Online payment gateway (Midtrans/Xendit), notifications | Not yet |
+| Online payment via Midtrans (per installment, webhook auto-confirms) | Done (needs Midtrans keys) |
+| Notifications (WhatsApp/email) | Not yet |
 | Product management UI, rate limiting, LLM chatbot | Not yet |
 
 ## Quick start

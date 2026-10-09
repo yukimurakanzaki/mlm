@@ -8,10 +8,13 @@ import * as z from 'zod';
 import { isAdmin } from '@/libs/Auth';
 import { db } from '@/libs/DB';
 import { logger } from '@/libs/Logger';
+import { createSnapPayment, isMidtransConfigured } from '@/libs/Midtrans';
 import { orderItemSchema, orderSchema, paymentSchema, productSchema } from '@/models/Schema';
 import { ORDER_STATUS, PAYMENT_STATUS } from '@/types/Order';
 import { AppConfig } from '@/utils/AppConfig';
+import { getBaseUrl } from '@/utils/Helpers';
 import { buildInstallmentPlan, generateOrderCode, NEXT_STATUSES, normalizePhone } from '@/utils/Orders';
+import { buildGatewayOrderId } from '@/utils/Payments';
 
 export type OrderFormState = {
   // Keys of the `OrderForm.errors` messages
@@ -172,4 +175,49 @@ export async function markPaymentPaid(formData: FormData) {
     .where(and(eq(paymentSchema.id, paymentId), eq(paymentSchema.status, PAYMENT_STATUS.PENDING)));
 
   revalidatePath('/[locale]/dashboard/admin', 'page');
+}
+
+const payInput = z.object({
+  paymentId: z.coerce.number().int().positive(),
+  code: z.string().trim().min(1).max(40),
+  phone: z.string().trim().min(1).max(30),
+  locale: z.string().max(5).default('id'),
+});
+
+/** Customer: starts a Midtrans checkout for one installment, then redirects to the payment page. */
+export async function payInstallment(formData: FormData) {
+  const parsed = payInput.safeParse(Object.fromEntries(formData));
+
+  if (!parsed.success || !isMidtransConfigured()) {
+    throw new Error('Invalid payment request');
+  }
+
+  const { paymentId, code, phone, locale } = parsed.data;
+
+  // Same proof as order tracking: the order code and phone must both match
+  const [row] = await db
+    .select({ payment: paymentSchema, order: orderSchema })
+    .from(paymentSchema)
+    .innerJoin(orderSchema, eq(orderSchema.id, paymentSchema.orderId))
+    .where(and(
+      eq(paymentSchema.id, paymentId),
+      eq(orderSchema.code, code.toUpperCase()),
+      eq(orderSchema.customerPhone, phone),
+    ))
+    .limit(1);
+
+  if (!row || row.payment.status === PAYMENT_STATUS.PAID || row.order.status === ORDER_STATUS.CANCELLED) {
+    throw new Error('Payment not available');
+  }
+
+  const prefix = locale === AppConfig.i18n.defaultLocale ? '' : `/${locale}`;
+  const redirectUrl = await createSnapPayment({
+    orderId: buildGatewayOrderId(row.payment.id),
+    amountIdr: row.payment.amountIdr,
+    itemName: `${row.order.code} (${row.payment.installmentNo}/${row.order.installmentCount})`,
+    customer: { name: row.order.customerName, phone: row.order.customerPhone, email: row.order.customerEmail },
+    finishUrl: `${getBaseUrl()}${prefix}/track?code=${row.order.code}&phone=${row.order.customerPhone}`,
+  });
+
+  redirect(redirectUrl);
 }

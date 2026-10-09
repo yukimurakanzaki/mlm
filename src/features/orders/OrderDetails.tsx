@@ -1,6 +1,9 @@
 import type { OrderWithDetails } from './queries';
 import { getTranslations } from 'next-intl/server';
+import { Button } from '@/components/ui/button';
+import { isMidtransConfigured } from '@/libs/Midtrans';
 import { formatIDR } from '@/utils/Orders';
+import { payInstallment } from './actions';
 import { StatusBadge } from './StatusBadge';
 
 /** Order summary with items, installment schedule and payment status. Shared by tracking and dashboard. */
@@ -8,6 +11,7 @@ export const OrderDetails = async (props: { order: OrderWithDetails; locale: str
   const t = await getTranslations({ locale: props.locale, namespace: 'OrderDetails' });
   const { order, locale } = props;
   const paid = order.payments.filter(p => p.status === 'paid').reduce((sum, p) => sum + p.amountIdr, 0);
+  const canPayOnline = isMidtransConfigured() && order.status !== 'cancelled';
   const date = new Intl.DateTimeFormat(locale === 'en' ? 'en-ID' : 'id-ID', { dateStyle: 'medium' });
 
   return (
@@ -66,7 +70,7 @@ export const OrderDetails = async (props: { order: OrderWithDetails; locale: str
                 {t('due', { date: date.format(new Date(payment.dueDate)) })}
               </span>
             </span>
-            <span className="text-right">
+            <span className="flex items-center gap-2 text-right">
               {formatIDR(payment.amountIdr, locale)}
               <span className={payment.status === 'paid'
                 ? `ml-2 text-green-700`
@@ -74,6 +78,15 @@ export const OrderDetails = async (props: { order: OrderWithDetails; locale: str
               >
                 {t(`payment_${payment.status}`)}
               </span>
+              {canPayOnline && payment.status !== 'paid' && (
+                <form action={payInstallment}>
+                  <input type="hidden" name="paymentId" value={payment.id} />
+                  <input type="hidden" name="code" value={order.code} />
+                  <input type="hidden" name="phone" value={order.customerPhone} />
+                  <input type="hidden" name="locale" value={locale} />
+                  <Button type="submit" size="sm">{t('pay_online')}</Button>
+                </form>
+              )}
             </span>
           </li>
         ))}

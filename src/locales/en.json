@@ -92,6 +92,7 @@
     "payment_pending": "Unpaid",
     "payment_paid": "Paid",
     "payment_failed": "Failed",
+    "pay_online": "Pay online",
     "paid_so_far": "Paid {paid} of {total}"
   },
   "Status": {
@@ -113,7 +114,7 @@
     "error": "Sorry, something went wrong. Please try again.",
     "answer_order": "Open the Catalog, pick a product and fill in the order form. No account is needed.",
     "answer_track": "Open Track order and enter your order code and the phone number you used when ordering.",
-    "answer_payment": "After you order, our team confirms and sends payment instructions. Your payment status shows on the Track order page.",
+    "answer_payment": "After you order, pay online from the Track order page (bank transfer, e-wallet, QRIS) or wait for our team to send payment instructions. Your payment status shows on the Track order page.",
     "answer_installment": "At checkout you can choose to pay in full or in monthly installments. Each installment and its due date is shown on your order page.",
     "answer_shipping": "Orders are shipped after payment is confirmed. Follow the status (packed, shipped, delivered) on the Track order page.",
     "answer_catalog": "See all products and prices in the Catalog page.",
