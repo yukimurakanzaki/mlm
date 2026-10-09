@@ -15,7 +15,8 @@ Bootstrapped from [ixartz/SaaS-Boilerplate](https://github.com/ixartz/SaaS-Boile
 ## Where things live
 - `src/models/Schema.ts` – database tables (money is whole IDR integers)
 - `src/features/orders/` – order creation/admin actions (`actions.ts`), queries, UI
-- `src/utils/Orders.ts`, `src/utils/Chatbot.ts` – pure logic with unit tests
+- `src/utils/Orders.ts`, `src/utils/Chatbot.ts`, `src/utils/ProductImport.ts` – pure logic with unit tests
+- Products with `showPrice = false` or no price are "request a quote" (WhatsApp) and cannot be ordered online; `trackStock = false` ignores stock
 - `src/app/[locale]/(marketing)` – public pages · `(auth)/dashboard` – signed-in pages · `src/app/api/chat` – chatbot
 - `src/locales/{id,en}.json` – every user-facing string; add keys to both (`npm run check:i18n`)
 

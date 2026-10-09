@@ -28,6 +28,30 @@ export const ProductForm = async (props: { product?: typeof productSchema.$infer
         {t('name')}
         <input name="name" required minLength={2} maxLength={120} defaultValue={product?.name} className={inputClass} />
       </label>
+      <label className="block text-sm font-medium">
+        {t('sku')}
+        <input name="sku" maxLength={60} defaultValue={product?.sku ?? ''} className={inputClass} />
+      </label>
+      <label className="block text-sm font-medium">
+        {t('category')}
+        <input name="category" maxLength={80} defaultValue={product?.category ?? ''} className={inputClass} />
+      </label>
+      <label className="block text-sm font-medium">
+        {t('brand')}
+        <input name="brand" maxLength={80} defaultValue={product?.brand ?? ''} className={inputClass} />
+      </label>
+      <label className="block text-sm font-medium">
+        {t('unit')}
+        <input name="unit" maxLength={40} defaultValue={product?.unit ?? ''} className={inputClass} />
+      </label>
+      <label className="
+        block text-sm font-medium
+        sm:col-span-2
+      "
+      >
+        {t('packaging')}
+        <input name="packaging" maxLength={120} defaultValue={product?.packaging ?? ''} className={inputClass} />
+      </label>
       <label className="
         block text-sm font-medium
         sm:col-span-2
@@ -38,11 +62,20 @@ export const ProductForm = async (props: { product?: typeof productSchema.$infer
       </label>
       <label className="block text-sm font-medium">
         {t('price')}
-        <input name="priceIdr" type="number" required min={1000} step={1} defaultValue={product?.priceIdr} className={inputClass} />
+        <input name="priceIdr" type="number" min={1000} step={1} defaultValue={product?.priceIdr ?? ''} className={inputClass} />
+        <span className="text-xs font-normal text-muted-foreground">{t('price_hint')}</span>
       </label>
       <label className="block text-sm font-medium">
         {t('stock')}
         <input name="stock" type="number" required min={0} step={1} defaultValue={product?.stock ?? 0} className={inputClass} />
+      </label>
+      <label className="flex items-center gap-2 text-sm font-medium">
+        <input name="showPrice" type="checkbox" defaultChecked={product?.showPrice ?? true} />
+        {t('show_price')}
+      </label>
+      <label className="flex items-center gap-2 text-sm font-medium">
+        <input name="trackStock" type="checkbox" defaultChecked={product?.trackStock ?? true} />
+        {t('track_stock')}
       </label>
       <label className="flex items-center gap-2 text-sm font-medium">
         <input name="isActive" type="checkbox" defaultChecked={product?.isActive ?? true} />

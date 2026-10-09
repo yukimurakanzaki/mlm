@@ -1,4 +1,4 @@
-import { and, count, desc, eq, sum } from 'drizzle-orm';
+import { and, asc, count, desc, eq, sum } from 'drizzle-orm';
 import { db } from '@/libs/DB';
 import { orderItemSchema, orderSchema, paymentSchema, productSchema } from '@/models/Schema';
 import { ORDER_STATUS } from '@/types/Order';
@@ -8,7 +8,7 @@ export const listActiveProducts = (limit?: number) => {
     .select()
     .from(productSchema)
     .where(eq(productSchema.isActive, true))
-    .orderBy(desc(productSchema.createdAt));
+    .orderBy(asc(productSchema.id));
 
   return limit ? query.limit(limit) : query;
 };

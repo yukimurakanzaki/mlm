@@ -1,7 +1,7 @@
 'use server';
 
 import { auth } from '@clerk/nextjs/server';
-import { and, eq, gte, sql } from 'drizzle-orm';
+import { and, eq, gte, isNotNull, or, sql } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import * as z from 'zod';
@@ -68,18 +68,21 @@ export async function createOrder(_prev: OrderFormState, formData: FormData): Pr
 
   try {
     orderCode = await db.transaction(async (tx) => {
-      // Atomic stock check + decrement: no overselling under concurrent orders
+      // Atomic stock check + decrement: no overselling under concurrent orders.
+      // Products that do not track stock are always orderable, and only products with a visible price can be ordered online.
       const [product] = await tx
         .update(productSchema)
-        .set({ stock: sql`${productSchema.stock} - ${input.quantity}` })
+        .set({ stock: sql`CASE WHEN ${productSchema.trackStock} THEN ${productSchema.stock} - ${input.quantity} ELSE ${productSchema.stock} END` })
         .where(and(
           eq(productSchema.id, input.productId),
           eq(productSchema.isActive, true),
-          gte(productSchema.stock, input.quantity),
+          eq(productSchema.showPrice, true),
+          isNotNull(productSchema.priceIdr),
+          or(eq(productSchema.trackStock, false), gte(productSchema.stock, input.quantity)),
         ))
         .returning();
 
-      if (!product) {
+      if (!product || product.priceIdr === null) {
         throw new OutOfStockError();
       }
 
@@ -169,7 +172,7 @@ export async function updateOrderStatus(formData: FormData) {
       for (const item of items) {
         await tx
           .update(productSchema)
-          .set({ stock: sql`${productSchema.stock} + ${item.quantity}` })
+          .set({ stock: sql`CASE WHEN ${productSchema.trackStock} THEN ${productSchema.stock} + ${item.quantity} ELSE ${productSchema.stock} END` })
           .where(eq(productSchema.id, item.productId));
       }
     }

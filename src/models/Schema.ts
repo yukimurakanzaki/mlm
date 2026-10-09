@@ -28,11 +28,22 @@ export const paymentStatusEnum = pgEnum('payment_status', [
 export const productSchema = pgTable('product', {
   id: serial('id').primaryKey(),
   slug: text('slug').notNull().unique(),
+  // Supplier/catalog code; the key used when importing a catalog sheet
+  sku: text('sku').unique(),
   name: text('name').notNull(),
   description: text('description').notNull().default(''),
-  priceIdr: integer('price_idr').notNull(),
+  category: text('category'),
+  brand: text('brand'),
+  packaging: text('packaging'),
+  unit: text('unit'),
+  // Null when the price is "on request"
+  priceIdr: integer('price_idr'),
+  // When false the price is hidden and customers ask for a quote instead of ordering online
+  showPrice: boolean('show_price').notNull().default(true),
   imageUrl: text('image_url'),
   stock: integer('stock').notNull().default(0),
+  // When false, `stock` is ignored and the product can always be ordered (an admin confirms each order)
+  trackStock: boolean('track_stock').notNull().default(true),
   isActive: boolean('is_active').notNull().default(true),
   createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
 });

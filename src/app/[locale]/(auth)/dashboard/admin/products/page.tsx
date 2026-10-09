@@ -1,8 +1,9 @@
-import { desc } from 'drizzle-orm';
+import { asc } from 'drizzle-orm';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { TitleBar } from '@/features/dashboard/TitleBar';
 import { ProductForm } from '@/features/products/ProductForm';
+import { ProductImport } from '@/features/products/ProductImport';
 import { isAdmin } from '@/libs/Auth';
 import { db } from '@/libs/DB';
 import { productSchema } from '@/models/Schema';
@@ -18,11 +19,16 @@ export default async function AdminProductsPage(props: {
   }
 
   const t = await getTranslations({ locale, namespace: 'AdminProducts' });
-  const products = await db.select().from(productSchema).orderBy(desc(productSchema.createdAt));
+  const products = await db.select().from(productSchema).orderBy(asc(productSchema.id));
 
   return (
     <>
       <TitleBar title={t('title')} description={t('page_description')} />
+
+      <section className="mb-6 rounded-lg border bg-card p-5">
+        <h2 className="mb-3 font-semibold">{t('import_title')}</h2>
+        <ProductImport />
+      </section>
 
       <section className="mb-6 rounded-lg border bg-card p-5">
         <h2 className="mb-3 font-semibold">{t('new_product')}</h2>

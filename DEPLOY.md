@@ -34,7 +34,8 @@ Do the steps in order. Keep a note of every key you copy; never paste keys into 
 | `MIDTRANS_SERVER_KEY` | from step 3 |
 | `MIDTRANS_IS_PRODUCTION` | `false` (sandbox) |
 
-5. Deploy. Do **not** run `db:seed` in production; add real products at `/dashboard/admin/products`.
+5. Deploy. Do **not** run `db:seed` in production.
+6. Add products: sign in as admin, open `/dashboard/admin/products`, and upload your catalog sheet (CSV) under **Impor katalog**. Columns: `sku, nama_produk, kategori, merek, kemasan, satuan, deskripsi_singkat, harga_jual, tampilkan_harga (Ya/Tidak), status (aktif/draft)`. Re-uploading the same sheet updates prices and details (matched by SKU). Do not commit the sheet to GitHub: the repository is public.
 
 ## 5. Domain (Hostinger)
 1. Vercel > Project > Settings > Domains > add your domain. Vercel shows DNS records.

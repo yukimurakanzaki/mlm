@@ -41,12 +41,20 @@
     "featured_title": "Featured products",
     "featured_description": "Our latest products, ready to order.",
     "order_now": "Order now",
-    "out_of_stock": "Out of stock"
+    "out_of_stock": "Out of stock",
+    "price_on_request": "Price: contact us",
+    "request_quote": "Request a quote",
+    "uncategorized": "Other"
   },
   "Product": {
     "stock": "{count, plural, one {# item} other {# items}} in stock",
     "order_title": "Place your order",
-    "sold_out": "This product is currently out of stock."
+    "sold_out": "This product is currently out of stock.",
+    "price_on_request": "Price: contact us",
+    "quote_title": "Request a quote",
+    "quote_description": "The price of this product is given on request. Contact us on WhatsApp and we will send you a quote.",
+    "quote_button": "Request a quote on WhatsApp",
+    "quote_message": "Hello {company}, I would like to request a quote for {name} (SKU: {sku})."
   },
   "OrderForm": {
     "name": "Full name",
@@ -190,7 +198,24 @@
     "add": "Add product",
     "hidden": "(hidden)",
     "page_description": "Add products and update prices and stock",
-    "description": "Description"
+    "description": "Description",
+    "sku": "SKU",
+    "category": "Category",
+    "brand": "Brand",
+    "unit": "Unit",
+    "packaging": "Packaging",
+    "price_hint": "Leave empty if the price is on request",
+    "show_price": "Show price (if off, customers ask for a quote)",
+    "track_stock": "Limit orders to available stock",
+    "import_title": "Import catalog (CSV)",
+    "import_hint": "Upload a CSV with columns: sku, nama_produk, kategori, merek, kemasan, satuan, deskripsi_singkat, harga_jual, tampilkan_harga (Ya/Tidak), status (aktif/draft). Products with the same SKU are updated; stock is not changed.",
+    "import_file": "Catalog CSV file",
+    "import_button": "Import",
+    "importing": "Importing...",
+    "import_result": "Done: {created} new products, {updated} updated.",
+    "import_failed": "Import failed. Check your file and try again.",
+    "import_skipped": "{count} problems found (those rows were skipped):",
+    "import_error": "Row {row}: column \"{field}\" is not valid"
   },
   "ErrorPage": {
     "title": "Something went wrong",

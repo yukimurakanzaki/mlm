@@ -94,3 +94,7 @@ export const slugify = (name: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
     .slice(0, 60);
+
+/** Products with a visible price can be ordered online; the rest are "ask for a quote". */
+export const canOrderOnline = <T extends { priceIdr: number | null; showPrice: boolean }>(product: T): product is T & { priceIdr: number } =>
+  product.showPrice && product.priceIdr !== null;

@@ -41,12 +41,20 @@
     "featured_title": "Produk unggulan",
     "featured_description": "Produk terbaru kami, siap dipesan.",
     "order_now": "Pesan sekarang",
-    "out_of_stock": "Stok habis"
+    "out_of_stock": "Stok habis",
+    "price_on_request": "Harga: hubungi kami",
+    "request_quote": "Minta penawaran",
+    "uncategorized": "Lainnya"
   },
   "Product": {
     "stock": "Stok {count} item",
     "order_title": "Buat pesanan",
-    "sold_out": "Produk ini sedang kosong."
+    "sold_out": "Produk ini sedang kosong.",
+    "price_on_request": "Harga: hubungi kami",
+    "quote_title": "Minta penawaran",
+    "quote_description": "Harga produk ini diberikan berdasarkan permintaan. Hubungi kami lewat WhatsApp dan kami kirimkan penawarannya.",
+    "quote_button": "Minta penawaran via WhatsApp",
+    "quote_message": "Halo {company}, saya ingin meminta penawaran untuk {name} (SKU: {sku})."
   },
   "OrderForm": {
     "name": "Nama lengkap",
@@ -190,7 +198,24 @@
     "add": "Tambah produk",
     "hidden": "(disembunyikan)",
     "page_description": "Tambah produk serta ubah harga dan stok",
-    "description": "Deskripsi"
+    "description": "Deskripsi",
+    "sku": "SKU",
+    "category": "Kategori",
+    "brand": "Merek",
+    "unit": "Satuan",
+    "packaging": "Kemasan",
+    "price_hint": "Kosongkan jika harga atas permintaan",
+    "show_price": "Tampilkan harga (jika mati, pelanggan minta penawaran)",
+    "track_stock": "Batasi pesanan sesuai stok",
+    "import_title": "Impor katalog (CSV)",
+    "import_hint": "Unggah file CSV dengan kolom: sku, nama_produk, kategori, merek, kemasan, satuan, deskripsi_singkat, harga_jual, tampilkan_harga (Ya/Tidak), status (aktif/draft). Produk dengan SKU yang sama akan diperbarui; stok tidak diubah.",
+    "import_file": "File CSV katalog",
+    "import_button": "Impor",
+    "importing": "Mengimpor...",
+    "import_result": "Selesai: {created} produk baru, {updated} diperbarui.",
+    "import_failed": "Impor gagal. Periksa file Anda dan coba lagi.",
+    "import_skipped": "{count} masalah ditemukan (baris tersebut dilewati):",
+    "import_error": "Baris {row}: kolom \"{field}\" tidak valid"
   },
   "ErrorPage": {
     "title": "Terjadi kendala",
