@@ -45,6 +45,8 @@ export default async function proxy(
           const locale = req.nextUrl.pathname.match(/(\/.*)\/dashboard/)?.at(1) ?? '';
 
           const signInUrl = new URL(`${locale}/sign-in`, req.url);
+          // Lets the sign-in page tell "never signed in" from "signed in, but the server rejected the session"
+          signInUrl.searchParams.set('from', 'dashboard');
 
           await auth.protect({
             unauthenticatedUrl: signInUrl.toString(),

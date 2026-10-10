@@ -155,7 +155,10 @@
   },
   "SignIn": {
     "meta_title": "Masuk",
-    "meta_description": "Masuk untuk melihat pesanan dan pembayaran Anda."
+    "meta_description": "Masuk untuk melihat pesanan dan pembayaran Anda.",
+    "session_rejected_title": "Sesi login tidak dikenali",
+    "session_rejected_description": "Anda sudah masuk di browser, tetapi server menolak sesi ini. Keluar lalu masuk lagi. Jika terus berulang, hubungi admin situs.",
+    "session_rejected_button": "Keluar dan coba lagi"
   },
   "SignUp": {
     "meta_title": "Daftar",

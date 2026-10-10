@@ -155,7 +155,10 @@
   },
   "SignIn": {
     "meta_title": "Sign in",
-    "meta_description": "Sign in to see your orders and payments."
+    "meta_description": "Sign in to see your orders and payments.",
+    "session_rejected_title": "Your session was not recognised",
+    "session_rejected_description": "You are signed in in this browser, but the server rejected the session. Sign out and sign in again. If this keeps happening, contact the site admin.",
+    "session_rejected_button": "Sign out and try again"
   },
   "SignUp": {
     "meta_title": "Sign up",
