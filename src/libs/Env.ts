@@ -32,4 +32,6 @@ export const Env = createEnv({
     NEXT_PUBLIC_BETTER_STACK_INGESTING_HOST: process.env.NEXT_PUBLIC_BETTER_STACK_INGESTING_HOST,
     NODE_ENV: process.env.NODE_ENV,
   },
+  // A blank `KEY=` line in .env.local means "not set", so optional keys like MIDTRANS_SERVER_KEY can be left empty
+  emptyStringAsUndefined: true,
 });
