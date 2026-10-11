@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildWhatsAppLink, groupByCategory, localizeProduct } from './Catalog';
+import { buildWhatsAppLink, groupByCategory, localizeProduct, summarizeCategories } from './Catalog';
 
 describe('groupByCategory', () => {
   it('keeps first-seen category order and puts uncategorized last', () => {
@@ -53,5 +53,26 @@ describe('localizeProduct', () => {
 
   it('returns the same object on the Indonesian site', () => {
     expect(localizeProduct(product, 'id')).toBe(product);
+  });
+});
+
+describe('summarizeCategories', () => {
+  const base = { description: '', packaging: null, unit: null, descriptionEn: null, packagingEn: null, unitEn: null };
+  const products = [
+    { ...base, name: 'Kantong darah', nameEn: 'Blood bag', category: 'Donor Darah', categoryEn: 'Blood Donation' },
+    { ...base, name: 'Timbangan', nameEn: null, category: 'Donor Darah', categoryEn: 'Blood Donation' },
+    { ...base, name: 'Lain', nameEn: null, category: null, categoryEn: null },
+  ];
+
+  it('skips uncategorized products and keys categories by their Indonesian name', () => {
+    expect(summarizeCategories(products, 'id')).toEqual([
+      { key: 'Donor Darah', label: 'Donor Darah', anchor: 'donor-darah', count: 2, names: ['Kantong darah', 'Timbangan'] },
+    ]);
+  });
+
+  it('uses English labels and names on /en, keeping the Indonesian key', () => {
+    expect(summarizeCategories(products, 'en')).toEqual([
+      { key: 'Donor Darah', label: 'Blood Donation', anchor: 'blood-donation', count: 2, names: ['Blood bag', 'Timbangan'] },
+    ]);
   });
 });

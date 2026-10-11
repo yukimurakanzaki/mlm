@@ -36,6 +36,14 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-emphasis: var(--emphasis);
+  --animate-marquee: marquee 60s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);

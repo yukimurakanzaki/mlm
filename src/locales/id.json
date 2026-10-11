@@ -1,7 +1,7 @@
 {
   "Index": {
-    "meta_title": "PT Mitra Labora Medika - Pesan produk, pantau pembayaran dan pengiriman",
-    "meta_description": "Lihat katalog PT Mitra Labora Medika, pesan online, bayar dengan cicilan, dan lacak status pesanan Anda."
+    "meta_title": "PT Mitra Labora Medika - Alat dan reagen bank darah",
+    "meta_description": "Katalog alat, reagen, dan bahan habis pakai bank darah untuk UDD PMI, rumah sakit, dan laboratorium. Minta penawaran lewat WhatsApp."
   },
   "Navbar": {
     "sign_in": "Masuk",
@@ -15,11 +15,29 @@
     "button_label": "Ganti bahasa"
   },
   "Hero": {
-    "banner": "Toko online resmi PT Mitra Labora Medika",
-    "title": "Pesan produk Anda dengan <important>mudah</important>, bayar fleksibel, pantau setiap langkah.",
-    "description": "Lihat katalog, pesan dalam hitungan menit tanpa perlu akun, bayar lunas atau cicilan bulanan, dan pantau pengiriman secara online.",
+    "title": "Perlengkapan bank darah yang <important>andal</important>.",
+    "description": "Alat, reagen gel card, dan bahan habis pakai untuk UDD PMI, rumah sakit, dan laboratorium. Minta penawaran lewat WhatsApp.",
     "primary_button": "Lihat katalog",
-    "secondary_button": "Lacak pesanan saya"
+    "secondary_button": "Minta penawaran",
+    "quote_message": "Halo {company}, saya ingin meminta penawaran produk.",
+    "view_product": "Lihat produk"
+  },
+  "ColdChain": {
+    "eyebrow": "Rantai dingin",
+    "title": "Dari donor sampai <important>transfusi</important>.",
+    "description": "Satu pemasok untuk setiap tahap yang dilalui kantong darah di bank darah Anda.",
+    "donor_title": "Donor",
+    "donor_description": "Cek hemoglobin donor, pantau pengambilan, dan bawa darah dalam cool box.",
+    "processing_title": "Pengolahan",
+    "processing_description": "Timbang, putar, pisahkan, dan segel kantong menjadi komponen darah.",
+    "storage_title": "Penyimpanan",
+    "storage_description": "Simpan sel darah merah, plasma, dan trombosit pada suhu yang tepat.",
+    "crossmatch_title": "Uji silang",
+    "crossmatch_description": "Golongan darah dan uji silang dengan sistem gel card dan reagennya."
+  },
+  "Categories": {
+    "label": "Kategori produk",
+    "product_count": "{count} produk"
   },
   "HowItWorks": {
     "subtitle": "Cara kerja",
@@ -36,10 +54,10 @@
     "meta_title": "Katalog produk",
     "meta_description": "Semua produk yang tersedia dari PT Mitra Labora Medika.",
     "title": "Katalog produk",
-    "description": "Pilih produk lalu pesan secara online.",
+    "description": "Alat, reagen, dan bahan habis pakai bank darah. Minta penawaran untuk harga.",
     "empty": "Belum ada produk. Silakan cek kembali nanti.",
     "featured_title": "Produk unggulan",
-    "featured_description": "Produk terbaru kami, siap dipesan.",
+    "featured_description": "Beberapa produk dari katalog kami.",
     "order_now": "Pesan sekarang",
     "out_of_stock": "Stok habis",
     "price_on_request": "Harga: hubungi kami",

@@ -2,7 +2,7 @@ import { and, asc, count, desc, eq, sum } from 'drizzle-orm';
 import { db } from '@/libs/DB';
 import { orderItemSchema, orderSchema, paymentSchema, productSchema } from '@/models/Schema';
 import { ORDER_STATUS } from '@/types/Order';
-import { localizeProduct } from '@/utils/Catalog';
+import { localizeProduct, summarizeCategories } from '@/utils/Catalog';
 
 /** Active products; text fields are in the page's language (English on /en, falling back to Indonesian). */
 export const listActiveProducts = async (locale: string, limit?: number) => {
@@ -13,6 +13,17 @@ export const listActiveProducts = async (locale: string, limit?: number) => {
     .orderBy(asc(productSchema.id));
 
   return (await (limit ? query.limit(limit) : query)).map(p => localizeProduct(p, locale));
+};
+
+/** Categories of active products with counts and product names, in catalog order. */
+export const listCategorySummaries = async (locale: string) => {
+  const products = await db
+    .select()
+    .from(productSchema)
+    .where(eq(productSchema.isActive, true))
+    .orderBy(asc(productSchema.id));
+
+  return summarizeCategories(products, locale);
 };
 
 /** Active product by slug; text fields are in the page's language (English on /en, falling back to Indonesian). */

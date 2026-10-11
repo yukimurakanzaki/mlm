@@ -1,7 +1,7 @@
 {
   "Index": {
-    "meta_title": "PT Mitra Labora Medika - Order products, track payments and deliveries",
-    "meta_description": "Browse the PT Mitra Labora Medika catalog, place an order, pay in installments and track your order status online."
+    "meta_title": "PT Mitra Labora Medika - Blood bank equipment and reagents",
+    "meta_description": "Catalog of blood bank equipment, reagents and consumables for UDD PMI, hospitals and labs. Request a quote on WhatsApp."
   },
   "Navbar": {
     "sign_in": "Sign in",
@@ -15,11 +15,29 @@
     "button_label": "Change language"
   },
   "Hero": {
-    "banner": "Official online store of PT Mitra Labora Medika",
-    "title": "Order your products <important>easily</important>, pay flexibly, track every step.",
-    "description": "Browse the catalog, order in minutes without creating an account, pay in full or in monthly installments, and follow your delivery online.",
+    "title": "Blood bank supplies you can <important>rely on</important>.",
+    "description": "Equipment, gel card reagents and consumables for UDD PMI, hospitals and laboratories. Request a quote on WhatsApp.",
     "primary_button": "Browse catalog",
-    "secondary_button": "Track my order"
+    "secondary_button": "Request a quote",
+    "quote_message": "Hello {company}, I would like to request a product quote.",
+    "view_product": "View product"
+  },
+  "ColdChain": {
+    "eyebrow": "Cold chain",
+    "title": "From donor to <important>transfusion</important>.",
+    "description": "One supplier for every stage a blood unit passes through in your blood bank.",
+    "donor_title": "Donation",
+    "donor_description": "Screen donor hemoglobin, monitor collection and carry blood in cool boxes.",
+    "processing_title": "Processing",
+    "processing_description": "Weigh, spin, separate and seal bags into blood components.",
+    "storage_title": "Storage",
+    "storage_description": "Hold red cells, plasma and platelets at the right temperature.",
+    "crossmatch_title": "Crossmatch",
+    "crossmatch_description": "Blood grouping and crossmatch with gel card systems and their reagents."
+  },
+  "Categories": {
+    "label": "Product categories",
+    "product_count": "{count, plural, one {# product} other {# products}}"
   },
   "HowItWorks": {
     "subtitle": "How it works",
@@ -36,10 +54,10 @@
     "meta_title": "Product catalog",
     "meta_description": "All products available from PT Mitra Labora Medika.",
     "title": "Product catalog",
-    "description": "Choose a product and order online.",
+    "description": "Blood bank equipment, reagents and consumables. Request a quote for pricing.",
     "empty": "No products available yet. Please check back soon.",
     "featured_title": "Featured products",
-    "featured_description": "Our latest products, ready to order.",
+    "featured_description": "A few products from our catalog.",
     "order_now": "Order now",
     "out_of_stock": "Out of stock",
     "price_on_request": "Price: contact us",

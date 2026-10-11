@@ -4,6 +4,7 @@ import { ProductCard } from '@/features/catalog/ProductCard';
 import { Section } from '@/features/landing/Section';
 import { listActiveProducts } from '@/features/orders/queries';
 import { groupByCategory } from '@/utils/Catalog';
+import { slugify } from '@/utils/Orders';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -30,7 +31,11 @@ export default async function CatalogPage(props: Props) {
         : (
             <div className="space-y-10">
               {groups.map(group => (
-                <section key={group.category ?? 'other'}>
+                <section
+                  key={group.category ?? 'other'}
+                  id={group.category ? slugify(group.category) : undefined}
+                  className="scroll-mt-24"
+                >
                   <h2 className="mb-4 text-xl font-semibold">{group.category ?? t('uncategorized')}</h2>
                   <div className="
                     grid gap-6

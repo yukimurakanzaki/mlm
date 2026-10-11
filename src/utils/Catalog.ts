@@ -1,3 +1,5 @@
+import { slugify } from './Orders';
+
 /** Groups products by category, keeping the order in which categories first appear. Uncategorized products come last. */
 export const groupByCategory = <T extends { category: string | null }>(products: T[]) => {
   const groups = new Map<string | null, T[]>();
@@ -41,3 +43,19 @@ export const localizeProduct = <T extends Localizable>(product: T, locale: strin
         packaging: product.packagingEn?.trim() || product.packaging,
         unit: product.unitEn?.trim() || product.unit,
       };
+
+/**
+ * Per-category overview for the home page. `key` is the Indonesian category (stable across locales);
+ * `label`, `anchor` and `names` follow the page's language. `anchor` matches the section ids on /catalog.
+ */
+export const summarizeCategories = <T extends Localizable>(products: T[], locale: string) =>
+  groupByCategory(products).flatMap(({ category, items }) => {
+    if (category === null) {
+      return [];
+    }
+
+    const localized = items.map(p => localizeProduct(p, locale));
+    const label = localized[0]?.category?.trim() || category;
+
+    return [{ key: category, label, anchor: slugify(label), count: items.length, names: localized.map(p => p.name) }];
+  });

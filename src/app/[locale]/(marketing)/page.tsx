@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { ProductCard } from '@/features/catalog/ProductCard';
-import { Section } from '@/features/landing/Section';
-import { listActiveProducts } from '@/features/orders/queries';
+import { listActiveProducts, listCategorySummaries } from '@/features/orders/queries';
+import { CategoryMarquee } from '@/templates/CategoryMarquee';
+import { ColdChainFlow } from '@/templates/ColdChainFlow';
 import { CTA } from '@/templates/CTA';
 import { FAQ } from '@/templates/FAQ';
+import { FeaturedProducts } from '@/templates/FeaturedProducts';
 import { Hero } from '@/templates/Hero';
 import { HowItWorks } from '@/templates/HowItWorks';
 
@@ -28,28 +29,15 @@ export async function generateMetadata(props: IndexProps): Promise<Metadata> {
 export default async function Index(props: IndexProps) {
   const { locale } = await props.params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: 'Catalog' });
-  const featured = await listActiveProducts(locale, 3);
+  // First three products fill the bento; the fourth, if any, is spotlighted in the hero
+  const [products, categories] = await Promise.all([listActiveProducts(locale, 4), listCategorySummaries(locale)]);
 
   return (
     <>
-      <Hero />
-
-      {featured.length > 0 && (
-        <Section title={t('featured_title')} description={t('featured_description')}>
-          <div className="
-            grid gap-6
-            sm:grid-cols-2
-            lg:grid-cols-3
-          "
-          >
-            {featured.map(product => (
-              <ProductCard key={product.id} product={product} locale={locale} />
-            ))}
-          </div>
-        </Section>
-      )}
-
+      <Hero spotlight={products[3]} />
+      <CategoryMarquee categories={categories} />
+      <ColdChainFlow categories={categories} />
+      <FeaturedProducts products={products} locale={locale} />
       <HowItWorks />
       <FAQ />
       <CTA />
