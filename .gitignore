@@ -69,3 +69,6 @@ build-archive.log
 /local.db
 /test-results
 /playwright-report
+
+# internal business docs (requirements, plans) - repo is public
+/docs
