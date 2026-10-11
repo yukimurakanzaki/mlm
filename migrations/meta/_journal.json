@@ -15,6 +15,13 @@
       "when": 1791561885103,
       "tag": "0001_glossy_thor",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791728674709,
+      "tag": "0002_condemned_makkari",
+      "breakpoints": true
     }
   ]
 }

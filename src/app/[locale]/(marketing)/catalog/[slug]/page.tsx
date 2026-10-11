@@ -14,8 +14,8 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const { slug } = await props.params;
-  const product = await getActiveProductBySlug(slug);
+  const { locale, slug } = await props.params;
+  const product = await getActiveProductBySlug(slug, locale);
 
   return product ? { title: product.name, description: product.description } : {};
 }
@@ -23,7 +23,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function ProductPage(props: Props) {
   const { locale, slug } = await props.params;
   setRequestLocale(locale);
-  const product = await getActiveProductBySlug(slug);
+  const product = await getActiveProductBySlug(slug, locale);
 
   if (!product) {
     notFound();

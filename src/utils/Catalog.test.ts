@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildWhatsAppLink, groupByCategory } from './Catalog';
+import { buildWhatsAppLink, groupByCategory, localizeProduct } from './Catalog';
 
 describe('groupByCategory', () => {
   it('keeps first-seen category order and puts uncategorized last', () => {
@@ -17,5 +17,41 @@ describe('groupByCategory', () => {
 describe('buildWhatsAppLink', () => {
   it('encodes the message', () => {
     expect(buildWhatsAppLink('62812', 'Halo & hai')).toBe('https://wa.me/62812?text=Halo%20%26%20hai');
+  });
+});
+
+describe('localizeProduct', () => {
+  const product = {
+    name: 'Kursi',
+    description: 'Kursi kayu',
+    category: 'Furnitur',
+    packaging: 'Dus',
+    unit: 'Buah',
+    nameEn: 'Chair',
+    descriptionEn: 'Wooden chair',
+    categoryEn: 'Furniture',
+    packagingEn: 'Box',
+    unitEn: 'Piece',
+  };
+
+  it('returns English values on the en site', () => {
+    expect(localizeProduct(product, 'en')).toEqual({
+      ...product,
+      name: 'Chair',
+      description: 'Wooden chair',
+      category: 'Furniture',
+      packaging: 'Box',
+      unit: 'Piece',
+    });
+  });
+
+  it('falls back to Indonesian for null or blank English values', () => {
+    const localized = localizeProduct({ ...product, nameEn: null, descriptionEn: '   ', categoryEn: '', packagingEn: null, unitEn: ' ' }, 'en');
+
+    expect(localized).toMatchObject({ name: 'Kursi', description: 'Kursi kayu', category: 'Furnitur', packaging: 'Dus', unit: 'Buah' });
+  });
+
+  it('returns the same object on the Indonesian site', () => {
+    expect(localizeProduct(product, 'id')).toBe(product);
   });
 });

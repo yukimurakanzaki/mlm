@@ -31,11 +31,16 @@ export const productSchema = pgTable('product', {
   // Supplier/catalog code; the key used when importing a catalog sheet
   sku: text('sku').unique(),
   name: text('name').notNull(),
+  nameEn: text('name_en'),
   description: text('description').notNull().default(''),
+  descriptionEn: text('description_en'),
   category: text('category'),
+  categoryEn: text('category_en'),
   brand: text('brand'),
   packaging: text('packaging'),
+  packagingEn: text('packaging_en'),
   unit: text('unit'),
+  unitEn: text('unit_en'),
   // Null when the price is "on request"
   priceIdr: integer('price_idr'),
   // When false the price is hidden and customers ask for a quote instead of ordering online

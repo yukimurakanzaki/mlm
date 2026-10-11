@@ -1,11 +1,16 @@
 type ProductImportRow = {
   sku: string;
   name: string;
+  nameEn: string | null;
   category: string | null;
+  categoryEn: string | null;
   brand: string | null;
   packaging: string | null;
+  packagingEn: string | null;
   unit: string | null;
+  unitEn: string | null;
   description: string;
+  descriptionEn: string | null;
   priceIdr: number | null;
   showPrice: boolean;
   isActive: boolean;
@@ -97,6 +102,7 @@ const optional = (value: string | undefined) => {
 /**
  * Turns a catalog sheet into product rows. Columns (by header name):
  * sku, nama_produk, kategori, merek, kemasan, satuan, deskripsi_singkat, harga_jual, tampilkan_harga (Ya/Tidak), status (aktif/draft).
+ * Optional English columns: nama_produk_en, deskripsi_singkat_en, kategori_en, kemasan_en, satuan_en.
  * Invalid rows are skipped and reported by row number (the header is row 1).
  */
 export const parseProductCsv = (text: string) => {
@@ -159,11 +165,16 @@ export const parseProductCsv = (text: string) => {
     rows.push({
       sku,
       name,
+      nameEn: optional(get('nama_produk_en')),
       category: optional(get('kategori')),
+      categoryEn: optional(get('kategori_en')),
       brand: optional(get('merek')),
       packaging: optional(get('kemasan')),
+      packagingEn: optional(get('kemasan_en')),
       unit: optional(get('satuan')),
+      unitEn: optional(get('satuan_en')),
       description: get('deskripsi_singkat').trim(),
+      descriptionEn: optional(get('deskripsi_singkat_en')),
       priceIdr: price.price,
       // A price that is blank can never be shown, whatever the sheet says
       showPrice: (showPrice ?? true) && price.price !== null,

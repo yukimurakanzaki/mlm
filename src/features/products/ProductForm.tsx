@@ -60,6 +60,38 @@ export const ProductForm = async (props: { product?: typeof productSchema.$infer
         {t('description')}
         <textarea name="description" rows={2} maxLength={1000} defaultValue={product?.description} className={inputClass} />
       </label>
+      <label className="
+        block text-sm font-medium
+        sm:col-span-2
+      "
+      >
+        {t('name_en')}
+        <input name="nameEn" maxLength={120} defaultValue={product?.nameEn ?? ''} className={inputClass} />
+      </label>
+      <label className="block text-sm font-medium">
+        {t('category_en')}
+        <input name="categoryEn" maxLength={80} defaultValue={product?.categoryEn ?? ''} className={inputClass} />
+      </label>
+      <label className="block text-sm font-medium">
+        {t('unit_en')}
+        <input name="unitEn" maxLength={40} defaultValue={product?.unitEn ?? ''} className={inputClass} />
+      </label>
+      <label className="
+        block text-sm font-medium
+        sm:col-span-2
+      "
+      >
+        {t('packaging_en')}
+        <input name="packagingEn" maxLength={120} defaultValue={product?.packagingEn ?? ''} className={inputClass} />
+      </label>
+      <label className="
+        block text-sm font-medium
+        sm:col-span-2
+      "
+      >
+        {t('description_en')}
+        <textarea name="descriptionEn" rows={2} maxLength={1000} defaultValue={product?.descriptionEn ?? ''} className={inputClass} />
+      </label>
       <label className="block text-sm font-medium">
         {t('price')}
         <input name="priceIdr" type="number" min={1000} step={1} defaultValue={product?.priceIdr ?? ''} className={inputClass} />

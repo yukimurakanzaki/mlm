@@ -20,7 +20,7 @@ export default async function CatalogPage(props: Props) {
   const { locale } = await props.params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'Catalog' });
-  const products = await listActiveProducts();
+  const products = await listActiveProducts(locale);
   const groups = groupByCategory(products);
 
   return (

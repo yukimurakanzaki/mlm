@@ -21,15 +21,37 @@ describe('parseProductCsv', () => {
     expect(rows).toEqual([{
       sku: 'RCFP',
       name: 'RedCell Forward',
+      nameEn: null,
       category: 'Reagen Gel Card',
+      categoryEn: null,
       brand: 'RedCell',
       packaging: 'Gel card (1 box)',
+      packagingEn: null,
       unit: 'Box',
+      unitEn: null,
       description: 'Gel card, ABO',
+      descriptionEn: null,
       priceIdr: 2886000,
       showPrice: true,
       isActive: true,
     }]);
+  });
+
+  it('reads the optional English columns', () => {
+    const header = `${HEADER},nama_produk_en,deskripsi_singkat_en,kategori_en,kemasan_en,satuan_en`;
+    const { rows } = parseProductCsv(`${header}
+A1,Larutan,Larutan,-,Botol,Botol,x,430000,Ya,aktif,Solution,Short text,Reagents,Bottle,Pcs
+A2,Alat,Alat,-,Botol,Botol,x,430000,Ya,aktif,,,,,`);
+
+    expect(rows[0]).toMatchObject({ nameEn: 'Solution', descriptionEn: 'Short text', categoryEn: 'Reagents', packagingEn: 'Bottle', unitEn: 'Pcs' });
+    expect(rows[1]).toMatchObject({ nameEn: null, descriptionEn: null, categoryEn: null, packagingEn: null, unitEn: null });
+  });
+
+  it('gives null English fields when the columns are absent', () => {
+    const { rows } = parseProductCsv(`${HEADER}
+A1,Larutan,Larutan,-,Botol,Botol,x,430000,Ya,aktif`);
+
+    expect(rows[0]).toMatchObject({ nameEn: null, descriptionEn: null, categoryEn: null, packagingEn: null, unitEn: null });
   });
 
   it('hides the price when the sheet says Tidak, or when it is blank', () => {

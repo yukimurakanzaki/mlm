@@ -29,7 +29,7 @@ export default async function Index(props: IndexProps) {
   const { locale } = await props.params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'Catalog' });
-  const featured = await listActiveProducts(3);
+  const featured = await listActiveProducts(locale, 3);
 
   return (
     <>

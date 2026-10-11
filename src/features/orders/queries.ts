@@ -2,25 +2,28 @@ import { and, asc, count, desc, eq, sum } from 'drizzle-orm';
 import { db } from '@/libs/DB';
 import { orderItemSchema, orderSchema, paymentSchema, productSchema } from '@/models/Schema';
 import { ORDER_STATUS } from '@/types/Order';
+import { localizeProduct } from '@/utils/Catalog';
 
-export const listActiveProducts = (limit?: number) => {
+/** Active products; text fields are in the page's language (English on /en, falling back to Indonesian). */
+export const listActiveProducts = async (locale: string, limit?: number) => {
   const query = db
     .select()
     .from(productSchema)
     .where(eq(productSchema.isActive, true))
     .orderBy(asc(productSchema.id));
 
-  return limit ? query.limit(limit) : query;
+  return (await (limit ? query.limit(limit) : query)).map(p => localizeProduct(p, locale));
 };
 
-export const getActiveProductBySlug = async (slug: string) => {
+/** Active product by slug; text fields are in the page's language (English on /en, falling back to Indonesian). */
+export const getActiveProductBySlug = async (slug: string, locale: string) => {
   const [product] = await db
     .select()
     .from(productSchema)
     .where(and(eq(productSchema.slug, slug), eq(productSchema.isActive, true)))
     .limit(1);
 
-  return product ?? null;
+  return product ? localizeProduct(product, locale) : null;
 };
 
 const withDetails = async (order: typeof orderSchema.$inferSelect) => {
