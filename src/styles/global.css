@@ -10,13 +10,14 @@
 @custom-variant dark (@media (prefers-color-scheme: dark));
 
 @theme inline {
-  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
-  --radius-sm: calc(var(--radius) - 8px);
-  --radius-md: calc(var(--radius) - 4px);
+  --font-sans: var(--font-jakarta), 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Consolas, monospace;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  /* Kawung identity is square-cornered: every radius step resolves to --radius */
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: var(--radius);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -36,7 +37,19 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-emphasis: var(--emphasis);
+  --color-mark-a: var(--mark-a);
+  --color-mark-b: var(--mark-b);
+  --color-band: #1e3d63;
+  --color-band-foreground: #f0ebe1;
+  --color-band-muted: #a8b4c4;
+  --color-band-accent: #c89047;
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
   --animate-marquee: marquee 60s linear infinite;
+  --animate-step: step-progress 6s linear forwards;
 
   @keyframes marquee {
     to {
@@ -44,70 +57,84 @@
     }
   }
 
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+  @keyframes step-progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
 }
 
 /*
- * Brand tokens (docs/plans/2026-10-11-redesign.md).
- * Teal (primary) is for actions only. Red (emphasis) is for one italic phrase per headline, never a fill.
- * Radius: buttons/inputs 4px (rounded-sm), cards/frames 12px (rounded-lg), pills full.
+ * Kawung identity v2.0: Nila #1E3D63, Sogan #B57A33, Nila Tua #0F2340, Mori #F0EBE1, Abu Batu #6E8199.
+ * Nila is for actions. Sogan is for one italic emphasis phrase per headline, display sizes only
+ * (about 3:1 on Mori). The mark is never red (guide rule 03).
  */
 :root {
-  --radius: 0.75rem;
-  --background: #f6fbfc;
-  --foreground: #0c1e33;
-  --card: #fdfeff;
-  --card-foreground: #0c1e33;
-  --popover: #fdfeff;
-  --popover-foreground: #0c1e33;
-  --primary: #13b5a7;
-  --primary-foreground: #0c1e33;
-  --secondary: #e8f3f6;
-  --secondary-foreground: #0c1e33;
-  --muted: #e8f3f6;
-  --muted-foreground: #52657a;
-  --accent: #e8f3f6;
-  --accent-foreground: #0c1e33;
+  --radius: 0rem;
+  --background: #f0ebe1;
+  --foreground: #1e3d63;
+  --card: #fbf9f5;
+  --card-foreground: #1e3d63;
+  --popover: #fbf9f5;
+  --popover-foreground: #1e3d63;
+  --primary: #1e3d63;
+  --primary-foreground: #f0ebe1;
+  --secondary: #e7e0d3;
+  --secondary-foreground: #1e3d63;
+  --muted: #e7e0d3;
+  --muted-foreground: #42536b;
+  --accent: #e7e0d3;
+  --accent-foreground: #1e3d63;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #dcebf0;
-  --input: #cfe2e9;
-  --ring: #13b5a7;
-  --emphasis: #c62f3d;
-  --chart-1: #13b5a7;
-  --chart-2: #0c1e33;
-  --chart-3: #c62f3d;
-  --chart-4: #7fa6bd;
-  --chart-5: #f2b64a;
+  --border: #cecfcd;
+  --input: #c2c6c8;
+  --ring: #b57a33;
+  --emphasis: #b57a33;
+  --mark-a: #1e3d63;
+  --mark-b: #b57a33;
+  --chart-1: #1e3d63;
+  --chart-2: #b57a33;
+  --chart-3: #6e8199;
+  --chart-4: #2e5a8c;
+  --chart-5: #c89047;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a1624;
-    --foreground: #e8f1f5;
-    --card: #0f2033;
-    --card-foreground: #e8f1f5;
-    --popover: #0f2033;
-    --popover-foreground: #e8f1f5;
-    --primary: #13b5a7;
-    --primary-foreground: #0c1e33;
-    --secondary: #16293d;
-    --secondary-foreground: #e8f1f5;
-    --muted: #16293d;
-    --muted-foreground: #93a6b8;
-    --accent: #16293d;
-    --accent-foreground: #e8f1f5;
+    --background: #0f2340;
+    --foreground: #f0ebe1;
+    --card: #142b4c;
+    --card-foreground: #f0ebe1;
+    --popover: #142b4c;
+    --popover-foreground: #f0ebe1;
+    --primary: #f0ebe1;
+    --primary-foreground: #0f2340;
+    --secondary: #1a3358;
+    --secondary-foreground: #f0ebe1;
+    --muted: #1a3358;
+    --muted-foreground: #a8b4c4;
+    --accent: #1a3358;
+    --accent-foreground: #f0ebe1;
     --destructive: oklch(0.704 0.191 22.216);
-    --border: #1d3247;
-    --input: #24405a;
-    --ring: #13b5a7;
-    --emphasis: #ef6b74;
-    --chart-2: #e8f1f5;
-    --chart-3: #ef6b74;
+    --border: #33435a;
+    --input: #3d4f68;
+    --ring: #c89047;
+    --emphasis: #c89047;
+    --mark-a: #f0ebe1;
+    --mark-b: #c89047;
+    --chart-1: #f0ebe1;
+    --chart-3: #a8b4c4;
   }
+}
+
+/* One Kawung tile (guide panel 03) as a mask, so the pattern takes the element's text color */
+@utility bg-kawung {
+  background-color: currentColor;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130.4 130.4'%3E%3Cg fill='black'%3E%3Cellipse cx='27.4' cy='27.4' rx='33.9' ry='18.9' transform='rotate(45 27.4 27.4)'/%3E%3Cellipse cx='92.6' cy='92.6' rx='33.9' ry='18.9' transform='rotate(45 92.6 92.6)'/%3E%3Cellipse cx='92.6' cy='27.4' rx='33.9' ry='18.9' transform='rotate(-45 92.6 27.4)'/%3E%3Cellipse cx='27.4' cy='92.6' rx='33.9' ry='18.9' transform='rotate(-45 27.4 92.6)'/%3E%3C/g%3E%3C/svg%3E");
+  mask-size: 72px 72px;
 }
 
 @layer base {

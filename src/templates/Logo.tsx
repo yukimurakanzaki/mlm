@@ -1,28 +1,20 @@
+import { KawungMark } from '@/components/KawungMark';
 import { AppConfig } from '@/utils/AppConfig';
 
-export const Logo = (props: {
-  isTextHidden?: boolean;
-}) => (
-  <div className="
-    flex items-center text-[15px] font-semibold tracking-tight
-    sm:text-base
-  "
-  >
-    <svg
-      className="mr-1.5 size-7 shrink-0 stroke-current stroke-2"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
+// The last word drops to its own line on phones (stacked lockup) so the navbar fits at 375px
+const split = AppConfig.name.lastIndexOf(' ');
+
+export const Logo = () => (
+  <div className="flex items-center gap-2.5">
+    <KawungMark className="size-7" />
+    <span className="
+      text-xs/tight font-semibold tracking-[0.13em] uppercase
+      sm:text-[13px]
+    "
     >
-      <path d="M0 0h24v24H0z" stroke="none" />
-      <circle cx="12" cy="6" r="2.5" />
-      <circle cx="5.5" cy="18" r="2.5" />
-      <circle cx="18.5" cy="18" r="2.5" />
-      <path d="M12 8.5v3.5M12 12l-5 4M12 12l5 4" />
-    </svg>
-    {!props.isTextHidden && <span className="truncate">{AppConfig.name}</span>}
+      {AppConfig.name.slice(0, split)}
+      {' '}
+      <span className="max-sm:block">{AppConfig.name.slice(split + 1)}</span>
+    </span>
   </div>
 );

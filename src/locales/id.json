@@ -35,20 +35,37 @@
     "crossmatch_title": "Uji silang",
     "crossmatch_description": "Golongan darah dan uji silang dengan sistem gel card dan reagennya."
   },
+  "Trust": {
+    "title": "Selalu <important>ada</important>.",
+    "description": "Rumah sakit tidak butuh katalog. Rumah sakit butuh satu barang yang hari ini tidak ada di rak.",
+    "tagline": "Perfectly reliable and trustworthy partnership",
+    "fact1_title": "Izin edar AKD",
+    "fact1_description": "Setiap produk terdaftar di Kementerian Kesehatan.",
+    "fact2_title": "Batch dan kedaluwarsa",
+    "fact2_description": "Dicatat per pengiriman dan dikeluarkan dengan prinsip FEFO.",
+    "fact3_title": "Jejak audit CDAKB",
+    "fact3_description": "Setiap transaksi tercatat untuk audit distribusi alat kesehatan."
+  },
   "Categories": {
     "label": "Kategori produk",
     "product_count": "{count} produk"
   },
   "HowItWorks": {
-    "subtitle": "Cara kerja",
-    "title": "Tiga langkah mudah",
-    "description": "Dari memilih produk sampai diterima di lokasi Anda.",
+    "eyebrow": "Cara memesan",
+    "title": "Tiga langkah menuju penawaran.",
+    "tabs_label": "Langkah memesan",
     "step1_title": "Pilih produk",
-    "step1_description": "Lihat katalog dan pilih yang Anda butuhkan.",
-    "step2_title": "Buat pesanan",
-    "step2_description": "Isi data Anda dan pilih bayar lunas atau cicilan.",
-    "step3_title": "Lacak online",
-    "step3_description": "Gunakan kode pesanan dan nomor HP untuk memantau pembayaran dan pengiriman."
+    "step1_description": "Telusuri katalog per kategori dan catat produk serta jumlah yang dibutuhkan.",
+    "step2_title": "Minta penawaran",
+    "step2_description": "Kirim pesan WhatsApp dari halaman produk. Nama dan kode produk sudah terisi.",
+    "step3_title": "Terima penawaran resmi",
+    "step3_description": "Kami kirim surat penawaran berisi harga, masa berlaku, dan garansi.",
+    "message_label": "Pesan WhatsApp",
+    "letter_label": "Surat penawaran",
+    "letter_item1": "Harga per item dan diskon",
+    "letter_item2": "Subtotal, DPP, PPN, dan total",
+    "letter_item3": "Masa berlaku penawaran",
+    "letter_item4": "Garansi dan rekening pembayaran"
   },
   "Catalog": {
     "meta_title": "Katalog produk",
@@ -149,20 +166,20 @@
     "answer_fallback": "Maaf, saya belum menemukan jawabannya. Silakan hubungi tim kami lewat WhatsApp: {whatsapp}"
   },
   "FAQ": {
-    "title": "Pertanyaan yang sering diajukan",
-    "question1": "Apakah perlu akun untuk memesan?",
-    "answer1": "Tidak. Anda bisa memesan sebagai tamu dengan nama dan nomor HP. Dengan masuk akun, Anda bisa melihat semua pesanan di satu tempat.",
-    "question2": "Bisakah membayar dengan cicilan?",
-    "answer2": "Bisa. Saat memesan, pilih bayar lunas atau bagi total menjadi cicilan bulanan.",
-    "question3": "Bagaimana melacak pesanan?",
-    "answer3": "Gunakan halaman Lacak pesanan dengan kode pesanan dan nomor HP untuk melihat status pembayaran dan pengiriman.",
-    "question4": "Bagaimana menghubungi PT Mitra Labora Medika?",
-    "answer4": "Gunakan asisten chat, WhatsApp, atau email di bagian bawah halaman."
+    "title": "Pertanyaan umum",
+    "question1": "Bagaimana cara mendapatkan harga?",
+    "answer1": "Harga diberikan lewat surat penawaran. Tekan \"Minta penawaran\" di halaman produk untuk mengirim pesan WhatsApp kepada kami.",
+    "question2": "Apakah produk memiliki izin edar?",
+    "answer2": "Ya. Setiap produk yang kami jual memiliki izin edar (AKD) dari Kementerian Kesehatan.",
+    "question3": "Bagaimana cara pembayarannya?",
+    "answer3": "Transfer di muka, tagihan dengan termin, atau cicilan. Caranya disepakati di setiap penawaran.",
+    "question4": "Bagaimana menghubungi kami?",
+    "answer4": "Lewat WhatsApp {whatsapp}, email {email}, atau asisten chat di pojok kanan bawah."
   },
   "CTA": {
-    "title": "Siap memesan?",
-    "description": "Lihat katalog dan buat pesanan pertama Anda hari ini.",
-    "button_text": "Lihat katalog"
+    "title": "Butuh barang yang <important>hari ini</important> tidak ada di rak?",
+    "description": "Kirim daftar kebutuhan Anda, kami siapkan penawarannya.",
+    "button_text": "Minta penawaran"
   },
   "Footer": {
     "catalog": "Katalog",
@@ -236,7 +253,7 @@
     "show_price": "Tampilkan harga (jika mati, pelanggan minta penawaran)",
     "track_stock": "Batasi pesanan sesuai stok",
     "import_title": "Impor katalog (CSV)",
-    "import_hint": "Unggah file CSV dengan kolom: sku, nama_produk, kategori, merek, kemasan, satuan, deskripsi_singkat, harga_jual, tampilkan_harga (Ya/Tidak), status (aktif/draft). Produk dengan SKU yang sama akan diperbarui; stok tidak diubah.",
+    "import_hint": "Unggah file CSV dengan kolom: sku, nama_produk, kategori, merek, kemasan, satuan, deskripsi_singkat, harga_jual, tampilkan_harga (Ya/Tidak), status (aktif/draft). Opsional: gambar (/products/file.jpg atau URL https://) dan kolom bahasa Inggris nama_produk_en, kategori_en, kemasan_en, satuan_en, deskripsi_singkat_en. Produk dengan SKU yang sama akan diperbarui; stok tidak diubah.",
     "import_file": "File CSV katalog",
     "import_button": "Impor",
     "importing": "Mengimpor...",

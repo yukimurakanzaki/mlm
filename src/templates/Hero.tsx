@@ -1,6 +1,7 @@
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 import { buttonVariants } from '@/components/ui/buttonVariants';
+import { emphasis } from '@/features/landing/Emphasis';
 import { Link } from '@/libs/I18nNavigation';
 import { AppConfig } from '@/utils/AppConfig';
 import { buildWhatsAppLink } from '@/utils/Catalog';
@@ -24,13 +25,11 @@ export const Hero = (props: { spotlight?: SpotlightProduct }) => {
       >
         <div>
           <h1 className="
-            pb-1 font-serif text-4xl/[1.1] tracking-tight
+            pb-1 text-4xl/[1.1] font-bold tracking-tight
             md:text-[3.5rem]/[1.1]
           "
           >
-            {t.rich('title', {
-              important: chunks => <span className="text-emphasis italic">{chunks}</span>,
-            })}
+            {t.rich('title', { important: emphasis })}
           </h1>
 
           <p className="mt-6 max-w-[46ch] text-lg/relaxed text-muted-foreground">
@@ -60,27 +59,19 @@ export const Hero = (props: { spotlight?: SpotlightProduct }) => {
         <div>
           {/* TODO: hero photo (blood bank refrigerator or gel card centrifuge on a light background), ~1200x1500, fills this frame */}
           <div className="
-            relative aspect-4/5 max-h-[560px] w-full overflow-hidden rounded-lg
-            border bg-secondary shadow-[0_40px_90px_-40px] shadow-primary/50
+            relative aspect-4/5 max-h-[560px] w-full overflow-hidden border
+            bg-secondary
             max-lg:aspect-4/3
           "
           >
-            <div
-              className="
-                absolute inset-0
-                bg-[radial-gradient(circle_at_28%_22%,var(--color-primary),transparent_58%)]
-                opacity-20
-              "
-              aria-hidden="true"
-            />
+            <div className="absolute inset-0 bg-kawung text-foreground/8" aria-hidden="true" />
 
             {spotlight && (
               <Link
                 href={`/catalog/${spotlight.slug}`}
                 className="
-                  group absolute inset-x-5 bottom-5 rounded-lg border bg-card/90
-                  p-5 shadow-[0_16px_40px_-20px] shadow-foreground/30
-                  backdrop-blur-md transition-transform
+                  group absolute inset-x-5 bottom-5 border bg-card p-5
+                  transition-transform
                   hover:-translate-y-0.5
                   sm:right-auto sm:w-80
                 "
@@ -94,7 +85,7 @@ export const Hero = (props: { spotlight?: SpotlightProduct }) => {
                     {spotlight.category}
                   </div>
                 )}
-                <div className="mt-1.5 font-serif text-xl/snug">{spotlight.name}</div>
+                <div className="mt-1.5 text-lg/snug font-semibold">{spotlight.name}</div>
                 <div className="
                   mt-3 inline-flex items-center gap-1.5 text-sm underline
                   decoration-primary decoration-2 underline-offset-4

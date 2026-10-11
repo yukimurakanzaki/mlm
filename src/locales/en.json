@@ -35,20 +35,37 @@
     "crossmatch_title": "Crossmatch",
     "crossmatch_description": "Blood grouping and crossmatch with gel card systems and their reagents."
   },
+  "Trust": {
+    "title": "Always <important>there</important>.",
+    "description": "A hospital does not need a catalog. It needs the one item that is not on the shelf today.",
+    "tagline": "Perfectly reliable and trustworthy partnership",
+    "fact1_title": "AKD permits",
+    "fact1_description": "Every product is registered with the Ministry of Health.",
+    "fact2_title": "Batch and expiry",
+    "fact2_description": "Recorded per delivery and dispatched first-expiry, first-out.",
+    "fact3_title": "CDAKB audit trail",
+    "fact3_description": "Every transaction is recorded for medical device distribution audits."
+  },
   "Categories": {
     "label": "Product categories",
     "product_count": "{count, plural, one {# product} other {# products}}"
   },
   "HowItWorks": {
-    "subtitle": "How it works",
-    "title": "Three simple steps",
-    "description": "From choosing a product to receiving it where you are.",
-    "step1_title": "Choose a product",
-    "step1_description": "Browse the catalog and pick what you need.",
-    "step2_title": "Place your order",
-    "step2_description": "Fill in your details and choose to pay in full or in installments.",
-    "step3_title": "Track it online",
-    "step3_description": "Use your order code and phone number to follow payment and delivery."
+    "eyebrow": "How to order",
+    "title": "Three steps to a quote.",
+    "tabs_label": "Ordering steps",
+    "step1_title": "Choose products",
+    "step1_description": "Browse the catalog by category and note the products and quantities you need.",
+    "step2_title": "Request a quote",
+    "step2_description": "Send a WhatsApp message from the product page. The product name and code are filled in.",
+    "step3_title": "Receive a formal quote",
+    "step3_description": "We send a quote letter with prices, validity and warranty.",
+    "message_label": "WhatsApp message",
+    "letter_label": "Quote letter",
+    "letter_item1": "Price per item and discount",
+    "letter_item2": "Subtotal, tax base, VAT and total",
+    "letter_item3": "Quote validity",
+    "letter_item4": "Warranty and payment account"
   },
   "Catalog": {
     "meta_title": "Product catalog",
@@ -149,20 +166,20 @@
     "answer_fallback": "I could not find an answer to that. Please contact our team on WhatsApp: {whatsapp}"
   },
   "FAQ": {
-    "title": "Frequently asked questions",
-    "question1": "Do I need an account to order?",
-    "answer1": "No. You can order as a guest using your name and phone number. Signing in lets you see all your orders in one place.",
-    "question2": "Can I pay in installments?",
-    "answer2": "Yes. When ordering you can choose to pay in full or split the total into monthly installments.",
-    "question3": "How do I track my order?",
-    "answer3": "Use the Track order page with your order code and phone number to see payment and delivery status.",
-    "question4": "How can I contact PT Mitra Labora Medika?",
-    "answer4": "Use the chat assistant, WhatsApp or email at the bottom of the page."
+    "title": "Common questions",
+    "question1": "How do I get prices?",
+    "answer1": "Prices come in a formal quote. Tap \"Request a quote\" on a product page to message us on WhatsApp.",
+    "question2": "Do the products have distribution permits?",
+    "answer2": "Yes. Every product we sell has a Ministry of Health distribution permit (AKD).",
+    "question3": "How can we pay?",
+    "answer3": "Upfront transfer, invoice with payment terms, or installments, agreed in each quote.",
+    "question4": "How do I contact you?",
+    "answer4": "On WhatsApp {whatsapp}, by email at {email}, or through the chat assistant at the bottom right."
   },
   "CTA": {
-    "title": "Ready to order?",
-    "description": "Browse the catalog and place your first order today.",
-    "button_text": "Browse catalog"
+    "title": "Need something that is not on your shelf <important>today</important>?",
+    "description": "Send us your list and we will prepare a quote.",
+    "button_text": "Request a quote"
   },
   "Footer": {
     "catalog": "Catalog",
@@ -236,7 +253,7 @@
     "show_price": "Show price (if off, customers ask for a quote)",
     "track_stock": "Limit orders to available stock",
     "import_title": "Import catalog (CSV)",
-    "import_hint": "Upload a CSV with columns: sku, nama_produk, kategori, merek, kemasan, satuan, deskripsi_singkat, harga_jual, tampilkan_harga (Ya/Tidak), status (aktif/draft). Products with the same SKU are updated; stock is not changed.",
+    "import_hint": "Upload a CSV with columns: sku, nama_produk, kategori, merek, kemasan, satuan, deskripsi_singkat, harga_jual, tampilkan_harga (Ya/Tidak), status (aktif/draft). Optional: gambar (/products/file.jpg or https:// URL) and English columns nama_produk_en, kategori_en, kemasan_en, satuan_en, deskripsi_singkat_en. Products with the same SKU are updated; stock is not changed.",
     "import_file": "Catalog CSV file",
     "import_button": "Import",
     "importing": "Importing...",

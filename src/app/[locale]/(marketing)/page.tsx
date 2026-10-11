@@ -8,6 +8,7 @@ import { FAQ } from '@/templates/FAQ';
 import { FeaturedProducts } from '@/templates/FeaturedProducts';
 import { Hero } from '@/templates/Hero';
 import { HowItWorks } from '@/templates/HowItWorks';
+import { TrustBand } from '@/templates/TrustBand';
 
 type IndexProps = {
   params: Promise<{ locale: string }>;
@@ -38,7 +39,8 @@ export default async function Index(props: IndexProps) {
       <CategoryMarquee categories={categories} />
       <ColdChainFlow categories={categories} />
       <FeaturedProducts products={products} locale={locale} />
-      <HowItWorks />
+      <TrustBand />
+      <HowItWorks categories={categories} sample={products[0]} />
       <FAQ />
       <CTA />
     </>

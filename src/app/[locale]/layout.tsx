@@ -1,19 +1,25 @@
 import type { Metadata, Viewport } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
-import { Geist, Geist_Mono, Playfair_Display } from 'next/font/google';
+import { IBM_Plex_Mono, Newsreader, Plus_Jakarta_Sans } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { routing } from '@/libs/I18nRouting';
 import { AppConfig } from '@/utils/AppConfig';
 import '@/styles/global.css';
 
-const sans = Geist({ subsets: ['latin'], variable: '--font-geist' });
-const mono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' });
-const serif = Playfair_Display({ subsets: ['latin'], style: ['normal', 'italic'], variable: '--font-playfair' });
+// Kawung identity type: Plus Jakarta Sans (logo, headings, body), IBM Plex Mono (data, labels), Newsreader italic (narrative)
+const sans = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' });
+const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-plex-mono' });
+const serif = Newsreader({ subsets: ['latin'], style: ['normal', 'italic'], variable: '--font-newsreader' });
 
 export const metadata: Metadata = {
   title: { default: AppConfig.name, template: `%s | ${AppConfig.name}` },
   icons: [
+    {
+      rel: 'icon',
+      type: 'image/svg+xml',
+      url: '/icon.svg',
+    },
     {
       rel: 'apple-touch-icon',
       url: '/apple-touch-icon.png',

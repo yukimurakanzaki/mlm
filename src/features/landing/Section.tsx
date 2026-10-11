@@ -21,7 +21,7 @@ export const Section = (props: {
 
         {props.title && (
           <h2 className="
-            mt-2 font-serif text-3xl tracking-tight
+            mt-2 text-3xl font-bold tracking-tight
             md:text-4xl
           "
           >

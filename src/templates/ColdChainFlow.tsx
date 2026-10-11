@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { emphasis } from '@/features/landing/Emphasis';
 import { Reveal } from '@/features/landing/Reveal';
 import { ScrollLine } from '@/features/landing/ScrollLine';
 import { Link } from '@/libs/I18nNavigation';
@@ -41,19 +42,17 @@ export const ColdChainFlow = (props: { categories: CategorySummary[] }) => {
             {t('eyebrow')}
           </div>
           <h2 className="
-            mt-3 pb-1 font-serif text-3xl/[1.1] tracking-tight
+            mt-3 pb-1 text-3xl/[1.1] font-bold tracking-tight
             md:text-5xl/[1.1]
           "
           >
-            {t.rich('title', {
-              important: chunks => <span className="text-emphasis italic">{chunks}</span>,
-            })}
+            {t.rich('title', { important: emphasis })}
           </h2>
           <p className="mt-4 max-w-[52ch] text-lg/relaxed text-muted-foreground">{t('description')}</p>
         </Reveal>
 
         <div className="
-          mt-14 rounded-lg border bg-secondary/60 p-5
+          mt-14 border bg-secondary/60 p-5
           md:p-8
         "
         >
@@ -93,13 +92,13 @@ export const ColdChainFlow = (props: { categories: CategorySummary[] }) => {
                   aria-hidden="true"
                 />
 
-                <div className="h-full rounded-lg border bg-card p-5">
+                <div className="h-full border bg-card p-5">
                   {stage.count > 0 && (
                     <div className="font-mono text-xs text-muted-foreground">
                       {tc('product_count', { count: stage.count })}
                     </div>
                   )}
-                  <h3 className="mt-1 font-serif text-2xl">
+                  <h3 className="mt-1 text-xl font-bold">
                     {stage.anchor
                       ? (
                           <Link
@@ -122,8 +121,8 @@ export const ColdChainFlow = (props: { categories: CategorySummary[] }) => {
                         <li
                           key={name}
                           className="
-                            rounded-full border bg-background px-2.5 py-1
-                            text-xs
+                            border bg-background px-2.5 py-1 font-mono
+                            text-[11px]
                           "
                         >
                           {name}
