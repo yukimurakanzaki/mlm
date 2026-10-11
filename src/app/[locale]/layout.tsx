@@ -1,10 +1,15 @@
 import type { Metadata, Viewport } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
+import { Geist, Geist_Mono, Playfair_Display } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { routing } from '@/libs/I18nRouting';
 import { AppConfig } from '@/utils/AppConfig';
 import '@/styles/global.css';
+
+const sans = Geist({ subsets: ['latin'], variable: '--font-geist' });
+const mono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' });
+const serif = Playfair_Display({ subsets: ['latin'], style: ['normal', 'italic'], variable: '--font-playfair' });
 
 export const metadata: Metadata = {
   title: { default: AppConfig.name, template: `%s | ${AppConfig.name}` },
@@ -54,7 +59,15 @@ export default async function RootLayout(props: {
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={`
+        ${sans.variable}
+        ${mono.variable}
+        ${serif.variable}
+      `}
+      suppressHydrationWarning
+    >
       <body>
         <NextIntlClientProvider>
           {props.children}

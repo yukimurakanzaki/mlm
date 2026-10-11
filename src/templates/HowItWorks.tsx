@@ -16,13 +16,13 @@ export const HowItWorks = () => {
         {STEPS.map(step => (
           <div key={step} className="rounded-lg border bg-card p-5">
             <div className="
-              flex size-9 items-center justify-center rounded-full bg-primary
-              font-bold text-primary-foreground
+              flex size-9 items-center justify-center rounded-full border
+              font-mono text-sm
             "
             >
               {step}
             </div>
-            <h3 className="mt-3 text-lg font-semibold">{t(`step${step}_title`)}</h3>
+            <h3 className="mt-3 font-serif text-lg">{t(`step${step}_title`)}</h3>
             <p className="mt-1 text-sm text-muted-foreground">{t(`step${step}_description`)}</p>
           </div>
         ))}

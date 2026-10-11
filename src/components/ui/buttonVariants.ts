@@ -3,9 +3,11 @@ import { cva } from 'class-variance-authority';
 export const buttonVariants = cva(
   `
     inline-flex shrink-0 cursor-pointer items-center justify-center gap-2
-    rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none
+    rounded-sm font-mono text-xs font-medium tracking-[0.08em] whitespace-nowrap
+    uppercase transition-all outline-none
     focus-visible:border-ring focus-visible:ring-[3px]
     focus-visible:ring-ring/50
+    active:scale-[0.98]
     disabled:pointer-events-none disabled:opacity-50
     aria-invalid:border-destructive aria-invalid:ring-destructive/20
     dark:aria-invalid:ring-destructive/40
@@ -17,7 +19,8 @@ export const buttonVariants = cva(
       variant: {
         default:
           `
-            bg-primary text-primary-foreground
+            bg-primary text-primary-foreground shadow-[0_6px_20px_-8px]
+            shadow-primary/60
             hover:bg-primary/90
           `,
         destructive:
@@ -30,7 +33,7 @@ export const buttonVariants = cva(
           `,
         outline:
           `
-            border bg-background shadow-xs
+            border border-foreground/15 bg-card
             hover:bg-accent hover:text-accent-foreground
             dark:border-input dark:bg-input/30
             dark:hover:bg-input/50
@@ -43,8 +46,9 @@ export const buttonVariants = cva(
         ghost:
           'hover:bg-accent hover:text-accent-foreground',
         link: `
-          text-primary underline-offset-4
-          hover:underline
+          text-foreground underline decoration-primary decoration-2
+          underline-offset-4
+          hover:decoration-foreground
         `,
       },
       size: {
@@ -53,11 +57,11 @@ export const buttonVariants = cva(
           has-[>svg]:px-3
         `,
         'sm': `
-          h-8 gap-1.5 rounded-md px-3
+          h-8 gap-1.5 px-3
           has-[>svg]:px-2.5
         `,
         'lg': `
-          h-10 rounded-md px-6
+          h-11 px-6
           has-[>svg]:px-4
         `,
         'icon': 'size-9',

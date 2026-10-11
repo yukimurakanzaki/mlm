@@ -44,15 +44,14 @@ export default async function ProductPage(props: Props) {
         <div>
           <div
             className="
-              flex h-64 items-center justify-center rounded-lg bg-linear-to-br
-              from-indigo-500 via-purple-500 to-pink-500 text-7xl font-bold
-              text-white
+              flex h-64 items-center justify-center rounded-lg border
+              bg-secondary font-serif text-7xl text-foreground/70
             "
             aria-hidden="true"
           >
             {product.name.charAt(0)}
           </div>
-          <h1 className="mt-5 text-3xl font-bold">{product.name}</h1>
+          <h1 className="mt-5 font-serif text-3xl tracking-tight">{product.name}</h1>
           {details && <div className="mt-1 text-sm text-muted-foreground">{details}</div>}
           <p className="mt-2 text-muted-foreground">{product.description}</p>
           <div className="mt-4 text-2xl font-bold">

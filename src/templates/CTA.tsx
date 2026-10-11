@@ -14,7 +14,7 @@ export const CTA = () => {
         title={t('title')}
         description={t('description')}
         buttons={(
-          <Link className={buttonVariants({ variant: 'secondary', size: 'lg' })} href="/catalog">
+          <Link className={buttonVariants({ size: 'lg' })} href="/catalog">
             {t('button_text')}
             <ArrowRightIcon className="ml-1 size-5" />
           </Link>

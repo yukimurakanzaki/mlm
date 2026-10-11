@@ -14,6 +14,7 @@ const MenuToggle = (props: {
 }) => (
   <Button
     variant="ghost"
+    size="icon"
     onClick={props.onClick}
     aria-label={props.label}
     aria-expanded={props.expanded}

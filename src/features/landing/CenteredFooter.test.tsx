@@ -10,7 +10,7 @@ describe('CenteredFooter', () => {
     it('should have copyright information', async () => {
       await render(
         <NextIntlClientProvider locale="en" messages={messages}>
-          <CenteredFooter logo={null} name="" legalLinks={null}>
+          <CenteredFooter logo={null} contact={null}>
             Random children
           </CenteredFooter>
         </NextIntlClientProvider>,

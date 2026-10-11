@@ -150,8 +150,10 @@
     "catalog": "Catalog",
     "track": "Track order",
     "faq": "FAQ",
-    "email": "Email",
-    "footer_text": "© {year} {name}. All rights reserved."
+    "footer_text": "© {year} {name}. All rights reserved.",
+    "tagline": "A reliable, trustworthy partner for Indonesian blood banks.",
+    "nav_heading": "Explore",
+    "contact_heading": "Contact"
   },
   "SignIn": {
     "meta_title": "Sign in",

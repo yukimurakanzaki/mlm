@@ -150,8 +150,10 @@
     "catalog": "Katalog",
     "track": "Lacak pesanan",
     "faq": "FAQ",
-    "email": "Email",
-    "footer_text": "© {year} {name}. Hak cipta dilindungi."
+    "footer_text": "© {year} {name}. Hak cipta dilindungi.",
+    "tagline": "Mitra yang andal dan tepercaya untuk bank darah Indonesia.",
+    "nav_heading": "Jelajahi",
+    "contact_heading": "Kontak"
   },
   "SignIn": {
     "meta_title": "Masuk",

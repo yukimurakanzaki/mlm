@@ -27,6 +27,8 @@ export const AppConfig = {
   contact: {
     email: 'admin@mitralaboramedika.com',
     whatsapp: '6281266854415', // International format, digits only
+    whatsappDisplay: '0812-6685-4415',
+    address: 'Jl. Tanjung Mas Prima Blok D2 No.4, Jagakarsa, Jakarta Selatan 12530',
   },
   currency: 'IDR',
   // Number of monthly installments a customer can choose when ordering

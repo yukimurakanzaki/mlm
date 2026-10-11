@@ -12,53 +12,54 @@ export const CenteredMenu = (props: {
   rightMenu: React.ReactNode;
 }) => {
   const t = useTranslations('Navbar');
-  const { isMenuOpen, toggleMenu } = useMenu();
-
-  const navClass = cn('max-lg:w-full max-lg:bg-secondary max-lg:p-5', {
-    'max-lg:hidden': !isMenuOpen,
-  });
+  const { isMenuOpen, toggleMenu, closeMenu } = useMenu();
 
   return (
-    <div className="flex flex-wrap items-center justify-between">
-      <Link href="/">{props.logo}</Link>
+    <div className="
+      mx-auto flex h-16 max-w-7xl items-center gap-4 px-4
+      lg:gap-8
+    "
+    >
+      <Link href="/" className="min-w-0">{props.logo}</Link>
 
-      <div className="lg:hidden">
-        <MenuToggle onClick={toggleMenu} label={t('menu_label')} expanded={isMenuOpen} />
-      </div>
-
-      <nav className={cn(`
-        rounded-t-xl
-        max-lg:mt-2
-      `, navClass)}
-      >
+      <nav className="max-lg:hidden">
         <ul className="
-          flex gap-x-6 gap-y-1 text-lg font-medium
-          max-lg:flex-col
-          max-lg:[&_a]:inline-block max-lg:[&_a]:w-full
-          [&_a:hover]:opacity-70
+          flex gap-x-7 text-sm text-muted-foreground
+          [&_a]:transition-colors
+          [&_a:hover]:text-foreground
         "
         >
           {props.children}
         </ul>
       </nav>
 
-      <div
+      <ul className="ml-auto flex shrink-0 items-center gap-x-1">
+        {props.rightMenu}
+        <li className="lg:hidden">
+          <MenuToggle onClick={toggleMenu} label={t('menu_label')} expanded={isMenuOpen} />
+        </li>
+      </ul>
+
+      <nav
         className={cn(
           `
-            rounded-b-xl
-            max-lg:border-t max-lg:border-border
+            absolute inset-x-0 top-16 border-b bg-background px-4 py-3
+            lg:hidden
           `,
-          navClass,
+          !isMenuOpen && 'hidden',
         )}
       >
-        <ul className="
-          flex flex-row items-center gap-x-1.5 text-lg font-medium
-          [&_a:hover]:opacity-70
-        "
+        {/* Close after navigating so the panel does not cover the next page */}
+        <ul
+          className="
+            flex flex-col text-base
+            [&_a]:block [&_a]:py-2
+          "
+          onClick={closeMenu}
         >
-          {props.rightMenu}
+          {props.children}
         </ul>
-      </div>
+      </nav>
     </div>
   );
 };

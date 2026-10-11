@@ -3,16 +3,16 @@ export const CTABanner = (props: {
   description: string;
   buttons: React.ReactNode;
 }) => (
-  <div className="
-    rounded-xl bg-muted bg-linear-to-br from-indigo-400 via-purple-400
-    to-pink-400 px-6 py-10 text-center
-  "
-  >
-    <div className="text-3xl font-bold text-primary-foreground">
+  <div className="rounded-lg border bg-card px-6 py-12 text-center">
+    <div className="
+      font-serif text-3xl tracking-tight
+      md:text-4xl
+    "
+    >
       {props.title}
     </div>
 
-    <div className="mt-2 text-lg font-medium text-muted">
+    <div className="mt-2 text-lg text-muted-foreground">
       {props.description}
     </div>
 

@@ -7,7 +7,12 @@ export const CenteredHero = (props: {
   <>
     <div className="text-center">{props.banner}</div>
 
-    <h1 className="mt-3 text-center text-5xl font-bold tracking-tight">
+    <h1 className="
+      mx-auto mt-3 max-w-4xl text-center font-serif text-4xl/[1.1]
+      tracking-tight
+      md:text-6xl/[1.1]
+    "
+    >
       {props.title}
     </h1>
 

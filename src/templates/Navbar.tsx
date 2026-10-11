@@ -3,7 +3,6 @@ import { cookies } from 'next/headers';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { buttonVariants } from '@/components/ui/buttonVariants';
 import { CenteredMenu } from '@/features/landing/CenteredMenu';
-import { Section } from '@/features/landing/Section';
 import { Link } from '@/libs/I18nNavigation';
 import { Logo } from './Logo';
 
@@ -14,7 +13,11 @@ export const Navbar = async (props: { locale: string }) => {
   const signedIn = (await cookies()).has('__session');
 
   return (
-    <Section className="px-3 py-6">
+    <header className="
+      sticky top-0 z-30 border-b border-border/70 bg-background/80
+      backdrop-blur-md
+    "
+    >
       <CenteredMenu
         logo={<Logo />}
         rightMenu={(
@@ -25,14 +28,14 @@ export const Navbar = async (props: { locale: string }) => {
             {signedIn
               ? (
                   <li>
-                    <Link className={buttonVariants()} href="/dashboard">
+                    <Link className={buttonVariants({ size: 'sm' })} href="/dashboard">
                       {t('my_orders')}
                     </Link>
                   </li>
                 )
               : (
                   <li>
-                    <Link className={buttonVariants()} href="/sign-in">
+                    <Link className={buttonVariants({ size: 'sm' })} href="/sign-in">
                       {t('sign_in')}
                     </Link>
                   </li>
@@ -52,6 +55,6 @@ export const Navbar = async (props: { locale: string }) => {
           <Link href="/#faq">{t('faq')}</Link>
         </li>
       </CenteredMenu>
-    </Section>
+    </header>
   );
 };

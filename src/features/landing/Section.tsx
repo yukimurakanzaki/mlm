@@ -7,13 +7,12 @@ export const Section = (props: {
   description?: string;
   className?: string;
 }) => (
-  <div className={cn('@container px-3 py-16', props.className)}>
+  <div className={cn('@container px-4 py-20', props.className)}>
     {(props.title || props.subtitle || props.description) && (
       <div className="mx-auto mb-12 max-w-3xl text-center">
         {props.subtitle && (
           <div className="
-            bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500
-            bg-clip-text text-sm font-bold text-transparent
+            font-mono text-xs tracking-[0.08em] text-muted-foreground uppercase
           "
           >
             {props.subtitle}
@@ -21,7 +20,13 @@ export const Section = (props: {
         )}
 
         {props.title && (
-          <h2 className="mt-1 text-3xl font-bold">{props.title}</h2>
+          <h2 className="
+            mt-2 font-serif text-3xl tracking-tight
+            md:text-4xl
+          "
+          >
+            {props.title}
+          </h2>
         )}
 
         {props.description && (

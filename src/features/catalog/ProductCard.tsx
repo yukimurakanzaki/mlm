@@ -23,11 +23,15 @@ export const ProductCard = async (props: { product: Product; locale: string }) =
   const details = [product.brand, product.packaging].filter(Boolean).join(' · ');
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-lg border bg-card">
+    <div className="
+      flex flex-col overflow-hidden rounded-lg border bg-card transition-shadow
+      hover:shadow-[0_12px_32px_-16px] hover:shadow-foreground/25
+    "
+    >
       <div
         className="
-          flex h-40 items-center justify-center bg-linear-to-br from-indigo-500
-          via-purple-500 to-pink-500 text-5xl font-bold text-white
+          flex h-40 items-center justify-center border-b bg-secondary font-serif
+          text-5xl text-foreground/70
         "
         aria-hidden="true"
       >
@@ -35,7 +39,7 @@ export const ProductCard = async (props: { product: Product; locale: string }) =
       </div>
 
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="text-lg font-semibold">{product.name}</h3>
+        <h3 className="font-serif text-lg/snug">{product.name}</h3>
         {details && <div className="mt-0.5 text-xs text-muted-foreground">{details}</div>}
         <p className="mt-1 line-clamp-2 flex-1 text-sm text-muted-foreground">{product.description}</p>
         <div className={orderable
