@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { buttonVariants } from '@/components/ui/buttonVariants';
+import { ProductImage } from '@/features/catalog/ProductImage';
 import { Section } from '@/features/landing/Section';
 import { OrderForm } from '@/features/orders/OrderForm';
 import { getActiveProductBySlug } from '@/features/orders/queries';
@@ -42,16 +43,13 @@ export default async function ProductPage(props: Props) {
       "
       >
         <div>
-          <div
-            className="
-              flex h-64 items-center justify-center rounded-lg border
-              bg-secondary font-serif text-7xl text-foreground/70
-            "
-            aria-hidden="true"
-          >
-            {product.name.charAt(0)}
-          </div>
-          <h1 className="mt-5 font-serif text-3xl tracking-tight">{product.name}</h1>
+          <ProductImage
+            name={product.name}
+            imageUrl={product.imageUrl}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="h-64 border bg-secondary"
+          />
+          <h1 className="mt-5 text-3xl font-bold tracking-tight">{product.name}</h1>
           {details && <div className="mt-1 text-sm text-muted-foreground">{details}</div>}
           <p className="mt-2 text-muted-foreground">{product.description}</p>
           <div className="mt-4 text-2xl font-bold">
@@ -62,7 +60,7 @@ export default async function ProductPage(props: Props) {
           )}
         </div>
 
-        <div className="rounded-lg border bg-card p-5">
+        <div className="border bg-card p-5">
           {orderable
             ? (
                 <>

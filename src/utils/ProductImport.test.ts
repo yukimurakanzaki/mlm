@@ -34,7 +34,23 @@ describe('parseProductCsv', () => {
       priceIdr: 2886000,
       showPrice: true,
       isActive: true,
+      imageUrl: null,
     }]);
+  });
+
+  it('reads the optional gambar column; blank or missing gives null', () => {
+    const { rows } = parseProductCsv(`${HEADER},gambar\nA1,Alat,x,-,u,u,x,1000,Ya,aktif,/products/a.jpg\nA2,Alat,x,-,u,u,x,1000,Ya,aktif,https://cdn.example.com/b.jpg\nA3,Alat,x,-,u,u,x,1000,Ya,aktif,`);
+    const noColumn = parseProductCsv(`${HEADER}\nA1,Alat,x,-,u,u,x,1000,Ya,aktif`).rows;
+
+    expect(rows.map(r => r.imageUrl)).toEqual(['/products/a.jpg', 'https://cdn.example.com/b.jpg', null]);
+    expect(noColumn[0]!.imageUrl).toBeNull();
+  });
+
+  it('rejects unsafe gambar values', () => {
+    const { rows, errors } = parseProductCsv(`${HEADER},gambar\nA1,Alat,x,-,u,u,x,1000,Ya,aktif,javascript:alert(1)\nA2,Alat,x,-,u,u,x,1000,Ya,aktif,//evil.com/x.jpg\nA3,Alat,x,-,u,u,x,1000,Ya,aktif,http://a.com/x.jpg`);
+
+    expect(rows).toEqual([]);
+    expect(errors).toEqual([{ row: 2, field: 'gambar' }, { row: 3, field: 'gambar' }, { row: 4, field: 'gambar' }]);
   });
 
   it('reads the optional English columns', () => {

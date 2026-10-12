@@ -1,5 +1,6 @@
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { getTranslations } from 'next-intl/server';
+import { ProductImage } from '@/features/catalog/ProductImage';
 import { Reveal } from '@/features/landing/Reveal';
 import { Link } from '@/libs/I18nNavigation';
 import { cn } from '@/utils/Helpers';
@@ -13,6 +14,7 @@ type Product = {
   category: string | null;
   priceIdr: number | null;
   showPrice: boolean;
+  imageUrl: string | null;
 };
 
 // Cell sizes and tints by position; the first product leads when there are three.
@@ -21,7 +23,8 @@ const LAYOUT: Record<number, string[]> = {
   2: ['md:col-span-3 lg:col-span-1', 'md:col-span-3 lg:col-span-2'],
   3: ['md:col-span-2 md:row-span-2', '', ''],
 };
-const TINTS = ['bg-secondary', 'bg-primary/10', 'bg-card'];
+// Kawung pattern tiles stand in for photos; each cell gets its own ground and pattern color
+const TINTS = ['bg-secondary text-foreground/10', 'bg-band text-band-foreground/12', 'bg-card text-emphasis/25'];
 
 export const FeaturedProducts = async (props: { products: Product[]; locale: string }) => {
   const t = await getTranslations({ locale: props.locale, namespace: 'Catalog' });
@@ -37,7 +40,7 @@ export const FeaturedProducts = async (props: { products: Product[]; locale: str
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <h2 className="
-            font-serif text-3xl tracking-tight
+            text-3xl font-bold tracking-tight
             md:text-5xl
           "
           >
@@ -60,27 +63,23 @@ export const FeaturedProducts = async (props: { products: Product[]; locale: str
                 href={`/catalog/${product.slug}`}
                 className={cn(
                   `
-                    group flex flex-col overflow-hidden rounded-lg border
-                    bg-card transition-shadow
+                    group flex flex-col overflow-hidden border bg-card
+                    transition-shadow
                     hover:shadow-[0_24px_60px_-30px] hover:shadow-foreground/30
                   `,
                   layout[index],
                 )}
               >
-                <div
+                <ProductImage
+                  name={product.name}
+                  imageUrl={product.imageUrl}
+                  sizes={lead ? '(min-width: 768px) 40vw, 100vw' : '(min-width: 768px) 30vw, 100vw'}
                   className={cn(
-                    `
-                      flex flex-1 items-center justify-center border-b
-                      font-serif text-foreground/60
-                    `,
+                    'flex-1 border-b',
                     TINTS[index],
-                    lead ? 'min-h-72 text-8xl' : 'min-h-40 text-6xl',
+                    lead ? 'min-h-72' : 'min-h-40',
                   )}
-                  aria-hidden="true"
-                >
-                  {/* TODO: product photo from image_url once photos are uploaded (phase 4) */}
-                  {product.name.charAt(0)}
-                </div>
+                />
 
                 <div className="p-5">
                   {product.category && (
@@ -92,7 +91,7 @@ export const FeaturedProducts = async (props: { products: Product[]; locale: str
                       {product.category}
                     </div>
                   )}
-                  <h3 className={cn('mt-1.5 font-serif', lead
+                  <h3 className={cn('mt-1.5 font-bold', lead
                     ? `
                       text-2xl
                       md:text-3xl

@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { buttonVariants } from '@/components/ui/buttonVariants';
+import { ProductImage } from '@/features/catalog/ProductImage';
 import { Link } from '@/libs/I18nNavigation';
 import { canOrderOnline, formatIDR } from '@/utils/Orders';
 
@@ -13,6 +14,7 @@ type Product = {
   showPrice: boolean;
   trackStock: boolean;
   stock: number;
+  imageUrl: string | null;
 };
 
 export const ProductCard = async (props: { product: Product; locale: string }) => {
@@ -24,22 +26,19 @@ export const ProductCard = async (props: { product: Product; locale: string }) =
 
   return (
     <div className="
-      flex flex-col overflow-hidden rounded-lg border bg-card transition-shadow
+      flex flex-col overflow-hidden border bg-card transition-shadow
       hover:shadow-[0_12px_32px_-16px] hover:shadow-foreground/25
     "
     >
-      <div
-        className="
-          flex h-40 items-center justify-center border-b bg-secondary font-serif
-          text-5xl text-foreground/70
-        "
-        aria-hidden="true"
-      >
-        {product.name.charAt(0)}
-      </div>
+      <ProductImage
+        name={product.name}
+        imageUrl={product.imageUrl}
+        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+        className="h-40 border-b bg-secondary"
+      />
 
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="font-serif text-lg/snug">{product.name}</h3>
+        <h3 className="text-lg/snug font-bold">{product.name}</h3>
         {details && <div className="mt-0.5 text-xs text-muted-foreground">{details}</div>}
         <p className="mt-1 line-clamp-2 flex-1 text-sm text-muted-foreground">{product.description}</p>
         <div className={orderable

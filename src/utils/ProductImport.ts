@@ -14,6 +14,7 @@ type ProductImportRow = {
   priceIdr: number | null;
   showPrice: boolean;
   isActive: boolean;
+  imageUrl: string | null;
 };
 
 type ProductImportError = { row: number; field: string };
@@ -102,6 +103,7 @@ const optional = (value: string | undefined) => {
 /**
  * Turns a catalog sheet into product rows. Columns (by header name):
  * sku, nama_produk, kategori, merek, kemasan, satuan, deskripsi_singkat, harga_jual, tampilkan_harga (Ya/Tidak), status (aktif/draft).
+ * Optional image column: gambar (`/products/x.jpg` or an https URL).
  * Optional English columns: nama_produk_en, deskripsi_singkat_en, kategori_en, kemasan_en, satuan_en.
  * Invalid rows are skipped and reported by row number (the header is row 1).
  */
@@ -131,6 +133,7 @@ export const parseProductCsv = (text: string) => {
     const price = parsePrice(get('harga_jual'));
     const showPrice = parseBoolean(get('tampilkan_harga'), ['ya', 'yes', 'y', 'true', '1'], ['tidak', 'no', 'n', 'false', '0']);
     const active = parseBoolean(get('status'), ['aktif', 'active'], ['draft', 'nonaktif', 'inactive', 'arsip']);
+    const imageUrl = optional(get('gambar'));
     const rowErrors: string[] = [];
 
     if (!sku) {
@@ -153,6 +156,11 @@ export const parseProductCsv = (text: string) => {
 
     if (active === null) {
       rowErrors.push('status');
+    }
+
+    // Site-relative path or https only; blocks javascript:, data: and protocol-relative URLs
+    if (imageUrl && !(/^\/(?!\/)/.test(imageUrl) || imageUrl.startsWith('https://'))) {
+      rowErrors.push('gambar');
     }
 
     if (rowErrors.length > 0) {
@@ -179,6 +187,7 @@ export const parseProductCsv = (text: string) => {
       // A price that is blank can never be shown, whatever the sheet says
       showPrice: (showPrice ?? true) && price.price !== null,
       isActive: active ?? true,
+      imageUrl,
     });
   });
 
