@@ -55,12 +55,12 @@ export const OrderForm = (props: { productId: number; unitPriceIdr: number; maxQ
       <div className="grid grid-cols-2 gap-4">
         <label className="block text-sm font-medium">
           {t('quantity')}
-          <input name="quantity" type="number" min={1} max={Math.min(99, props.maxQuantity)} defaultValue={1} required className={inputClass} aria-invalid={state.fieldErrors?.quantity} />
+          <input name="quantity" autoComplete="off" type="number" min={1} max={Math.min(99, props.maxQuantity)} defaultValue={1} required className={inputClass} aria-invalid={state.fieldErrors?.quantity} />
         </label>
 
         <label className="block text-sm font-medium">
           {t('payment_plan')}
-          <select name="installmentCount" defaultValue={1} className={inputClass}>
+          <select name="installmentCount" autoComplete="off" defaultValue={1} className={inputClass}>
             {AppConfig.installmentOptions.map(count => (
               <option key={count} value={count}>
                 {count === 1 ? t('pay_in_full') : t('installments', { count })}
@@ -72,7 +72,7 @@ export const OrderForm = (props: { productId: number; unitPriceIdr: number; maxQ
 
       <label className="block text-sm font-medium">
         {t('notes')}
-        <textarea name="notes" rows={2} className={inputClass} />
+        <textarea name="notes" autoComplete="off" rows={2} className={inputClass} />
       </label>
 
       <p className="text-xs text-muted-foreground">
