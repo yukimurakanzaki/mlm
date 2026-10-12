@@ -59,6 +59,7 @@ export default async function TrackPage(props: Props) {
             {t('code_label')}
             <input
               name="code"
+              autoComplete="off"
               required
               defaultValue={code}
               placeholder={t('code_placeholder')}
