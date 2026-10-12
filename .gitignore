@@ -72,3 +72,6 @@ build-archive.log
 
 # internal business docs (requirements, plans) - repo is public
 /docs
+
+# catalog sheets hold base prices - repo is public
+/produk_*.csv
