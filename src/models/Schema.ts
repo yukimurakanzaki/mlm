@@ -50,6 +50,8 @@ export const productSchema = pgTable('product', {
   // When false, `stock` is ignored and the product can always be ordered (an admin confirms each order)
   trackStock: boolean('track_stock').notNull().default(true),
   isActive: boolean('is_active').notNull().default(true),
+  // Position in the last imported catalog sheet; null for products added by hand (listed after imported ones)
+  sortOrder: integer('sort_order'),
   createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
 });
 

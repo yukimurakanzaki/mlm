@@ -1,8 +1,11 @@
-import { and, asc, count, desc, eq, sum } from 'drizzle-orm';
+import { and, asc, count, desc, eq, sql, sum } from 'drizzle-orm';
 import { db } from '@/libs/DB';
 import { orderItemSchema, orderSchema, paymentSchema, productSchema } from '@/models/Schema';
 import { ORDER_STATUS } from '@/types/Order';
 import { localizeProduct, summarizeCategories } from '@/utils/Catalog';
+
+// Sheet order first; hand-added products (null) after
+const CATALOG_ORDER = sql`${productSchema.sortOrder} asc nulls last`;
 
 /**
  * Active products; text fields are in the page's language (English on /en, falling back to Indonesian).
@@ -13,7 +16,7 @@ export const listActiveProducts = async (locale: string, limit?: number) => {
     .select()
     .from(productSchema)
     .where(eq(productSchema.isActive, true))
-    .orderBy(asc(productSchema.id));
+    .orderBy(CATALOG_ORDER, asc(productSchema.id));
 
   return (await (limit ? query.limit(limit) : query))
     .map(p => ({ ...localizeProduct(p, locale), categoryKey: p.category?.trim() || null }));
@@ -25,7 +28,7 @@ export const listCategorySummaries = async (locale: string) => {
     .select()
     .from(productSchema)
     .where(eq(productSchema.isActive, true))
-    .orderBy(asc(productSchema.id));
+    .orderBy(CATALOG_ORDER, asc(productSchema.id));
 
   return summarizeCategories(products, locale);
 };

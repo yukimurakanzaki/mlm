@@ -102,7 +102,8 @@ export async function importProducts(_prev: ImportState, formData: FormData): Pr
       let updated = 0;
 
       // Sequential so new products keep the order of the sheet
-      for (const row of rows) {
+      for (const [i, r] of rows.entries()) {
+        const row = { ...r, sortOrder: i };
         const existingId = idBySku.get(row.sku);
 
         if (existingId) {
