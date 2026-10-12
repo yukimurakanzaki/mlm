@@ -68,6 +68,8 @@ export const ChatWidget = () => {
           <form onSubmit={send} className="flex gap-2 border-t p-2">
             <input
               ref={inputRef}
+              name="message"
+              autoComplete="off"
               maxLength={500}
               aria-label={t('input_label')}
               placeholder={t('placeholder')}
