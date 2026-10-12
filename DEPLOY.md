@@ -35,7 +35,14 @@ Do the steps in order. Keep a note of every key you copy; never paste keys into 
 | `MIDTRANS_IS_PRODUCTION` | `false` (sandbox) |
 
 5. Deploy. Do **not** run `db:seed` in production.
-6. Add products: sign in as admin, open `/dashboard/admin/products`, and upload your catalog sheet (CSV) under **Impor katalog**. Columns: `sku, nama_produk, kategori, merek, kemasan, satuan, deskripsi_singkat, harga_jual, tampilkan_harga (Ya/Tidak), status (aktif/draft)`. Re-uploading the same sheet updates prices and details (matched by SKU). Do not commit the sheet to GitHub: the repository is public.
+6. Add products: sign in as admin, open `/dashboard/admin/products`, and upload your catalog sheet (CSV) under **Impor katalog**.
+   - Required columns: `sku, nama_produk`.
+   - Usual columns: `kategori, merek, kemasan, satuan, deskripsi_singkat, harga_jual, tampilkan_harga (Ya/Tidak), status (aktif/draft)`.
+   - Optional: `gambar` (photo path such as `/products/hbm.jpg`, files live in `public/products/`, or an `https://` link) and the English columns `nama_produk_en, kategori_en, kemasan_en, satuan_en, deskripsi_singkat_en` (shown on `/en`; blank falls back to Indonesian).
+   - Re-uploading updates products matched by SKU. The sheet is the source of truth: a column left out or blank clears that field, so always upload the full sheet.
+   - The site lists categories and products in the sheet's row order.
+   - To hide a product, set its `status` to `draft` and re-upload (or untick **Aktif** in the admin). Changing a product's SKU adds a new product; hide the old one.
+   - Do not commit the sheet to GitHub: the repository is public and the sheet holds base prices (`produk_*.csv` is gitignored).
 
 ## 5. Domain (Hostinger)
 1. Vercel > Project > Settings > Domains > add your domain. Vercel shows DNS records.
