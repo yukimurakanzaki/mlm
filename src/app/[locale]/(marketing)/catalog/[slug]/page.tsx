@@ -18,7 +18,7 @@ type Props = {
 
 const RELATED_COUNT = 4;
 // One column per spec so the grid never shows an empty cell
-const SPEC_COLUMNS: Record<number, string> = { 1: '', 2: 'sm:grid-cols-2', 3: 'sm:grid-cols-3' };
+const SPEC_COLUMNS: Record<number, string> = { 1: '', 2: 'sm:grid-cols-2', 3: 'sm:grid-cols-3', 4: 'sm:grid-cols-2' };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const { locale, slug } = await props.params;
@@ -39,8 +39,8 @@ export default async function ProductPage(props: Props) {
   const t = await getTranslations({ locale, namespace: 'Product' });
   const orderable = canOrderOnline(product);
   const soldOut = product.trackStock && product.stock <= 0;
-  // Brands stay off the public site for now (requirements: no principal names), so no brand row
   const specs = [
+    { label: t('brand'), value: product.brand },
     { label: t('packaging'), value: product.packaging },
     { label: t('unit'), value: product.unit },
     { label: t('sku'), value: product.sku },

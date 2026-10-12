@@ -91,6 +91,7 @@
     "quote_button": "Minta penawaran",
     "quote_message": "Halo {company}, saya ingin meminta penawaran untuk {name} (SKU: {sku}).",
     "catalog": "Katalog",
+    "brand": "Merek",
     "packaging": "Kemasan",
     "unit": "Satuan",
     "sku": "Kode produk",

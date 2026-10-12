@@ -8,6 +8,7 @@ type Product = {
   slug: string;
   name: string;
   description: string;
+  brand: string | null;
   packaging: string | null;
   priceIdr: number | null;
   showPrice: boolean;
@@ -40,9 +41,9 @@ export const ProductCard = async (props: { product: Product; locale: string; eag
 
       <div className="flex flex-1 flex-col p-4">
         <h3 className="text-base/snug font-bold">{product.name}</h3>
-        {product.packaging && (
+        {(product.brand || product.packaging) && (
           <div className="mt-1 font-mono text-[11px] text-muted-foreground">
-            {product.packaging}
+            {[product.brand, product.packaging].filter(Boolean).join(' · ')}
           </div>
         )}
         <p className="mt-2 line-clamp-2 flex-1 text-sm text-muted-foreground">{product.description}</p>

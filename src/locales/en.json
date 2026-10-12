@@ -91,6 +91,7 @@
     "quote_button": "Request a quote",
     "quote_message": "Hello {company}, I would like to request a quote for {name} (SKU: {sku}).",
     "catalog": "Catalog",
+    "brand": "Brand",
     "packaging": "Packaging",
     "unit": "Unit",
     "sku": "Product code",
