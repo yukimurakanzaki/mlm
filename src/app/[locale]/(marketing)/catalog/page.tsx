@@ -21,6 +21,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return { title: t('meta_title'), description: t('meta_description') };
 }
 
+const EAGER_CARDS = 4;
+
 const pillClass = (active: boolean) => cn(
   `
     block border px-3 py-2 font-mono text-[11px] tracking-[0.08em]
@@ -108,7 +110,7 @@ export default async function CatalogPage(props: Props) {
             )
           : (
               <div className="mt-12 space-y-16">
-                {groupByCategory(visible).map(group => (
+                {groupByCategory(visible).map((group, groupIndex) => (
                   <section
                     key={group.category ?? 'other'}
                     id={anchorByKey.get(group.items[0]?.categoryKey ?? '')}
@@ -134,8 +136,9 @@ export default async function CatalogPage(props: Props) {
                       xl:grid-cols-4
                     "
                     >
-                      {group.items.map(product => (
-                        <ProductCard key={product.id} product={product} locale={locale} />
+                      {group.items.map((product, index) => (
+                        // The first row is on screen at load, so its photos load eagerly
+                        <ProductCard key={product.id} product={product} locale={locale} eager={groupIndex === 0 && index < EAGER_CARDS} />
                       ))}
                     </div>
                   </section>

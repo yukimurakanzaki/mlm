@@ -273,5 +273,9 @@
     "retry": "Coba lagi",
     "home": "Kembali ke beranda",
     "contact": "Butuh bantuan? Hubungi kami lewat WhatsApp"
+  },
+  "NotFound": {
+    "title": "Halaman tidak ditemukan",
+    "description": "Produk atau halaman ini tidak ada, atau sudah dipindahkan."
   }
 }

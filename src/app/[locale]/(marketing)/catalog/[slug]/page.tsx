@@ -79,6 +79,7 @@ export default async function ProductPage(props: Props) {
           <ProductImage
             name={product.name}
             imageUrl={product.imageUrl}
+            eager
             className="
               aspect-square border bg-secondary
               lg:sticky lg:top-24

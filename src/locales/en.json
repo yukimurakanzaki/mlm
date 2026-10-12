@@ -273,5 +273,9 @@
     "retry": "Try again",
     "home": "Back to home",
     "contact": "Need help? Contact us on WhatsApp"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "This product or page does not exist or has moved."
   }
 }

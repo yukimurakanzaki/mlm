@@ -71,6 +71,7 @@ export const Hero = (props: { spotlight?: SpotlightProduct }) => {
               <ProductImage
                 name={spotlight.name}
                 imageUrl={spotlight.imageUrl}
+                eager
                 className="
                   absolute inset-x-[14%] top-[9%] bottom-[34%] border
                   max-sm:bottom-[44%]

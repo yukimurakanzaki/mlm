@@ -6,7 +6,8 @@ import { cn } from '@/utils/Helpers';
  * Supplier photos are small (about 100-500px), so they are centered at no more than their own size instead of
  * being stretched to fill the box.
  */
-export const ProductImage = (props: { name: string; imageUrl: string | null; className?: string }) => {
+/** `eager`: the photo is likely the largest thing in the first screen (LCP), so load it right away. */
+export const ProductImage = (props: { name: string; imageUrl: string | null; className?: string; eager?: boolean }) => {
   if (!props.imageUrl) {
     return (
       <div className={cn('relative text-foreground/10', props.className)} aria-hidden="true">
@@ -28,6 +29,8 @@ export const ProductImage = (props: { name: string; imageUrl: string | null; cla
         width={600}
         height={600}
         unoptimized
+        loading={props.eager ? 'eager' : 'lazy'}
+        fetchPriority={props.eager ? 'high' : undefined}
         className="
           size-auto max-h-full max-w-full object-contain mix-blend-multiply
         "

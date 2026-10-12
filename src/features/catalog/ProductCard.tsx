@@ -17,7 +17,7 @@ type Product = {
 };
 
 /** Whole card is one link to the product page; the bottom line says what happens there (order, quote or sold out). */
-export const ProductCard = async (props: { product: Product; locale: string }) => {
+export const ProductCard = async (props: { product: Product; locale: string; eager?: boolean }) => {
   const t = await getTranslations({ locale: props.locale, namespace: 'Catalog' });
   const { product } = props;
   const orderable = canOrderOnline(product);
@@ -34,6 +34,7 @@ export const ProductCard = async (props: { product: Product; locale: string }) =
       <ProductImage
         name={product.name}
         imageUrl={product.imageUrl}
+        eager={props.eager}
         className="aspect-4/3 border-b bg-secondary"
       />
 

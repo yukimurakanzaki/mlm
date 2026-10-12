@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { buttonVariants } from '@/components/ui/buttonVariants';
-import { Section } from '@/features/landing/Section';
 import { lookupOrder } from '@/features/orders/actions';
 import { OrderDetails } from '@/features/orders/OrderDetails';
 import { findOrderByCodeAndPhone } from '@/features/orders/queries';
@@ -37,44 +36,63 @@ export default async function TrackPage(props: Props) {
   const order = code && normalizedPhone ? await findOrderByCodeAndPhone(code, normalizedPhone) : null;
 
   return (
-    <Section title={t('title')} description={t('description')}>
-      <form
-        action={lookupOrder}
-        className="
-          mx-auto flex max-w-xl flex-col gap-3
-          sm:flex-row
+    <div className="px-4 pt-14 pb-24">
+      <div className="mx-auto max-w-3xl">
+        <h1 className="
+          text-4xl font-bold tracking-tight
+          md:text-5xl
         "
-      >
-        <input type="hidden" name="locale" value={locale} />
-        <input
-          name="code"
-          required
-          defaultValue={code}
-          placeholder={t('code_placeholder')}
-          aria-label={t('code_label')}
-          className="
-            flex-1 rounded-md border bg-background px-3 py-2 text-sm uppercase
-          "
-        />
-        <input
-          name="phone"
-          required
-          type="tel"
-          defaultValue={phone}
-          placeholder={t('phone_placeholder')}
-          aria-label={t('phone_label')}
-          className="flex-1 rounded-md border bg-background px-3 py-2 text-sm"
-        />
-        <button type="submit" className={buttonVariants()}>{t('search')}</button>
-      </form>
+        >
+          {t('title')}
+        </h1>
+        <p className="mt-4 max-w-[60ch] text-lg text-muted-foreground">{t('description')}</p>
 
-      <div className="mx-auto mt-8 max-w-2xl">
-        {order && <OrderDetails order={order} locale={locale} />}
-        {searched && !order && (
-          <p role="alert" className="text-center text-destructive">{t('not_found')}</p>
-        )}
+        <form
+          action={lookupOrder}
+          className="
+            mt-10 grid gap-4 border bg-card p-6
+            sm:grid-cols-[1fr_1fr_auto] sm:items-end
+          "
+        >
+          <input type="hidden" name="locale" value={locale} />
+          <label className="grid gap-2 text-sm font-semibold">
+            {t('code_label')}
+            <input
+              name="code"
+              required
+              defaultValue={code}
+              placeholder={t('code_placeholder')}
+              className="
+                border border-input bg-background px-3 py-2.5 font-mono
+                font-normal uppercase
+              "
+            />
+          </label>
+          <label className="grid gap-2 text-sm font-semibold">
+            {t('phone_label')}
+            <input
+              name="phone"
+              required
+              type="tel"
+              autoComplete="tel"
+              defaultValue={phone}
+              placeholder={t('phone_placeholder')}
+              className="
+                border border-input bg-background px-3 py-2.5 font-normal
+              "
+            />
+          </label>
+          <button type="submit" className={buttonVariants({ size: 'lg' })}>{t('search')}</button>
+        </form>
+
+        <div className="mt-8">
+          {order && <OrderDetails order={order} locale={locale} />}
+          {searched && !order && (
+            <p role="alert" className="text-destructive">{t('not_found')}</p>
+          )}
+        </div>
       </div>
-    </Section>
+    </div>
   );
 }
 

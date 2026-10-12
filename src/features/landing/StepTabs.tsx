@@ -1,6 +1,5 @@
 'use client';
 
-import { useReducedMotion } from 'motion/react';
 import { useId, useState } from 'react';
 import { cn } from '@/utils/Helpers';
 
@@ -8,12 +7,12 @@ type Step = { id: string; title: string; description: string; panel: React.React
 
 /**
  * Vertical tabs that advance on their own: each active tab's underline fills over 6s, then the next tab opens.
- * Hovering or focusing pauses it; under reduced motion nothing advances on its own.
+ * Hovering or focusing pauses it. Under reduced motion CSS drops the animation, so the underline shows full and,
+ * with no animationend, nothing advances on its own; server and client markup stay identical.
  */
 export const StepTabs = (props: { label: string; steps: Step[] }) => {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const reduce = useReducedMotion();
   const baseId = useId();
   const count = props.steps.length;
   const select = (index: number) => setActive((index + count) % count);
@@ -79,9 +78,9 @@ export const StepTabs = (props: { label: string; steps: Step[] }) => {
                   className={cn(
                     `
                       absolute inset-x-0 -bottom-px h-0.5 origin-left
-                      bg-emphasis
+                      animate-step bg-emphasis
+                      motion-reduce:animate-none
                     `,
-                    !reduce && 'animate-step',
                     paused && 'paused',
                   )}
                   onAnimationEnd={() => select(index + 1)}
