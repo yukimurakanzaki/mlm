@@ -70,9 +70,9 @@ describe('summarizeCategories', () => {
     ]);
   });
 
-  it('uses English labels and names on /en, keeping the Indonesian key', () => {
+  it('uses English labels and names on /en, keeping the Indonesian key and anchor', () => {
     expect(summarizeCategories(products, 'en')).toEqual([
-      { key: 'Donor Darah', label: 'Blood Donation', anchor: 'blood-donation', count: 2, names: ['Blood bag', 'Timbangan'] },
+      { key: 'Donor Darah', label: 'Blood Donation', anchor: 'donor-darah', count: 2, names: ['Blood bag', 'Timbangan'] },
     ]);
   });
 });

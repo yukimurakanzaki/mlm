@@ -77,19 +77,24 @@
     "featured_description": "A few products from our catalog.",
     "order_now": "Order now",
     "out_of_stock": "Out of stock",
-    "price_on_request": "Price: contact us",
     "request_quote": "Request a quote",
-    "uncategorized": "Other"
+    "uncategorized": "Other",
+    "all": "All",
+    "filter_label": "Categories"
   },
   "Product": {
     "stock": "{count, plural, one {# item} other {# items}} in stock",
     "order_title": "Place your order",
     "sold_out": "This product is currently out of stock.",
-    "price_on_request": "Price: contact us",
-    "quote_title": "Request a quote",
+    "quote_title": "Pricing by quote",
     "quote_description": "The price of this product is given on request. Contact us on WhatsApp and we will send you a quote.",
-    "quote_button": "Request a quote on WhatsApp",
-    "quote_message": "Hello {company}, I would like to request a quote for {name} (SKU: {sku})."
+    "quote_button": "Request a quote",
+    "quote_message": "Hello {company}, I would like to request a quote for {name} (SKU: {sku}).",
+    "catalog": "Catalog",
+    "packaging": "Packaging",
+    "unit": "Unit",
+    "sku": "Product code",
+    "related_title": "More in this category"
   },
   "OrderForm": {
     "name": "Full name",

@@ -77,19 +77,24 @@
     "featured_description": "Beberapa produk dari katalog kami.",
     "order_now": "Pesan sekarang",
     "out_of_stock": "Stok habis",
-    "price_on_request": "Harga: hubungi kami",
     "request_quote": "Minta penawaran",
-    "uncategorized": "Lainnya"
+    "uncategorized": "Lainnya",
+    "all": "Semua",
+    "filter_label": "Kategori"
   },
   "Product": {
     "stock": "Stok {count} item",
     "order_title": "Buat pesanan",
     "sold_out": "Produk ini sedang kosong.",
-    "price_on_request": "Harga: hubungi kami",
-    "quote_title": "Minta penawaran",
+    "quote_title": "Harga lewat penawaran",
     "quote_description": "Harga produk ini diberikan berdasarkan permintaan. Hubungi kami lewat WhatsApp dan kami kirimkan penawarannya.",
-    "quote_button": "Minta penawaran via WhatsApp",
-    "quote_message": "Halo {company}, saya ingin meminta penawaran untuk {name} (SKU: {sku})."
+    "quote_button": "Minta penawaran",
+    "quote_message": "Halo {company}, saya ingin meminta penawaran untuk {name} (SKU: {sku}).",
+    "catalog": "Katalog",
+    "packaging": "Kemasan",
+    "unit": "Satuan",
+    "sku": "Kode produk",
+    "related_title": "Produk lain di kategori ini"
   },
   "OrderForm": {
     "name": "Nama lengkap",

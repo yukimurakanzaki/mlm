@@ -4,7 +4,10 @@ import { orderItemSchema, orderSchema, paymentSchema, productSchema } from '@/mo
 import { ORDER_STATUS } from '@/types/Order';
 import { localizeProduct, summarizeCategories } from '@/utils/Catalog';
 
-/** Active products; text fields are in the page's language (English on /en, falling back to Indonesian). */
+/**
+ * Active products; text fields are in the page's language (English on /en, falling back to Indonesian).
+ * `categoryKey` keeps the Indonesian category, which matches `key` from listCategorySummaries in every locale.
+ */
 export const listActiveProducts = async (locale: string, limit?: number) => {
   const query = db
     .select()
@@ -12,7 +15,8 @@ export const listActiveProducts = async (locale: string, limit?: number) => {
     .where(eq(productSchema.isActive, true))
     .orderBy(asc(productSchema.id));
 
-  return (await (limit ? query.limit(limit) : query)).map(p => localizeProduct(p, locale));
+  return (await (limit ? query.limit(limit) : query))
+    .map(p => ({ ...localizeProduct(p, locale), categoryKey: p.category?.trim() || null }));
 };
 
 /** Categories of active products with counts and product names, in catalog order. */
@@ -34,7 +38,7 @@ export const getActiveProductBySlug = async (slug: string, locale: string) => {
     .where(and(eq(productSchema.slug, slug), eq(productSchema.isActive, true)))
     .limit(1);
 
-  return product ? localizeProduct(product, locale) : null;
+  return product ? { ...localizeProduct(product, locale), categoryKey: product.category?.trim() || null } : null;
 };
 
 const withDetails = async (order: typeof orderSchema.$inferSelect) => {

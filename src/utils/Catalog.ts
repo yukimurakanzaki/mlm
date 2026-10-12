@@ -45,8 +45,8 @@ export const localizeProduct = <T extends Localizable>(product: T, locale: strin
       };
 
 /**
- * Per-category overview for the home page. `key` is the Indonesian category (stable across locales);
- * `label`, `anchor` and `names` follow the page's language. `anchor` matches the section ids on /catalog.
+ * Per-category overview. `key` is the Indonesian category and `anchor` its slug, both the same in every locale,
+ * so `/catalog?category=<anchor>` survives a language switch. `label` and `names` follow the page's language.
  */
 export const summarizeCategories = <T extends Localizable>(products: T[], locale: string) =>
   groupByCategory(products).flatMap(({ category, items }) => {
@@ -57,5 +57,5 @@ export const summarizeCategories = <T extends Localizable>(products: T[], locale
     const localized = items.map(p => localizeProduct(p, locale));
     const label = localized[0]?.category?.trim() || category;
 
-    return [{ key: category, label, anchor: slugify(label), count: items.length, names: localized.map(p => p.name) }];
+    return [{ key: category, label, anchor: slugify(category), count: items.length, names: localized.map(p => p.name) }];
   });

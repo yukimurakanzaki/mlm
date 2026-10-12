@@ -102,7 +102,7 @@ export const ColdChainFlow = (props: { categories: CategorySummary[] }) => {
                     {stage.anchor
                       ? (
                           <Link
-                            href={`/catalog#${stage.anchor}`}
+                            href={`/catalog?category=${stage.anchor}`}
                             className="
                               underline-offset-4
                               hover:underline hover:decoration-primary

@@ -73,7 +73,6 @@ export const FeaturedProducts = async (props: { products: Product[]; locale: str
                 <ProductImage
                   name={product.name}
                   imageUrl={product.imageUrl}
-                  sizes={lead ? '(min-width: 768px) 40vw, 100vw' : '(min-width: 768px) 30vw, 100vw'}
                   className={cn(
                     'flex-1 border-b',
                     TINTS[index],

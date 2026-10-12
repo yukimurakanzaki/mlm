@@ -1,12 +1,13 @@
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 import { buttonVariants } from '@/components/ui/buttonVariants';
+import { ProductImage } from '@/features/catalog/ProductImage';
 import { emphasis } from '@/features/landing/Emphasis';
 import { Link } from '@/libs/I18nNavigation';
 import { AppConfig } from '@/utils/AppConfig';
 import { buildWhatsAppLink } from '@/utils/Catalog';
 
-type SpotlightProduct = { slug: string; name: string; category: string | null };
+type SpotlightProduct = { slug: string; name: string; category: string | null; imageUrl: string | null };
 
 export const Hero = (props: { spotlight?: SpotlightProduct }) => {
   const t = useTranslations('Hero');
@@ -65,6 +66,17 @@ export const Hero = (props: { spotlight?: SpotlightProduct }) => {
           "
           >
             <div className="absolute inset-0 bg-kawung text-foreground/8" aria-hidden="true" />
+
+            {spotlight?.imageUrl && (
+              <ProductImage
+                name={spotlight.name}
+                imageUrl={spotlight.imageUrl}
+                className="
+                  absolute inset-x-[14%] top-[9%] bottom-[34%] border
+                  max-sm:bottom-[44%]
+                "
+              />
+            )}
 
             {spotlight && (
               <Link

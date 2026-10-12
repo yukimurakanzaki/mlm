@@ -1,5 +1,5 @@
+import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { getTranslations } from 'next-intl/server';
-import { buttonVariants } from '@/components/ui/buttonVariants';
 import { ProductImage } from '@/features/catalog/ProductImage';
 import { Link } from '@/libs/I18nNavigation';
 import { canOrderOnline, formatIDR } from '@/utils/Orders';
@@ -8,7 +8,6 @@ type Product = {
   slug: string;
   name: string;
   description: string;
-  brand: string | null;
   packaging: string | null;
   priceIdr: number | null;
   showPrice: boolean;
@@ -17,52 +16,52 @@ type Product = {
   imageUrl: string | null;
 };
 
+/** Whole card is one link to the product page; the bottom line says what happens there (order, quote or sold out). */
 export const ProductCard = async (props: { product: Product; locale: string }) => {
   const t = await getTranslations({ locale: props.locale, namespace: 'Catalog' });
   const { product } = props;
   const orderable = canOrderOnline(product);
-  const soldOut = product.trackStock && product.stock <= 0;
-  const details = [product.brand, product.packaging].filter(Boolean).join(' · ');
+  const soldOut = orderable && product.trackStock && product.stock <= 0;
 
   return (
-    <div className="
-      flex flex-col overflow-hidden border bg-card transition-shadow
-      hover:shadow-[0_12px_32px_-16px] hover:shadow-foreground/25
-    "
+    <Link
+      href={`/catalog/${product.slug}`}
+      className="
+        group flex flex-col border bg-card transition-colors
+        hover:border-foreground/40
+      "
     >
       <ProductImage
         name={product.name}
         imageUrl={product.imageUrl}
-        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-        className="h-40 border-b bg-secondary"
+        className="aspect-4/3 border-b bg-secondary"
       />
 
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="text-lg/snug font-bold">{product.name}</h3>
-        {details && <div className="mt-0.5 text-xs text-muted-foreground">{details}</div>}
-        <p className="mt-1 line-clamp-2 flex-1 text-sm text-muted-foreground">{product.description}</p>
-        <div className={orderable
-          ? 'mt-3 text-xl font-bold'
-          : `mt-3 text-sm font-medium text-muted-foreground`}
-        >
-          {orderable ? formatIDR(product.priceIdr, props.locale) : t('price_on_request')}
-        </div>
+        <h3 className="text-base/snug font-bold">{product.name}</h3>
+        {product.packaging && (
+          <div className="mt-1 font-mono text-[11px] text-muted-foreground">
+            {product.packaging}
+          </div>
+        )}
+        <p className="mt-2 line-clamp-2 flex-1 text-sm text-muted-foreground">{product.description}</p>
 
-        {orderable && soldOut
-          ? (
-              <div className="
-                mt-3 text-center text-sm font-medium text-destructive
-              "
-              >
-                {t('out_of_stock')}
-              </div>
-            )
-          : (
-              <Link className={buttonVariants({ className: 'mt-3', variant: orderable ? 'default' : 'outline' })} href={`/catalog/${product.slug}`}>
-                {orderable ? t('order_now') : t('request_quote')}
-              </Link>
-            )}
+        <div className="
+          mt-4 flex items-center justify-between gap-3 border-t pt-3 text-sm
+        "
+        >
+          {soldOut
+            ? <span className="font-medium text-destructive">{t('out_of_stock')}</span>
+            : orderable
+              ? <span className="font-bold">{formatIDR(product.priceIdr, props.locale)}</span>
+              : <span className="font-semibold">{t('request_quote')}</span>}
+          <ArrowRightIcon className="
+            shrink-0 transition-transform
+            group-hover:translate-x-0.5
+          "
+          />
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };

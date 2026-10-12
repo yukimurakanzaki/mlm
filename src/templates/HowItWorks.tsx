@@ -38,7 +38,7 @@ export const HowItWorks = (props: { categories: CategorySummary[]; sample?: Samp
           {props.categories.map(category => (
             <li key={category.key} className="bg-card">
               <Link
-                href={`/catalog#${category.anchor}`}
+                href={`/catalog?category=${category.anchor}`}
                 className="
                   flex h-full items-baseline justify-between gap-3 p-4 text-sm
                   font-semibold transition-colors

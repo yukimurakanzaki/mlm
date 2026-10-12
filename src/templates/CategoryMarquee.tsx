@@ -21,7 +21,7 @@ const Track = (props: { categories: CategorySummary[]; duplicate?: boolean }) =>
           "
         >
           <Link
-            href={`/catalog#${category.anchor}`}
+            href={`/catalog?category=${category.anchor}`}
             tabIndex={props.duplicate ? -1 : undefined}
             className="group flex items-baseline gap-3 whitespace-nowrap"
           >

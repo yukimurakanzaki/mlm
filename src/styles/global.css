@@ -43,6 +43,8 @@
   --color-band-foreground: #f0ebe1;
   --color-band-muted: #a8b4c4;
   --color-band-accent: #c89047;
+  /* Product photos have white grounds, so they always sit on a light plate, in dark mode too */
+  --color-plate: #fbf9f5;
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
