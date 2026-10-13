@@ -32,10 +32,6 @@ export const Footer = () => {
         </li>
 
         <li>
-          <Link href="/track">{t('track')}</Link>
-        </li>
-
-        <li>
           <Link href="/#faq">{t('faq')}</Link>
         </li>
       </CenteredFooter>

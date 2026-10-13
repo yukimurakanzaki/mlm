@@ -7,7 +7,6 @@
     "sign_in": "Masuk",
     "my_orders": "Pesanan saya",
     "catalog": "Katalog",
-    "track": "Lacak pesanan",
     "faq": "FAQ",
     "menu_label": "Buka menu"
   },
@@ -189,7 +188,6 @@
   },
   "Footer": {
     "catalog": "Katalog",
-    "track": "Lacak pesanan",
     "faq": "FAQ",
     "footer_text": "© {year} {name}. Hak cipta dilindungi.",
     "tagline": "Mitra yang andal dan tepercaya untuk bank darah Indonesia.",
