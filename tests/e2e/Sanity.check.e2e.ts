@@ -17,7 +17,7 @@ test.describe('Sanity', () => {
 
       if (AppConfig.comingSoon) {
         await expect(page).toHaveURL(/\/$/);
-        await expect(page.locator('.coming-soon-description')).toContainText('PT Panji Prima Dinamika');
+        await expect(page.locator('.coming-soon-status')).toHaveText('Pemesanan dapat dilakukan melalui email atau telepon.');
       } else {
         await expect(page.getByRole('heading', { name: 'Katalog produk' })).toBeVisible();
       }

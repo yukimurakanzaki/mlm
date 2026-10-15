@@ -19,13 +19,8 @@ const locales = [
 /** Centralized application configuration */
 export const AppConfig = {
   name: 'PT Mitra Labora Medika',
-  // The new catalog is being prepared; orders are handled by the sales partner.
+  // The new catalog is being prepared; orders are handled through direct contact.
   comingSoon: true,
-  salesPartner: {
-    name: 'PT Panji Prima Dinamika',
-    // Confirmed by the owner: this MLM contact also handles PPD sales.
-    whatsapp: '6281266854415',
-  },
   i18n: {
     locales,
     defaultLocale: 'id',

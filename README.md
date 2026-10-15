@@ -4,9 +4,9 @@ Online ordering for PT Mitra Labora Medika: customers browse the catalog, order 
 
 Built on Next.js 16, TypeScript, Tailwind, Drizzle/Postgres, Clerk and next-intl (Indonesian default, English at `/en`). Bootstrapped from [ixartz/SaaS-Boilerplate](https://github.com/ixartz/SaaS-Boilerplate) (MIT).
 
-## Public site and partner sales
+## Public site and direct ordering
 
-The public site currently shows the bilingual coming-soon page. Orders remain available through PT Panji Prima Dinamika. `AppConfig.salesPartner.whatsapp` in `src/utils/AppConfig.ts` holds their confirmed sales number (international format, digits only). If it is empty, the CTA explicitly asks MLM to connect the customer to the partner's sales team; it must not present MLM's number as the partner's number. `AppConfig.comingSoon` keeps the unfinished catalog and tracking URLs on the landing page and blocks direct online checkout while sales are handled externally.
+The public site currently shows the bilingual coming-soon page. Customers can order through the email, telephone, and WhatsApp links configured in `AppConfig.contact` in `src/utils/AppConfig.ts`. The page, metadata, and prefilled messages do not name a third-party company or discuss licensing. `AppConfig.comingSoon` keeps the unfinished catalog and tracking URLs on the landing page and blocks direct online checkout while orders are handled through direct contact.
 
 Run `npm run dev:next` to develop this page; it does not need a database server. The Kawung petals assemble once, then turn with the nearby mouse/pen cursor. Angular movement follows the shortest path across the angle seam and settles upright when the cursor leaves. There is no pause button or perpetual idle animation. Reduced motion disables both the entrance animation and cursor response; touch scrolling is unaffected. Brand fonts are bundled under `public/fonts/` with their licenses, so builds do not fetch Google Fonts.
 

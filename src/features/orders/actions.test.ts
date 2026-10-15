@@ -22,7 +22,7 @@ vi.mock('next/navigation', () => ({
 
 const { createOrder, payInstallment } = await import('./actions');
 
-describe('partner ordering mode', () => {
+describe('contact ordering mode', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });

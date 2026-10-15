@@ -1,7 +1,7 @@
 {
   "Index": {
     "meta_title": "PT Mitra Labora Medika — Segera Hadir",
-    "meta_description": "Website baru kami sedang dipersiapkan. Pemesanan alat dan reagen bank darah tetap dilayani melalui PT Panji Prima Dinamika."
+    "meta_description": "Website baru kami sedang dipersiapkan. Untuk pemesanan alat dan reagen bank darah, silakan hubungi kami."
   },
   "Navbar": {
     "sign_in": "Masuk",
@@ -282,17 +282,15 @@
     "title_first": "Langkah berikutnya,",
     "title_second": "kami siapkan",
     "title_emphasis": "dengan saksama.",
-    "description": "Website baru kami sedang dipersiapkan. Pemesanan alat dan reagen bank darah tetap dilayani melalui PT Panji Prima Dinamika.",
+    "description": "Website baru kami sedang dipersiapkan. Untuk pemesanan alat dan reagen bank darah, silakan hubungi kami.",
     "header_contact": "Hubungi kami",
-    "contact_message": "Halo tim sales PT Panji Prima Dinamika, saya mendapat informasi dari PT Mitra Labora Medika dan ingin memesan alat atau reagen bank darah. Mohon bantuannya.",
+    "contact_message": "Halo, saya ingin memesan alat atau reagen bank darah. Mohon informasi produk dan penawarannya.",
     "tagline": "Mitra untuk kebutuhan bank darah Indonesia.",
     "location": "Jakarta Selatan",
-    "status": "Penawaran dan pemesanan dilayani oleh tim sales PT Panji Prima Dinamika.",
+    "status": "Pemesanan dapat dilakukan melalui email atau telepon.",
     "skip": "Lewati ke konten utama",
     "navigation": "Navigasi utama",
     "language": "Pilih bahasa",
-    "contact_sales": "Hubungi sales",
-    "contact_referral": "Minta kontak sales",
-    "referral_message": "Halo PT Mitra Labora Medika, saya ingin memesan melalui PT Panji Prima Dinamika. Mohon hubungkan saya dengan tim sales mereka."
+    "contact_sales": "Hubungi sales"
   }
 }

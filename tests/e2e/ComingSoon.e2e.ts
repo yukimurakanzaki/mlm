@@ -4,7 +4,7 @@ import { AppConfig } from '../../src/utils/AppConfig';
 test.describe('Coming soon', () => {
   test.skip(!AppConfig.comingSoon, 'Only applies before the catalog launch.');
 
-  test('provides an honest partner sales handoff without a licensing notice', async ({ page }) => {
+  test('provides WhatsApp, email and phone ordering without third-party or licensing copy', async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto('/');
@@ -13,21 +13,36 @@ test.describe('Coming soon', () => {
 
     const salesContact = page.locator('.coming-soon-button');
 
-    await expect(salesContact).toContainText(AppConfig.salesPartner.whatsapp ? 'Hubungi sales' : 'Minta kontak sales');
+    await expect(salesContact).toContainText('Hubungi sales');
 
     const destination = new URL((await salesContact.getAttribute('href'))!);
 
     expect(destination.hostname).toBe('wa.me');
-    expect(destination.pathname).toBe(`/${AppConfig.salesPartner.whatsapp || AppConfig.contact.whatsapp}`);
-    expect(destination.searchParams.get('text')).toContain('PT Panji Prima Dinamika');
-    await expect(page.locator('.coming-soon-description')).toContainText('Pemesanan alat dan reagen bank darah tetap dilayani melalui PT Panji Prima Dinamika.');
-    await expect(page.locator('body')).not.toContainText(/perizinan|licensing|pemesanan belum tersedia/i);
-    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /PT Panji Prima Dinamika/);
+    expect(destination.pathname).toBe(`/${AppConfig.contact.whatsapp}`);
+    expect(destination.searchParams.get('text')).toContain('saya ingin memesan alat atau reagen bank darah');
+    expect(destination.searchParams.get('text')).not.toMatch(/Panji Prima Dinamika/i);
+    await expect(page.locator('body')).not.toContainText(/Panji Prima Dinamika|perizinan|licensing|pemesanan belum tersedia/i);
+    await expect(page.locator('meta[name="description"]')).not.toHaveAttribute('content', /Panji Prima Dinamika|perizinan/i);
     await expect(page.getByRole('link', { name: 'admin@mitralaboramedika.com' })).toHaveAttribute('href', 'mailto:admin@mitralaboramedika.com');
+    await expect(page.getByRole('link', { name: '0812-6685-4415' })).toHaveAttribute('href', 'tel:+6281266854415');
     await expect(page.locator('a[href*="/catalog"]')).toHaveCount(0);
     await expect(page.getByText('Setiap produk terdaftar di Kementerian Kesehatan.')).toHaveCount(0);
     await expect(page.locator('.coming-soon-petal img').first()).toBeVisible();
     expect(errors).toEqual([]);
+  });
+
+  test('keeps English ordering copy and contact messages neutral', async ({ page }) => {
+    await page.goto('/en');
+
+    await expect(page.locator('body')).not.toContainText(/Panji Prima Dinamika|licensing/i);
+    await expect(page.locator('.coming-soon-status')).toHaveText('Orders can be placed by email or phone.');
+    await expect(page.locator('meta[name="description"]')).not.toHaveAttribute('content', /Panji Prima Dinamika|licensing/i);
+
+    const destination = new URL((await page.locator('.coming-soon-button').getAttribute('href'))!);
+
+    expect(destination.searchParams.get('text')).toContain('I would like to order blood bank equipment or reagents');
+    expect(destination.searchParams.get('text')).not.toMatch(/Panji Prima Dinamika/i);
+    await expect(page.getByRole('link', { name: '0812-6685-4415' })).toHaveAttribute('href', 'tel:+6281266854415');
   });
 
   test('rotates with the nearby cursor and follows it across a full turn', async ({ page }) => {

@@ -2,7 +2,7 @@
 
 /* eslint better-tailwindcss/no-unknown-classes: ["error", { "ignore": ["^coming-soon(?:-|$)"] }] -- These component classes are defined in src/styles/coming-soon.css. */
 
-import { ArrowRightIcon, EnvelopeClosedIcon } from '@radix-ui/react-icons';
+import { ArrowRightIcon, EnvelopeClosedIcon, MobileIcon } from '@radix-ui/react-icons';
 import { motion } from 'motion/react';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -16,11 +16,7 @@ export const ComingSoon = () => {
   const t = useTranslations('ComingSoon');
   const locale = useLocale();
   const spin = useCursorSpin();
-  const partnerPhone = AppConfig.salesPartner.whatsapp;
-  const hasPartnerContact = Boolean(partnerPhone);
-  const contactMessage = hasPartnerContact ? t('contact_message') : t('referral_message');
-  const contactLabel = hasPartnerContact ? t('contact_sales') : t('contact_referral');
-  const contactUrl = `https://wa.me/${partnerPhone || AppConfig.contact.whatsapp}?text=${encodeURIComponent(contactMessage)}`;
+  const contactUrl = `https://wa.me/${AppConfig.contact.whatsapp}?text=${encodeURIComponent(t('contact_message'))}`;
 
   return (
     <div className="coming-soon">
@@ -52,12 +48,16 @@ export const ComingSoon = () => {
           <p className="coming-soon-description">{t('description')}</p>
           <div className="coming-soon-contact">
             <a className="coming-soon-button" href={contactUrl} target="_blank" rel="noopener noreferrer">
-              {contactLabel}
+              {t('contact_sales')}
               <ArrowRightIcon width={28} height={28} aria-hidden="true" />
             </a>
             <a className="coming-soon-email" href={`mailto:${AppConfig.contact.email}`}>
               <EnvelopeClosedIcon width={21} height={21} aria-hidden="true" />
               <span>{AppConfig.contact.email}</span>
+            </a>
+            <a className="coming-soon-email" href={`tel:+${AppConfig.contact.whatsapp}`}>
+              <MobileIcon width={21} height={21} aria-hidden="true" />
+              <span>{AppConfig.contact.whatsappDisplay}</span>
             </a>
           </div>
         </div>

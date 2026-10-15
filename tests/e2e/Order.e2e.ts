@@ -4,7 +4,7 @@ import { AppConfig } from '../../src/utils/AppConfig';
 // Requires the sample products from `npm run db:seed` (the Playwright web server runs it).
 
 test.describe('Ordering', () => {
-  test.skip(AppConfig.comingSoon, 'Online checkout is unavailable while orders are handled by the sales partner.');
+  test.skip(AppConfig.comingSoon, 'Online checkout is unavailable while orders are handled through direct contact.');
 
   test('a guest can order in installments, then track the order', async ({ page }) => {
     await page.goto('/catalog/paket-starter');

@@ -1,7 +1,7 @@
 {
   "Index": {
     "meta_title": "PT Mitra Labora Medika — Coming Soon",
-    "meta_description": "Our new website is on its way. Blood bank equipment and reagent orders remain available through PT Panji Prima Dinamika."
+    "meta_description": "Our new website is on its way. To order blood bank equipment or reagents, please get in touch."
   },
   "Navbar": {
     "sign_in": "Sign in",
@@ -282,17 +282,15 @@
     "title_first": "Our next chapter,",
     "title_second": "prepared",
     "title_emphasis": "with care.",
-    "description": "Our new website is on its way. Blood bank equipment and reagent orders remain available through PT Panji Prima Dinamika.",
+    "description": "Our new website is on its way. To order blood bank equipment or reagents, please get in touch.",
     "header_contact": "Get in touch",
-    "contact_message": "Hello PT Panji Prima Dinamika sales team, I found you through PT Mitra Labora Medika and would like to order blood bank equipment or reagents. Please assist me.",
+    "contact_message": "Hello, I would like to order blood bank equipment or reagents. Please share product information and a quotation.",
     "tagline": "A partner for Indonesia’s blood bank needs.",
     "location": "South Jakarta",
-    "status": "Quotes and orders are handled by the PT Panji Prima Dinamika sales team.",
+    "status": "Orders can be placed by email or phone.",
     "skip": "Skip to main content",
     "navigation": "Main navigation",
     "language": "Choose language",
-    "contact_sales": "Contact sales",
-    "contact_referral": "Request a sales contact",
-    "referral_message": "Hello PT Mitra Labora Medika, I would like to order through PT Panji Prima Dinamika. Please connect me with their sales team."
+    "contact_sales": "Contact sales"
   }
 }
