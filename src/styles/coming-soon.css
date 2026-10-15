@@ -2,11 +2,16 @@
   --launch-paper: #f0ebe1;
   --launch-ink: #1e3d63;
   --launch-copper: #a56b2e;
+  --launch-muted: #3d4f68;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   padding: 48px clamp(24px, 4.8vw, 80px) 40px;
   background: var(--launch-paper);
+  background-image: url('/images/coming-soon-daylight.webp');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: var(--launch-ink);
   color-scheme: light;
 }
@@ -79,7 +84,7 @@
   min-width: 32px;
   min-height: 44px;
   place-items: center;
-  color: #59697d;
+  color: var(--launch-muted);
 }
 
 .coming-soon-languages a[aria-current] {
@@ -308,7 +313,7 @@
 
 .coming-soon-location {
   margin-top: 8px;
-  color: #58677d;
+  color: var(--launch-muted);
   font-size: 10px;
   letter-spacing: 0.35em;
   text-transform: uppercase;
@@ -318,7 +323,7 @@
   max-width: 53ch;
   border-left: 1px solid #bfc3c7;
   padding: 12px 0 12px 36px;
-  color: #58677d;
+  color: var(--launch-muted);
   font-size: 12px;
   line-height: 1.65;
 }

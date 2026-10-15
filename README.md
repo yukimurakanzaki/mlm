@@ -10,6 +10,8 @@ The public site currently shows the bilingual coming-soon page. Customers can or
 
 Run `npm run dev:next` to develop this page; it does not need a database server. The Kawung petals assemble once, then turn with the nearby mouse/pen cursor. Angular movement follows the shortest path across the angle seam and settles upright when the cursor leaves. There is no pause button or perpetual idle animation. Reduced motion disables both the entrance animation and cursor response; touch scrolling is unaffected. Brand fonts are bundled under `public/fonts/` with their licenses, so builds do not fetch Google Fonts.
 
+The warm daylight background is a separate optimized WebP in `public/images/coming-soon-daylight.webp`; the foreground text, contact links, and spinning Kawung remain independent of it. The cream base color remains as a loading fallback.
+
 `npm test` includes regression coverage for direct order/checkout attempts during the pause. `npm run test:e2e` covers the coming-soon page and intentionally skips the four legacy sales/chat scenarios while this mode is active. Install Playwright Chromium first with `npx playwright install chromium`; an existing compatible browser can be selected with `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` for both test runners.
 
 ## Features
