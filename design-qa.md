@@ -1,41 +1,48 @@
-# Coming-soon design QA
+# Coming-soon design QA — cursor motion and partner sales
 
-Source visual truth: `/workspace/generated_images/exec-e04e4aaa-adc8-400e-a9ca-693b3a84033f.png` (selected option 1).
+Source visual truth: `/workspace/generated_images/exec-e04e4aaa-adc8-400e-a9ca-693b3a84033f.png` (selected option 1), amended by the owner's request for cursor-driven spinning, removal of the pause control, and ordering through PT Panji Prima Dinamika (PPD).
 
-Source pixels: 1487 × 1058. Desktop CSS viewport: 1487 × 1058, deviceScaleFactor 1. Production desktop capture uses the same pixels, light theme, Indonesian, fully assembled artwork, reduced motion. Browser: Playwright-driven headless Chromium.
+The owner confirmed that 0812-6685-4415 is also the PPD sales contact. The primary CTA now reads “Hubungi sales” / “Contact sales” and opens that WhatsApp number with an Indonesian/English message addressed to PPD sales. No messages were sent during verification.
+
+## Evidence and normalization
+
+- Source: 1487 × 1058 pixels. Desktop implementation: 1487 × 1058 pixels, same CSS viewport, deviceScaleFactor 1, light theme, Indonesian, settled/reduced-motion state.
+- Full-view combined comparison: `/workspace/.outputs/mlm-cursor-final/comparison-final.png` (both images at matching half scale).
+- Focused typography/contact comparison: `/workspace/.outputs/mlm-cursor-final/comparison-typography.png` (matching 1:1 crops).
+- Production screenshots: `/workspace/.outputs/mlm-cursor-final/production-desktop.png`, `production-tablet.png`, `production-mobile.png`, `production-english.png`.
+- Active cursor state: `/workspace/.outputs/mlm-cursor-final/production-cursor-active.png`.
+- Browser-rendered production bundle, captured through Playwright Chromium. Console errors and uncaught page errors: zero.
 
 ## Findings and comparison history
 
-- [P1, fixed] First capture wrapped the first headline into two lines, changing the reference's three-line composition. Reduced desktop display type from 6.25vw to 5.9vw. Post-fix evidence: `/workspace/.outputs/mlm-coming-soon/desktop-v2.png` and production comparison.
-- [P2, fixed] Catalog slugs containing a dot bypassed the general proxy matcher and returned a 404 rather than the coming-soon page. Added explicit catalog matchers and page-level redirects before database reads. Post-fix browser checks pass for `/catalog/sample.with-dot`.
-- [P2, fixed] Production checks caught transient horizontal overflow at 320px while petals entered from outside the artwork. Added `overflow: clip` to the artwork frame, keeping its transforms inside the decorative surface. Rebuilt the production bundle and reran all Chromium end-to-end checks: 13 passed, including the 320px overflow/keyboard check; four legacy sales scenarios intentionally skipped. Final production captures and both combined comparisons were regenerated and reviewed after the fix.
-- [P3] The generated transparent sculpture has stronger edge lighting than the mockup. The production background is a flat Mori field rather than baked floor-lighting; this keeps each petal independently animatable.
+- [P1, fixed in the initial build] Headline wrapped into four lines. Adjusted desktop type to preserve the selected three-line hierarchy.
+- [P2, fixed in the initial build] Dotted catalog slugs escaped the general route matcher. Added explicit matchers and page-level guards; browser regression coverage remains passing.
+- [P2, fixed in the initial build] Entrance motion briefly created narrow-screen horizontal overflow. Constrained the decorative frame; the 320px regression still passes.
+- [P2, fixed in this revision] The motion library's reduced-motion hook read the initial setting but did not react to a live preference change. Replaced it with a native media-query subscription using useSyncExternalStore. Production tests now verify disabling and re-enabling the preference while the page is open.
+- [P2, fixed in this revision] At diagonal rotation, petal tips were clipped by the frame. Added rotation clearance around the rotor, captured the active diagonal state again, and confirmed the tips remain intact. The smaller settled motif is an intentional accommodation for its rotation envelope.
+- No actionable P0/P1/P2 findings remain.
 
-## Fidelity surfaces
+## Required fidelity surfaces
 
-- Typography: bundled Newsreader normal/italic and Plus Jakarta Sans; correct three-line desktop hierarchy and copper italic emphasis. Brand fonts load locally. Main/body and contact text remain real accessible text.
-- Spacing/layout: matching asymmetric two-column composition, large margins, full-width divider/footer; tablet and mobile reflow reviewed. Mobile source adaptation stacks artwork below contact.
-- Colors: Mori #F0EBE1, Nila #1E3D63; emphasis uses #A56B2E for stronger contrast on Mori. The page preserves its selected light appearance under a dark OS preference.
-- Image fidelity: supplied logo reused; sculptural four-petal image generated from the selected reference, transparent 1254 × 1254 source, clipped into four quadrants for independent transforms. Icons are Radix icons; no CSS approximation of the sculpture.
-- Copy/content: reference headline, licensing status, general company contact, footer, and location retained; English translation provided. No date, certification claim, product listing, price, or order CTA.
+- Typography: existing locally bundled Newsreader normal/italic and Plus Jakarta Sans retained; three-line desktop title and copper emphasis preserved. Body/CTA text is accessible HTML.
+- Layout: selected asymmetric split composition, square CTA, header/language controls, full-width footer, and mobile stacking preserved. English/Indonesian screenshots show no horizontal overflow; narrow 320px keyboard test passes.
+- Colors: original Mori #F0EBE1 and Nila #1E3D63 retained; emphasis #A56B2E remains legible. Dark OS preference does not override the selected light page.
+- Image quality: original supplied logo and generated transparent sculpture retained. The real image quadrants sit inside a spring-driven rotor; no CSS/vector imitation of the artwork was introduced. The motif settles upright when the pointer leaves and follows continuous angles across the -180/180 seam.
+- Copy: all customer-facing licensing messages removed, including page metadata in both languages. New description/footer explicitly say orders are available through PPD; the confirmed sales number and correct prefilled message are used. Native MLM checkout remains closed because orders are handled by partner sales.
 
-## Evidence
+## Interactions and validation
 
-- Full-view combined comparison: `/workspace/.outputs/mlm-coming-soon/comparison-final.png`.
-- Focused typography/contact comparison: `/workspace/.outputs/mlm-coming-soon/comparison-typography.png`.
-- Production captures: `/workspace/.outputs/mlm-coming-soon/production-desktop.png`, `production-tablet.png`, `production-mobile.png`, `production-english.png`.
-- Primary interactions: ID/EN switching, WhatsApp destination, email destination, motion pause/resume, reduced motion, skip link, and catalog/checkout restrictions.
-- Production browser console and uncaught page error collection: zero errors. Earlier development HMR origin failures were diagnosed; the local dev origin is now explicitly allowed.
+- Cursor proximity activates rotation; a complete clockwise pointer orbit produces a continuous full turn; leaving the area settles the motif upright.
+- No pause control or perpetual idle animation. Entrance completes once. Mouse/pen motion responds to the cursor; touch input does not activate the rotor or intercept scrolling.
+- Reduced motion disables entrance/rotation, including when changed live. ID/EN switching, dark preference, skip link, keyboard navigation, contact destinations, and sales-page guards verified.
+- Production build and TypeScript compilation passed.
+- All 65 unit/browser-component tests passed.
+- Final production Chromium suite: 14 passed, four legacy native-checkout/chat scenarios intentionally skipped because ordering is handled through partner sales.
+- Translation and dependency checks passed. Lint has zero errors; existing warnings concern launch-mode test skips/conditionals and the touch event regression setup. git diff --check passed.
 
-## Implementation checklist
+## Follow-up polish and limits
 
-- Complete: production build and TypeScript compilation passed with locally bundled fonts.
-- Complete: 65 unit and browser-component tests passed, including four direct order/payment action guards.
-- Complete: final production browser suite passed (13 passed; four legacy sales/chat scenarios intentionally skipped while licensing is pending).
-- Complete: final desktop, tablet, mobile, and English captures reviewed; no horizontal overflow. Desktop source and implementation both 1487 × 1058 pixels at density 1, displayed at matching half scale in the full-view comparison. Focused typography comparison uses matching 1:1 crops for readable details.
-- Complete: production console and uncaught error collection found zero errors; language, contact, reduced motion, pause/resume, and keyboard checks passed.
-- Complete: lint passed with no errors (14 warnings for explicit test skips/conditional launch-mode assertions); dependency and translation checks passed. `git diff --check` passed.
-
-No actionable P0/P1/P2 findings remain. P3 lighting differences are documented above. Deployment, real WhatsApp conversation delivery, and email delivery were not tested or requested; contact URL destinations were verified without sending messages.
+- [P3] The generated sculpture has stronger edge lighting than the initial mockup; the background remains a flat Mori field so the motif can rotate independently.
+- Real message delivery, partner fulfillment, and the external production rollout were not exercised by these local checks. Tests verify the correct WhatsApp destination and prefilled text without contacting anyone.
 
 final result: passed

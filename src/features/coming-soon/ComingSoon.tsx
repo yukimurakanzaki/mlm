@@ -2,23 +2,28 @@
 
 /* eslint better-tailwindcss/no-unknown-classes: ["error", { "ignore": ["^coming-soon(?:-|$)"] }] -- These component classes are defined in src/styles/coming-soon.css. */
 
-import { ArrowRightIcon, EnvelopeClosedIcon, PauseIcon, PlayIcon } from '@radix-ui/react-icons';
+import { ArrowRightIcon, EnvelopeClosedIcon } from '@radix-ui/react-icons';
+import { motion } from 'motion/react';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { useState } from 'react';
 import { Link } from '@/libs/I18nNavigation';
 import { AppConfig } from '@/utils/AppConfig';
+import { useCursorSpin } from './useCursorSpin';
 
 const petals = ['coming-soon-petal--north-west', 'coming-soon-petal--north-east', 'coming-soon-petal--south-west', 'coming-soon-petal--south-east'] as const;
 
 export const ComingSoon = () => {
   const t = useTranslations('ComingSoon');
   const locale = useLocale();
-  const [paused, setPaused] = useState(false);
-  const contactUrl = `https://wa.me/${AppConfig.contact.whatsapp}?text=${encodeURIComponent(t('contact_message'))}`;
+  const spin = useCursorSpin();
+  const partnerPhone = AppConfig.salesPartner.whatsapp;
+  const hasPartnerContact = Boolean(partnerPhone);
+  const contactMessage = hasPartnerContact ? t('contact_message') : t('referral_message');
+  const contactLabel = hasPartnerContact ? t('contact_sales') : t('contact_referral');
+  const contactUrl = `https://wa.me/${partnerPhone || AppConfig.contact.whatsapp}?text=${encodeURIComponent(contactMessage)}`;
 
   return (
-    <div className="coming-soon" data-motion={paused ? 'paused' : 'playing'}>
+    <div className="coming-soon">
       <a className="coming-soon-skip" href="#main">{t('skip')}</a>
 
       <header className="coming-soon-header">
@@ -47,7 +52,7 @@ export const ComingSoon = () => {
           <p className="coming-soon-description">{t('description')}</p>
           <div className="coming-soon-contact">
             <a className="coming-soon-button" href={contactUrl} target="_blank" rel="noopener noreferrer">
-              {t('contact')}
+              {contactLabel}
               <ArrowRightIcon width={28} height={28} aria-hidden="true" />
             </a>
             <a className="coming-soon-email" href={`mailto:${AppConfig.contact.email}`}>
@@ -58,35 +63,28 @@ export const ComingSoon = () => {
         </div>
 
         <div className="coming-soon-artwork">
-          <div className="coming-soon-kawung" aria-hidden="true">
-            {petals.map((petal, index) => (
-              <div
-                key={petal}
-                className={`
-                  coming-soon-petal
-                  ${petal}
-                `}
-              >
-                <Image
-                  src="/images/coming-soon-kawung.png"
-                  width={1254}
-                  height={1254}
-                  alt=""
-                  priority={index === 0}
-                  sizes="(max-width: 700px) 90vw, 50vw"
-                />
-              </div>
-            ))}
+          <div ref={spin.frame} className="coming-soon-kawung" data-following={spin.following} aria-hidden="true">
+            <motion.div className="coming-soon-rotor" style={spin.style}>
+              {petals.map((petal, index) => (
+                <div
+                  key={petal}
+                  className={`
+                    coming-soon-petal
+                    ${petal}
+                  `}
+                >
+                  <Image
+                    src="/images/coming-soon-kawung.png"
+                    width={1254}
+                    height={1254}
+                    alt=""
+                    priority={index === 0}
+                    sizes="(max-width: 700px) 90vw, 50vw"
+                  />
+                </div>
+              ))}
+            </motion.div>
           </div>
-          <button
-            className="coming-soon-motion"
-            type="button"
-            aria-pressed={paused}
-            onClick={() => setPaused(value => !value)}
-          >
-            {paused ? <PlayIcon aria-hidden="true" /> : <PauseIcon aria-hidden="true" />}
-            {paused ? t('resume_motion') : t('pause_motion')}
-          </button>
         </div>
       </main>
 

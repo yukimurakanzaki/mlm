@@ -4,13 +4,25 @@ import { AppConfig } from '../../src/utils/AppConfig';
 test.describe('Coming soon', () => {
   test.skip(!AppConfig.comingSoon, 'Only applies before the catalog launch.');
 
-  test('provides company contact without sales or unsupported approval claims', async ({ page }) => {
+  test('provides an honest partner sales handoff without a licensing notice', async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto('/');
 
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Langkah berikutnya,');
-    await expect(page.getByRole('link', { name: 'Hubungi perusahaan', exact: true })).toHaveAttribute('href', /^https:\/\/wa.me\/6281266854415\?text=/);
+
+    const salesContact = page.locator('.coming-soon-button');
+
+    await expect(salesContact).toContainText(AppConfig.salesPartner.whatsapp ? 'Hubungi sales' : 'Minta kontak sales');
+
+    const destination = new URL((await salesContact.getAttribute('href'))!);
+
+    expect(destination.hostname).toBe('wa.me');
+    expect(destination.pathname).toBe(`/${AppConfig.salesPartner.whatsapp || AppConfig.contact.whatsapp}`);
+    expect(destination.searchParams.get('text')).toContain('PT Panji Prima Dinamika');
+    await expect(page.locator('.coming-soon-description')).toContainText('Pemesanan alat dan reagen bank darah tetap dilayani melalui PT Panji Prima Dinamika.');
+    await expect(page.locator('body')).not.toContainText(/perizinan|licensing|pemesanan belum tersedia/i);
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /PT Panji Prima Dinamika/);
     await expect(page.getByRole('link', { name: 'admin@mitralaboramedika.com' })).toHaveAttribute('href', 'mailto:admin@mitralaboramedika.com');
     await expect(page.locator('a[href*="/catalog"]')).toHaveCount(0);
     await expect(page.getByText('Setiap produk terdaftar di Kementerian Kesehatan.')).toHaveCount(0);
@@ -18,16 +30,36 @@ test.describe('Coming soon', () => {
     expect(errors).toEqual([]);
   });
 
-  test('pauses and resumes petal motion', async ({ page }) => {
+  test('rotates with the nearby cursor and follows it across a full turn', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 1024 });
     await page.goto('/');
-    await page.getByRole('button', { name: 'Jeda animasi' }).click();
+    const frame = page.locator('.coming-soon-kawung');
+    const rotor = page.locator('.coming-soon-rotor');
+    const bounds = (await frame.boundingBox())!;
+    const center = { x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2 };
+    const radius = bounds.width * 0.27;
+    const rotation = () => rotor.evaluate(element => Number((element as HTMLElement).style.transform.match(/rotate\(([-\d.]+)deg\)/)?.[1] ?? 0));
 
-    await expect(page.locator('.coming-soon')).toHaveAttribute('data-motion', 'paused');
-    await expect(page.locator('.coming-soon-petal').first()).toHaveCSS('animation-play-state', 'paused');
+    await page.mouse.move(center.x + radius, center.y);
 
-    await page.getByRole('button', { name: 'Putar animasi' }).click();
+    await expect(frame).toHaveAttribute('data-following', 'true');
 
-    await expect(page.locator('.coming-soon')).toHaveAttribute('data-motion', 'playing');
+    for (const [x, y, threshold] of [
+      [center.x, center.y + radius, 60],
+      [center.x - radius, center.y, 150],
+      [center.x, center.y - radius, 240],
+      [center.x + radius, center.y, 330],
+    ]) {
+      await page.mouse.move(x!, y!, { steps: 8 });
+
+      await expect.poll(rotation).toBeGreaterThan(threshold!);
+    }
+
+    await page.mouse.move(0, 0);
+
+    await expect(frame).toHaveAttribute('data-following', 'false');
+    await expect.poll(async () => Math.abs((await rotation()) - 360)).toBeLessThan(1);
+    await expect(page.getByRole('button', { name: /animasi|animation/i })).toHaveCount(0);
   });
 
   test('respects reduced motion and stays light in dark system mode', async ({ page }) => {
@@ -35,8 +67,39 @@ test.describe('Coming soon', () => {
     await page.goto('/');
 
     await expect(page.locator('.coming-soon-petal').first()).toHaveCSS('animation-name', 'none');
-    await expect(page.getByRole('button', { name: 'Jeda animasi' })).toBeHidden();
+
+    const frame = page.locator('.coming-soon-kawung');
+    const bounds = (await frame.boundingBox())!;
+    await page.mouse.move(bounds.x + bounds.width / 2, bounds.y + bounds.height * 0.8);
+
+    await expect(frame).toHaveAttribute('data-following', 'false');
+    await expect(page.locator('.coming-soon-rotor')).toHaveCSS('transform', 'none');
+    await expect(page.getByRole('button', { name: /animasi|animation/i })).toHaveCount(0);
     await expect(page.locator('.coming-soon')).toHaveCSS('background-color', 'rgb(240, 235, 225)');
+  });
+
+  test('stays still for touch input and after reduced motion changes', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 1024 });
+    await page.goto('/');
+    const frame = page.locator('.coming-soon-kawung');
+    const bounds = (await frame.boundingBox())!;
+    const point = { clientX: bounds.x + bounds.width * 0.75, clientY: bounds.y + bounds.height / 2 };
+    await frame.dispatchEvent('pointermove', { ...point, pointerType: 'touch' });
+
+    await expect(frame).toHaveAttribute('data-following', 'false');
+
+    await page.mouse.move(point.clientX, point.clientY);
+
+    await expect(frame).toHaveAttribute('data-following', 'true');
+
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+
+    await expect(frame).toHaveAttribute('data-following', 'false');
+    await expect(page.locator('.coming-soon-rotor')).toHaveCSS('transform', 'none');
+
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+
+    await expect(frame).toHaveAttribute('data-following', 'false');
   });
 
   for (const path of ['/catalog/paket-starter', '/catalog/sample.with-dot', '/track', '/en/catalog/paket-starter', '/en/track']) {
@@ -62,6 +125,6 @@ test.describe('Coming soon', () => {
     await page.keyboard.press('Enter');
 
     await expect(page.getByRole('main')).toBeFocused();
-    await expect(page.getByRole('link', { name: 'Hubungi perusahaan', exact: true })).toBeVisible();
+    await expect(page.locator('.coming-soon-button')).toBeVisible();
   });
 });

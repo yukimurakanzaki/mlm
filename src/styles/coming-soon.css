@@ -245,9 +245,13 @@
 .coming-soon-petal {
   position: absolute;
   inset: 0;
-  animation:
-    kawung-assemble 1.8s cubic-bezier(0.16, 1, 0.3, 1) both,
-    kawung-breathe 9s ease-in-out 1.8s infinite;
+  animation: kawung-assemble 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.coming-soon-rotor {
+  position: absolute;
+  inset: 13%;
+  transform-origin: center;
 }
 
 .coming-soon-petal img {
@@ -268,7 +272,7 @@
   --petal-y: -22px;
   --petal-turn: 5deg;
   clip-path: inset(0 0 50% 50%);
-  animation-delay: 140ms, 2.6s;
+  animation-delay: 140ms;
 }
 
 .coming-soon-petal--south-west {
@@ -276,7 +280,7 @@
   --petal-y: 22px;
   --petal-turn: 5deg;
   clip-path: inset(50% 50% 0 0);
-  animation-delay: 280ms, 3.4s;
+  animation-delay: 280ms;
 }
 
 .coming-soon-petal--south-east {
@@ -284,24 +288,7 @@
   --petal-y: 22px;
   --petal-turn: -5deg;
   clip-path: inset(50% 0 0 50%);
-  animation-delay: 420ms, 4.2s;
-}
-
-.coming-soon-motion {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  margin: 0 0 0 auto;
-  padding: 8px;
-  color: #536176;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.coming-soon[data-motion='paused'] .coming-soon-petal,
-.coming-soon[data-motion='paused'] .coming-soon-copy * {
-  animation-play-state: paused;
+  animation-delay: 420ms;
 }
 
 .coming-soon-footer {
@@ -355,16 +342,6 @@
   to {
     transform: translate(0, 0) rotate(0);
     opacity: 1;
-  }
-}
-
-@keyframes kawung-breathe {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(0, -10px);
   }
 }
 
@@ -462,9 +439,6 @@
     max-width: 480px;
     margin-inline: auto;
   }
-  .coming-soon-motion {
-    margin-top: -8px;
-  }
   .coming-soon-footer {
     flex-direction: column;
     align-items: flex-start;
@@ -487,9 +461,6 @@
     animation: none;
     transform: none;
     opacity: 1;
-  }
-  .coming-soon-motion {
-    display: none;
   }
   .coming-soon-button,
   .coming-soon-button:hover svg {
