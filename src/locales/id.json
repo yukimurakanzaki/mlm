@@ -1,7 +1,7 @@
 {
   "Index": {
-    "meta_title": "PT Mitra Labora Medika - Alat dan reagen bank darah",
-    "meta_description": "Katalog alat, reagen, dan bahan habis pakai bank darah untuk UDD PMI, rumah sakit, dan laboratorium. Minta penawaran lewat WhatsApp."
+    "meta_title": "PT Mitra Labora Medika — Segera Hadir",
+    "meta_description": "Katalog dan pemesanan belum tersedia. Kami sedang menyelesaikan proses perizinan penjualan."
   },
   "Navbar": {
     "sign_in": "Masuk",
@@ -276,5 +276,23 @@
   "NotFound": {
     "title": "Halaman tidak ditemukan",
     "description": "Produk atau halaman ini tidak ada, atau sudah dipindahkan."
+  },
+  "ComingSoon": {
+    "eyebrow": "Segera hadir",
+    "title_first": "Langkah berikutnya,",
+    "title_second": "kami siapkan",
+    "title_emphasis": "dengan saksama.",
+    "description": "Katalog dan pemesanan belum tersedia. Kami sedang menyelesaikan proses perizinan penjualan.",
+    "contact": "Hubungi perusahaan",
+    "header_contact": "Hubungi kami",
+    "contact_message": "Halo PT Mitra Labora Medika, saya ingin menghubungi perusahaan untuk informasi umum.",
+    "pause_motion": "Jeda animasi",
+    "resume_motion": "Putar animasi",
+    "tagline": "Mitra untuk kebutuhan bank darah Indonesia.",
+    "location": "Jakarta Selatan",
+    "status": "Katalog akan dibuka setelah proses perizinan selesai.",
+    "skip": "Lewati ke konten utama",
+    "navigation": "Navigasi utama",
+    "language": "Pilih bahasa"
   }
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { ComingSoon } from '@/features/coming-soon/ComingSoon';
 import { listActiveProducts, listCategorySummaries } from '@/features/orders/queries';
 import { CategoryMarquee } from '@/templates/CategoryMarquee';
 import { ColdChainFlow } from '@/templates/ColdChainFlow';
@@ -9,6 +10,7 @@ import { FeaturedProducts } from '@/templates/FeaturedProducts';
 import { Hero } from '@/templates/Hero';
 import { HowItWorks } from '@/templates/HowItWorks';
 import { TrustBand } from '@/templates/TrustBand';
+import { AppConfig } from '@/utils/AppConfig';
 
 type IndexProps = {
   params: Promise<{ locale: string }>;
@@ -30,6 +32,9 @@ export async function generateMetadata(props: IndexProps): Promise<Metadata> {
 export default async function Index(props: IndexProps) {
   const { locale } = await props.params;
   setRequestLocale(locale);
+  if (AppConfig.comingSoon) {
+    return <ComingSoon />;
+  }
   // First three products fill the bento; the fourth, if any, is spotlighted in the hero
   const [products, categories] = await Promise.all([listActiveProducts(locale, 4), listCategorySummaries(locale)]);
 

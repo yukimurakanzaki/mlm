@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { buttonVariants } from '@/components/ui/buttonVariants';
 import { ProductCard } from '@/features/catalog/ProductCard';
 import { ProductImage } from '@/features/catalog/ProductImage';
@@ -22,6 +22,10 @@ const SPEC_COLUMNS: Record<number, string> = { 1: '', 2: 'sm:grid-cols-2', 3: 's
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const { locale, slug } = await props.params;
+  if (AppConfig.comingSoon) {
+    return { title: AppConfig.name };
+  }
+
   const product = await getActiveProductBySlug(slug, locale);
 
   return product ? { title: product.name, description: product.description } : {};
@@ -29,6 +33,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
 export default async function ProductPage(props: Props) {
   const { locale, slug } = await props.params;
+  if (AppConfig.comingSoon) {
+    redirect(locale === 'en' ? '/en' : '/');
+  }
+
   setRequestLocale(locale);
   const product = await getActiveProductBySlug(slug, locale);
 

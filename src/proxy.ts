@@ -3,6 +3,7 @@ import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import createMiddleware from 'next-intl/middleware';
 import { NextResponse } from 'next/server';
 import { routing } from './libs/I18nRouting';
+import { AppConfig } from './utils/AppConfig';
 import { buildUnavailableHtml } from './utils/UnavailablePage';
 
 const handleI18nRouting = createMiddleware(routing);
@@ -33,6 +34,11 @@ export default async function proxy(
   request: NextRequest,
   event: NextFetchEvent,
 ) {
+  if (AppConfig.comingSoon && /^\/(?:en\/|id\/)?(?:catalog|track)(?:\/|$)/.test(request.nextUrl.pathname)) {
+    const destination = new URL(request.nextUrl.pathname.startsWith('/en/') ? '/en' : '/', request.url);
+    return NextResponse.redirect(destination, 307);
+  }
+
   // Clerk keyless mode doesn't work with i18n, this is why we need to run the middleware conditionally
   if (
     isAuthPage(request) || isProtectedRoute(request) || (isOrderPage(request) && hasClerkSession(request))
@@ -77,5 +83,10 @@ export const config = {
   // Match all pathnames except for
   // - … if they start with `/_next`, `/_vercel` or `monitoring`
   // - … the ones containing a dot (e.g. `favicon.ico`)
-  matcher: '/((?!api|_next|_vercel|monitoring|.*\\..*).*)',
+  matcher: [
+    '/((?!api|_next|_vercel|monitoring|.*\\..*).*)',
+    '/catalog/:path*',
+    '/en/catalog/:path*',
+    '/id/catalog/:path*',
+  ],
 };

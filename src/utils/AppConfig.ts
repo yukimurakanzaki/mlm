@@ -19,6 +19,8 @@ const locales = [
 /** Centralized application configuration */
 export const AppConfig = {
   name: 'PT Mitra Labora Medika',
+  // Keep catalog access and new sales paused until the sales permissions are complete.
+  comingSoon: true,
   i18n: {
     locales,
     defaultLocale: 'id',

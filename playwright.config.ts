@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { AppConfig } from './src/utils/AppConfig';
 
 // Use process.env.PORT by default and fallback to port 3008
 // to avoid conflicts with the Next.js default port 3000.
@@ -29,9 +30,11 @@ export default defineConfig({
   // Run your local dev server before starting the tests:
   // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
   webServer: {
-    command: process.env.CI
-      ? 'pglite-server -m 100 --run \'run-s db:migrate db:seed start\''
-      : 'pglite-server -m 100 --run \'run-s db:migrate db:seed dev:next\'',
+    command: AppConfig.comingSoon
+      ? (process.env.CI ? 'npm run start' : 'npm run dev:next')
+      : process.env.CI
+        ? 'pglite-server -m 100 --run \'run-s db:migrate db:seed start\''
+        : 'pglite-server -m 100 --run \'run-s db:migrate db:seed dev:next\'',
     url: baseURL,
     timeout: 60 * 1000,
     reuseExistingServer: !process.env.CI,
@@ -60,7 +63,12 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
+          ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH, args: ['--no-sandbox', '--disable-dev-shm-usage'] }
+          : undefined,
+      },
     },
     ...(process.env.CI
       ? [

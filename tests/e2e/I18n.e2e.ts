@@ -1,22 +1,33 @@
 import { expect, test } from '@playwright/test';
+import { AppConfig } from '../../src/utils/AppConfig';
 
 test.describe('I18n', () => {
   test.describe('Language Switching', () => {
-    test('should switch language from Indonesian to English using dropdown', async ({ page }) => {
+    test('should switch language from Indonesian to English', async ({ page }) => {
       await page.goto('/');
 
-      await expect(page.getByRole('heading', { name: /Pesan produk Anda dengan mudah/ })).toBeVisible();
+      if (AppConfig.comingSoon) {
+        await page.getByRole('link', { name: 'English', exact: true }).click();
 
-      await page.getByRole('button', { name: 'Ganti bahasa' }).click();
-      await page.getByText('English').click();
+        await expect(page.getByRole('heading', { name: /Our next chapter/ })).toBeVisible();
+        await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+      } else {
+        await page.getByRole('button', { name: 'Ganti bahasa' }).click();
+        await page.getByText('English').click();
 
-      await expect(page.getByRole('heading', { name: /Order your products easily/ })).toBeVisible();
+        await expect(page).toHaveURL(/\/en$/);
+      }
     });
 
     test('should show the English catalog from the URL', async ({ page }) => {
       await page.goto('/en/catalog');
 
-      await expect(page.getByRole('heading', { name: 'Product catalog' })).toBeVisible();
+      if (AppConfig.comingSoon) {
+        await expect(page).toHaveURL(/\/en$/);
+        await expect(page.getByRole('heading', { name: /Our next chapter/ })).toBeVisible();
+      } else {
+        await expect(page.getByRole('heading', { name: 'Product catalog' })).toBeVisible();
+      }
     });
   });
 });

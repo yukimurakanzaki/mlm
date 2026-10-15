@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { redirect } from 'next/navigation';
 import { KawungMark } from '@/components/KawungMark';
 import { buttonVariants } from '@/components/ui/buttonVariants';
 import { ProductCard } from '@/features/catalog/ProductCard';
@@ -38,6 +39,10 @@ const pillClass = (active: boolean) => cn(
 
 export default async function CatalogPage(props: Props) {
   const { locale } = await props.params;
+  if (AppConfig.comingSoon) {
+    redirect(locale === 'en' ? '/en' : '/');
+  }
+
   const { category } = await props.searchParams;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'Catalog' });

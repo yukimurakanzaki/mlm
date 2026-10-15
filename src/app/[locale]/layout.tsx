@@ -1,16 +1,30 @@
 import type { Metadata, Viewport } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
-import { IBM_Plex_Mono, Newsreader, Plus_Jakarta_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
 import { notFound } from 'next/navigation';
 import { routing } from '@/libs/I18nRouting';
 import { AppConfig } from '@/utils/AppConfig';
 import '@/styles/global.css';
 
 // Kawung identity type: Plus Jakarta Sans (logo, headings, body), IBM Plex Mono (data, labels), Newsreader italic (narrative)
-const sans = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' });
-const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-plex-mono' });
-const serif = Newsreader({ subsets: ['latin'], style: ['normal', 'italic'], variable: '--font-newsreader' });
+const sans = localFont({ src: '../../../public/fonts/plus-jakarta-sans-latin-wght-normal.woff2', weight: '200 800', variable: '--font-jakarta', display: 'swap' });
+const mono = localFont({
+  src: [
+    { path: '../../../public/fonts/ibm-plex-mono-latin-400-normal.woff2', weight: '400' },
+    { path: '../../../public/fonts/ibm-plex-mono-latin-500-normal.woff2', weight: '500' },
+  ],
+  variable: '--font-plex-mono',
+  display: 'swap',
+});
+const serif = localFont({
+  src: [
+    { path: '../../../public/fonts/newsreader-latin-wght-normal.woff2', style: 'normal', weight: '200 800' },
+    { path: '../../../public/fonts/newsreader-latin-wght-italic.woff2', style: 'italic', weight: '200 800' },
+  ],
+  variable: '--font-newsreader',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: { default: AppConfig.name, template: `%s | ${AppConfig.name}` },

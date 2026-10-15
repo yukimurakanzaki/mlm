@@ -1,7 +1,7 @@
 {
   "Index": {
-    "meta_title": "PT Mitra Labora Medika - Blood bank equipment and reagents",
-    "meta_description": "Catalog of blood bank equipment, reagents and consumables for UDD PMI, hospitals and labs. Request a quote on WhatsApp."
+    "meta_title": "PT Mitra Labora Medika — Coming Soon",
+    "meta_description": "Our catalog and ordering are not yet available. We are completing the sales licensing process."
   },
   "Navbar": {
     "sign_in": "Sign in",
@@ -276,5 +276,23 @@
   "NotFound": {
     "title": "Page not found",
     "description": "This product or page does not exist or has moved."
+  },
+  "ComingSoon": {
+    "eyebrow": "Coming soon",
+    "title_first": "Our next chapter,",
+    "title_second": "prepared",
+    "title_emphasis": "with care.",
+    "description": "Our catalog and ordering are not yet available. We are completing the sales licensing process.",
+    "contact": "Contact the company",
+    "header_contact": "Get in touch",
+    "contact_message": "Hello PT Mitra Labora Medika, I would like to contact the company for general information.",
+    "pause_motion": "Pause animation",
+    "resume_motion": "Play animation",
+    "tagline": "A partner for Indonesia’s blood bank needs.",
+    "location": "South Jakarta",
+    "status": "The catalog will open after the licensing process is complete.",
+    "skip": "Skip to main content",
+    "navigation": "Main navigation",
+    "language": "Choose language"
   }
 }

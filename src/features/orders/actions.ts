@@ -39,6 +39,10 @@ class OutOfStockError extends Error {}
 
 /** Creates an order for a lead/guest or a signed-in customer, then redirects to the tracking page. */
 export async function createOrder(_prev: OrderFormState, formData: FormData): Promise<OrderFormState> {
+  if (AppConfig.comingSoon) {
+    redirect(formData.get('locale') === 'en' ? '/en' : '/');
+  }
+
   const parsed = orderInput.safeParse(Object.fromEntries(formData));
 
   if (!parsed.success) {
@@ -206,6 +210,10 @@ const payInput = z.object({
 
 /** Customer: starts a Midtrans checkout for one installment, then redirects to the payment page. */
 export async function payInstallment(formData: FormData) {
+  if (AppConfig.comingSoon) {
+    redirect(formData.get('locale') === 'en' ? '/en' : '/');
+  }
+
   const parsed = payInput.safeParse(Object.fromEntries(formData));
 
   if (!parsed.success || !isMidtransConfigured()) {

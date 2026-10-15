@@ -30,7 +30,11 @@ export default defineConfig({
           browser: {
             enabled: true,
             headless: true,
-            provider: playwright(),
+            provider: playwright({
+              launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
+                ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH, args: ['--no-sandbox', '--disable-dev-shm-usage'] }
+                : undefined,
+            }),
             screenshotDirectory: 'vitest-test-results',
             instances: [
               { browser: 'chromium' },

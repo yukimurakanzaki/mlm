@@ -1,8 +1,11 @@
 import { expect, test } from '@playwright/test';
+import { AppConfig } from '../../src/utils/AppConfig';
 
 // Requires the sample products from `npm run db:seed` (the Playwright web server runs it).
 
 test.describe('Ordering', () => {
+  test.skip(AppConfig.comingSoon, 'Sales and the ordering chatbot are intentionally unavailable during licensing.');
+
   test('a guest can order in installments, then track the order', async ({ page }) => {
     await page.goto('/catalog/paket-starter');
 

@@ -6,6 +6,7 @@ import './src/libs/Env';
 
 // Define the base Next.js configuration
 const baseConfig: NextConfig = {
+  allowedDevOrigins: ['127.0.0.1'],
   devIndicators: {
     position: 'bottom-right',
   },

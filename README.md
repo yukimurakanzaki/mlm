@@ -4,6 +4,14 @@ Online ordering for PT Mitra Labora Medika: customers browse the catalog, order 
 
 Built on Next.js 16, TypeScript, Tailwind, Drizzle/Postgres, Clerk and next-intl (Indonesian default, English at `/en`). Bootstrapped from [ixartz/SaaS-Boilerplate](https://github.com/ixartz/SaaS-Boilerplate) (MIT).
 
+## Public site during licensing
+
+The public site currently shows the bilingual coming-soon page. `AppConfig.comingSoon` in `src/utils/AppConfig.ts` keeps catalog and tracking URLs on that page and blocks new order and checkout server actions. Company contact links remain available; the message does not promise a launch date or claim completed sales permissions. Reopen sales only after the permissions are complete.
+
+Run `npm run dev:next` to develop this page; it does not need a database server. The Kawung petals assemble and float independently, with a pause control and support for reduced motion. Brand fonts are bundled under `public/fonts/` with their licenses, so builds do not fetch Google Fonts.
+
+`npm test` includes regression coverage for direct order/checkout attempts during the pause. `npm run test:e2e` covers the coming-soon page and intentionally skips the four legacy sales/chat scenarios while this mode is active. Install Playwright Chromium first with `npx playwright install chromium`; an existing compatible browser can be selected with `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` for both test runners.
+
 ## Features
 | Area | Status |
 |---|---|

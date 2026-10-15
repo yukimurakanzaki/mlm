@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { redirect } from 'next/navigation';
 import { buttonVariants } from '@/components/ui/buttonVariants';
 import { lookupOrder } from '@/features/orders/actions';
 import { OrderDetails } from '@/features/orders/OrderDetails';
 import { findOrderByCodeAndPhone } from '@/features/orders/queries';
 import { getTrackSession } from '@/features/orders/TrackSession';
+import { AppConfig } from '@/utils/AppConfig';
 import { normalizePhone } from '@/utils/Orders';
 
 type Props = {
@@ -21,6 +23,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
 export default async function TrackPage(props: Props) {
   const { locale } = await props.params;
+  if (AppConfig.comingSoon) {
+    redirect(locale === 'en' ? '/en' : '/');
+  }
+
   setRequestLocale(locale);
   const { code: codeParam } = await props.searchParams;
   const session = await getTrackSession();
